@@ -1,0 +1,31 @@
+
+{% extends 'core/base.html' %} {% load staticfiles %}
+{% block title %} | {{ block.super }}{% endblock title %}
+
+{% block content %}
+
+<h1>Transfer Funds</h1>
+<hr>
+
+<form>
+    <p>Please fill the transfer details below </p>
+    <label for="team_name">Account Name: </label>
+    <input id="team_name" type="text" name="name_field" placeholder="Default name for team."><br>
+    <label for="email_address">Email Address: </label>
+    <input id="email_address" type="email" name="name_field" placeholder="Enter email address">
+    <!--<label for="team_name">Account Name: </label>-->
+    <input type="submit" value = "Finish">
+    <!--<label for="team_name">Account Name: </label>-->
+    <!--<input id="team_name" type="text" name="name_field" placeholder="Default name for team.">-->
+    <!--<label for="team_name">Account Name: </label>-->
+    <!--<input id="team_name" type="text" name="name_field" placeholder="Default name for team.">-->
+
+
+
+
+    <br>
+    <a class="btn btn-danger" href="{% url 'transactions:withdrawal' %}">Transfer</a>
+</form>
+
+
+{% endblock content %}

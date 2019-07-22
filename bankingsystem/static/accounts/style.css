@@ -1,0 +1,62 @@
+
+}
+body {
+    text-align: center;
+    min-width: 990px;
+    background-repeat: repeat-x;
+    margin-top: 0px;
+}
+body {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: x-small;
+    background-color: #FFFFFF;
+    color: #202020;
+    margin: 0px;
+    padding: 0px;
+}
+body, html {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+
+body[Attributes Style] {
+    margin-right: 0px;
+    margin-left: 0px;
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+user agent stylesheet
+body {
+    display: block;
+    margin: 8px;
+}
+user agent stylesheet
+html {
+    color: -internal-root-color;
+}
+tr {
+    display: table-row;
+    vertical-align: inherit;
+    border-color: inherit;
+}
+table, textarea, button, select {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: xx-small;
+}
+
+div, span, p, ul, li, td, th {
+    font-family: Arial, Helvetica, sans-serif;
+}
+div, span, p, ul, li, td, th {
+    font-family: Arial, Helvetica, sans-serif;
+}
+td[Attributes Style] {
+    height: 7px;
+}
+user agent stylesheet
+td {
+    display: table-cell;
+    vertical-align: inherit;
+}
