@@ -7,6 +7,8 @@ from django.contrib.auth import (
 from django.contrib.auth.decorators import login_required
 from django.http import Http404
 from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth import update_session_auth_hash
+from django.contrib.auth.forms import PasswordChangeForm
 
 from .forms import (
     UserLoginForm, UserRegistrationForm,
@@ -93,3 +95,7 @@ def logout_view(request):
     else:
         logout(request)
         return redirect("home")
+
+
+
+

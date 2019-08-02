@@ -1,24 +1,106 @@
-{% extends 'core/base.html' %}
-
-{% block title %} {{ block.super }}{% endblock title %}
-
+{% load static %}
+{% load crispy_forms_tags %}
 {% block content %}
 
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Home</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
+        integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <!-- Scrollbar Custom CSS -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+
+    <!-- google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Lato|Open+Sans&display=swap" rel="stylesheet">
+<!---->
+    <!-- font-awesome -->
+    <script src="https://kit.fontawesome.com/73e4a67fd5.js"></script>
+
+    <!-- date picker css -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css" />
+     <!--<a href="https://github.com/eternicode/bootstrap-datepicker">eternicode bootstrap-datepicker</a>-->
+    <!-- Our Custom CSS -->
+    <!--<link rel="stylesheet" href="{% static 't/style.css'%}">-->
+    <link rel="stylesheet" href="{% static 't/loginform.css'%}">
+
+<!--</head>-->
+
+<div>
+
+    <header>
+        <div id="content1">
+            <nav class="navbar navbar-expand-lg  fixed-top" style="background-color:#0063b1">
+                <div class="container-fluid">
+                    <!--<div class="p-3 mb-2 ">.bg-primary</div>-->
+                    <img src="{% static '/t/img/logo.png'%}" alt="Logo">
+                    <h3>Logo</h3>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+<div class="view" style="background-image: url('https://mdbootstrap.com/img/Photos/Others/architecture.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center; height: 650px">
 
 
 
-<div class="container" style="padding-top: 50px;">
-<div class="jumbotron text-center">
-      <div class="container">
-        <h1 class="jumbotron-heading">Banking System</h1>
-        <hr>
-        <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don't simply skip over it entirely.</p>
+
+<section class="container">
+        <div class="row" style="padding: 200px 200px 200px !important">
+            <div class="col-md-12>
+                <div class="card pt-4">
+                    <div class="card-body">
+                        <br class="lead text-muted"><br><strong>Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don't simply skip over it entirely.</strong></br></p>
         <p>
           <a class="btn btn-primary btn-md" href="{% url 'accounts:login' %}" role="button">Load Account Details</a>
-          <a class="btn btn-success btn-md" href="{% url 'accounts:register' %}" role="button">Create a Bank Account</a>
+          <a class="btn btn-success btn-md" href="{% static 't/name.pdf'%}" role="button">Register</a>
+          <!--<a class="btn btn-success btn-md" href="{% url 'accounts:register' %}" role="button">Create a Bank Account</a>-->
         </p>
-      </div>
-</div>
-</div>
 
+                    </div>
+                </div>
+
+</div>
+</section>
+
+            <!--<div class="col-md-6 split right">-->
+                <!--<figure>-->
+                    <!--<img src="{% static 't/img/bank 3.jpg'%}" alt="" style="width: 700px; height: 650px">-->
+                <!--</figure>-->
+            <!--</div>-->
+        <!--</div>-->
+
+
+
+
+
+<!--<section class="container">-->
+    <!--<div class ="row" style=" padding-top:100px ! important;">-->
+<!--<div class="container" style="padding-top: 50px;">-->
+<!--<div class="jumbotron text-center">-->
+      <!--<div class="container">-->
+        <!--<h1 class="jumbotron-heading">Online Banking</h1>-->
+        <!--<hr>-->
+        <!--<p class="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don't simply skip over it entirely.</p>-->
+        <!--<p>-->
+          <!--<a class="btn btn-primary btn-md" href="{% url 'accounts:login' %}" role="button">Load Account Details</a>-->
+          <!--<a class="btn btn-success btn-md" href="{% static 't/name.pdf'%}" role="button">Register</a>-->
+          <!--&lt;!&ndash;<a class="btn btn-success btn-md" href="{% url 'accounts:register' %}" role="button">Create a Bank Account</a>&ndash;&gt;-->
+        <!--</p>-->
+      <!--</div>-->
+
+<!--</div>-->
+<!--</div>-->
+        <!--</div>-->
+<!--</section>-->
+
+</div>
+</section>
+</body>
 {% endblock content %}

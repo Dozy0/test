@@ -1,1029 +1,380 @@
-{% extends 'core/base.html' %}
-
-{% block title %} Transactions | {{ block.super }}{% endblock title %}
-
 {% load static %}
 {% block content %}
 {% include "core/messages.html" %}
-<nav class="navbar navbar-white bg-white justify-content-between" xmlns:margin="http://www.w3.org/1999/xhtml"
-     xmlns:margin="http://www.w3.org/1999/xhtml">
-    <a class="navbar-brand">Personal Banking</a>
-    <span class="navbar-text">
-    Secured Site
-  </span>
+<!DOCTYPE html>
+<html>
 
-</nav>
-<div style="padding-left:0px;" width="50">
-    <div class="page-header">
-        <!--<h1 class="text-center" style="color:white;" ><b>Lagos Bank</b><br><small>Lagos Bank Ltd.</small></h1>-->
-        <img src ="{{user.account.picture.url}}" width="110" height="150">
-    </div>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <div class="row">
+    <title>Transfer</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js"></script>
 
-        <div class="col-xs-3 col-md-8 text-left">
-            <h4><b>Account Name: </b>{{ user.full_name }}</h4>
-            <h4><b>Date of Birth: </b>{{ user.account.birth_date }}</h4>
-            <h4><b>Gender: </b>{{ user.account.get_gender_display }}</h4>
-            <h4><b>Contact No: </b>{{ user.contact_no }}</h4>
-            <h4><b>Email Address: </b>{{ user.email }}</h4>
-            <h4><b>Address: </b>{{ user.full_address }}</h4>
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
+        integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <!-- Our Custom CSS -->
+    <link rel="stylesheet" href="{% static 't/style.css'%}">
+    <!-- Scrollbar Custom CSS -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
 
-        </div>
-        <div class="col-xs-6 col-md-4 text-left">
-            <h4><b>Account Created: </b>{{ user.date_joined|date:'d-m-Y' }}</h4>
-            <h4><b>Account No: </b>{{ user.account_no }}</h4><br><br>
-            <div class="well">
-                <h4 class="card"><b>Account Balance: </b>{{ user.balance }} $</h4>
-                <!--<a class="btn btn-success" href="{% url 'transactions:deposit' %}">Deposit</a>-->
-                <!--<a class="btn btn-danger" href="{% url 'transactions:withdrawal' %}">Withdraw</a>-->
-                <a class ="btn btn-danger" href="{% url 'index' %}">Transfer</a>
+
+</head>
+
+<body>
+
+    <header>
+        <div id="content1">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+                <div class="container-fluid">
+                    <img src="{% static '/t/img/logo.png'%}" alt="">
+                    <h3>Logo</h3>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="nav navbar-nav ml-auto">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false">
+                                    <div class="media align-items-center">
+                                        <span class="">
+                                            <img src="{% static '/t/img/clientIcon.png'%}" style="width:50px; height:50px;" class="d-inline-flex"> <h6 class="text-light d-inline-flex">{{ user.full_name }}</h6>
+
+                                        </span>
+                                        <div class="media-body ml-2 d-none d-lg-block">
+                                            <span class="mb-0 text-sm  font-weight-bold"></span>
+                                        </div>
+                                    </div>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right">
+                                    <div class=" dropdown-header">
+                                        <h6 class="text-overflow m-0">Welcome!</h6>
+                                    </div>
+                                    <a href="#" class="dropdown-item">
+                                        <i class="ni ni-single-02"></i>
+                                        <span>My profile</span>
+                                    </a>
+                                    <a href="#" class="dropdown-item">
+                                        <i class="ni ni-single-02"></i>
+                                        <span>Change Password</span>
+                                    </a>
+
+                            </li>
+                            <li class="nav-item active" style="padding-top: 12px">
+                                <a class="btn btn-danger btn-sm" type = "button" href="{% url 'accounts:logout' %}">Logout</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+    </header>
+
+    <div class="wrapper">
+        <!-- Sidebar  -->
+        <nav id="sidebar">
+            <ul class="list-unstyled components text-sm pt-5" style="overflow-y: scroll; font-size: 15px">
+                <!-- <li class="active">
+                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home</a>
+                    <ul class="collapse list-unstyled" id="homeSubmenu">
+                        <li>
+                            <a href="#">Home 1</a>
+                        </li>
+                        <li>
+                            <a href="#">Home 2</a>
+                        </li>
+                        <li>
+                            <a href="#">Home 3</a>
+                        </li>
+                    </ul>
+                </li> -->
+                <!-- <li>
+                    <a href="#">Home</a>
+                </li> -->
+                <li>
+                    <a href="#"><i class="fas fa-user-alt"></i> Account Enquiry</a>
+                </li>
+                <li>
+                    <a href="{% url 'transfer' %}"><i class="fas fa-random"></i> Transfer Funds</a>
+                </li>
+                <li>
+                    <a href="{% url 'change_password'%}"><i class="fas fa-money-bill"></i> Pay Bills</a>
+                </li>
+
+                <li>
+                    <a href="#"><i class="fas fa-mobile-alt"></i> Mobile Banking</a>
+                </li>
+
+                <li>
+                    <a href="#">Prepaid Reload</a>
+                </li>
+                <li>
+                    <a href="#">Western Union</a>
+                </li>
+
+                <li>
+                    <a href="#">Remittance</a>
+                </li>
+
+                <li>
+                    <a href="#">Standing Instructions</a>
+                </li>
+
+                <li>
+                    <a href="#">Unit Trust</a>
+                </li>
+                <li>
+                    <a href="#">Share Trading</a>
+                </li>
+                <li>
+                    <a href="#">eIPO</a>
+                </li>
+                <li>
+                    <a href="#">Cheque Management</a>
+                </li>
+                <li>
+                    <a href="#">EPF</a>
+                </li>
+                <li>
+                    <a href="#">eApplication</a>
+                </li>
+                <li>
+                    <a href="#">Risk Profiler</a>
+                </li>
+                <li>
+                    <a href="#">Clicks Transaction</a>
+                </li>
+                <li>
+                    <a href="#">Manage Center</a>
+                </li>
+                <li>
+                    <a href="#">Message Center</a>
+                </li>
+                <li>
+                    <a href="#">Update Profile</a>
+                </li>
+                <li>
+                    <a href="#">ATM Services</a>
+                </li>
+                <li>
+                    <a href="#">Octo Tools</a>
+                </li>
+
+                <!-- <li>
+                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false"
+                        class="dropdown-toggle">Pages</a>
+                    <ul class="collapse list-unstyled" id="pageSubmenu">
+                        <li>
+                            <a href="#">Page 1</a>
+                        </li>
+                        <li>
+                            <a href="#">Page 2</a>
+                        </li>
+                        <li>
+                            <a href="#">Page 3</a>
+                        </li>
+                    </ul>
+                </li> -->
+            </ul>
+
+            <!-- <ul class="list-unstyled CTAs">
+                <li>
+                    <a href="https://bootstrapious.com/tutorial/files/sidebar.zip" class="download">Download source</a>
+                </li>
+                <li>
+                    <a href="https://bootstrapious.com/p/bootstrap-sidebar" class="article">Back to article</a>
+                </li>
+            </ul> -->
+        </nav>
+
+        <!-- Page Content  -->
+        <div id="content2" style="padding-top: 80px">
+            <div class="secure text-right">
+                <h6 class="text-white p-1 banner">You are in a secured site</h6>
             </div>
+            <div class="d-flex container">
+                <h4 class="text-danger title">Account Summary</h4>
+            </div>
+
+            <section class="container">
+                <div class="pt-5 row">
+                    <div class="col-md-2">
+                        <img src ="{{user.account.picture.url}}" alt="" style="width: 150px; height: 150px">
+                    </div>
+
+                    <div class="ml-4 col-md-4 personal-info">
+                        <p class="text-dark font-weight-bold text-sm pt-0"> Account Name:  {{ user.full_name }}</p>
+                        <p class="text-dark font-weight-bold text-sm pt-0"> Date of Birth: {{ user.account.birth_date }} </p>
+                        <p class="text-dark font-weight-bold text-sm pt-0"> Gender:  {{ user.account.get_gender_display }}</p>
+                        <p class="text-dark font-weight-bold text-sm pt-0"> Contact No: {{ user.contact_no }}</p>
+                        <p class="text-dark font-weight-bold text-sm pt-0"> Email Address: {{ user.email }} </p>
+                        <p class="text-dark font-weight-bold text-sm pt-0"> Address: {{ user.full_address }} </p>
+                    </div>
+
+                    <div class="col-md-4 account-info">
+                        <p class="text-dark font-weight-bold text-sm pt-0"> Account created: {{ user.date_joined|date:'d-m-Y' }} </p>
+                        <p class="text-dark font-weight-bold text-sm pt-0"> Account No: {{ user.account_no }} </p>
+                        <p class="text-dark font-weight-bold text-am pt-0"> Account Balance($)</p>
+                        <p class="card"><b>$ {{ user.balance }}</b></p>
+                        <button class="btn btn-outline-success text-sm">Transfer</button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="container">
+                <div>
+                    <!-- <button class="btn btn-outline-dark ml-4 fa-pull-right">Account Summary</button> -->
+                    <!-- <div>
+                        <p class="account-summary-info"> You can view your current, savings-i, Offshore and foreign
+                            currency
+                            information here. Just click
+                            on the account number to view details. To view all accounts that you have with EpicEuro
+                            Bank.
+                            Kindly click on "Account Summary"
+                        </p>
+                    </div> -->
+
+
+
+
+
+
+
+                    <div class="offshore mb-3">
+                        <h4 class="text-white p-2">Offshore Domiciliary Account</h4>
+                    </div>
+
+                    <div class="pb-3">
+                        <caption><b>Deposit Details</b></caption>
+                        <table class="table table-hover table-bordered">
+                            <thead>
+                            <tr>
+                                <th style="width: 3%">S/N</th>
+                                <th style="width: 30%">Date</th>
+                                <th>Details</th>
+                                <th style="width: 25%">Amount</th>
+                            </tr>
+                            </thead>
+
+                            <tr>
+                                {% for obj in deposit %}
+                                <th scope="row" colspan="0 ">{{forloop.counter}}</th>
+                                <td>{{ obj.timestamp }}</td>
+                                <td>Deposit</td>
+                                <td>{{ obj.amount }}</td>
+
+                            </tr>
+
+                            {% endfor %}
+
+                            <tr>
+                                <th class="text-right" scope="row" colspan="3">Total</th>
+
+                                <td>{{ deposit_sum }}</td>
+                            </tr>
+
+                        </table>
+
+
+                        <caption><b>Withdrawal Details</b></caption>
+                        <table class="table table-hover table-bordered">
+                            <tr>
+                                <th style="width: 3%">S/N</th>
+                                <th style="width: 30%">Date</th>
+                                <th>Details</th>
+                                <th style="width: 25%">Amount</th>
+                            </tr>
+
+
+                            <tr>
+                                {% for obj in withdrawal %}
+                                 <th scope="row" colspan="0 ">{{forloop.counter}}</th>
+
+                                <td>{{ obj.timestamp }}</td>
+                                <td>Withdrawal</td>
+                                <td>{{ obj.amount }}</td>
+                            </tr>
+                            {% endfor %}
+
+                           <tr>
+                                <th class="text-right" scope="row" colspan="3">Total</th>
+                                <td>{{ withdrawal_sum }}</td>
+                           </tr>
+                        </table>
+
+                        <caption><b>Interest Details</b></caption>
+                        <table class="table table-hover table-bordered">
+                            <tr>
+                                <th style="width: 3%">S/N</th>
+                                <th style="width: 30%">Date</th>
+                                <th>Details</th>
+                                <th style="width: 25%">Amount</th>
+                            </tr>
+
+
+                            <tr>
+                                {% for obj in interest %}
+                                <th scope="row">{{forloop.counter}}</th>
+                                <td>{{ obj.timestamp }}</td>
+                                <td>Monthly Intrest</td>
+                                <td>{{ obj.amount }}</td>
+
+                            </tr>
+                            {% endfor %}
+
+                             <tr>
+                                 <th class="text-right" scope="row" colspan="3">Total</th>
+
+                                 <td>{{ interest_sum }}</td>
+                             </tr>
+                        </table>
+                    </div>
+                </div>
+            </section>
         </div>
 
-    </div>
-
-    <!--<hr>-->
-    <!--<div class="page-header" >-->
-        <!--<h2 class="text-center"><b>Transaction Details</b></h2>-->
-        <!--<div>-->
-
-            <!--<div class="col-xs-4 col-md-6" style="background-color:grey; margin: 0px 200px; padding:30px" >-->
-                <!--<h3>Deposit Details</h3>-->
-                <!--<table class="table table-hover table-bordered" >-->
-                    <!--<thead>-->
-                    <!--<tr>-->
-                        <!--<th>#</th>-->
-                        <!--<th>Date / Time</th>-->
-                        <!--<th>Details</th>-->
-                        <!--<th>Amount ($)</th>-->
-                    <!--</tr>-->
-                    <!--</thead>-->
-                    <!--<tbody>-->
-                    <!--<tr>-->
-                        <!--{% for obj in deposit %}-->
-                        <!--<th scope="row">{{forloop.counter}}</th>-->
-                        <!--<td>{{ obj.timestamp }}</td>-->
-                        <!--<td>Deposit</td>-->
-                        <!--<td>{{ obj.amount }}</td>-->
-                    <!--</tr>-->
-                    <!--{% endfor %}-->
-                    <!--<tr>-->
-                        <!--<th class="text-right" scope="row" colspan="3">Total</th>-->
-
-                        <!--<td>{{ deposit_sum }}</td>-->
-                    <!--</tr>-->
-
-                    <!--</tbody>-->
-                <!--</table>-->
-                <!--<hr>-->
-
-
-                <!--<h3>Withdrawal Details</h3>-->
-                <!--<table class="table table-hover table-bordered">-->
-                    <!--<thead>-->
-                    <!--<tr>-->
-                        <!--<th>#</th>-->
-                        <!--<th>Date / Time</th>-->
-                        <!--<th>Details</th>-->
-                        <!--<th>Amount ($)</th>-->
-                    <!--</tr>-->
-                    <!--</thead>-->
-                    <!--<tbody>-->
-                    <!--<tr>-->
-                        <!--{% for obj in withdrawal %}-->
-                        <!--<th scope="row">{{forloop.counter}}</th>-->
-                        <!--<td>{{ obj.timestamp }}</td>-->
-                        <!--<td>Withdrawal</td>-->
-                        <!--<td>{{ obj.amount }}</td>-->
-                    <!--</tr>-->
-                    <!--{% endfor %}-->
-                    <!--<tr>-->
-                        <!--<th class="text-right" scope="row" colspan="3">Total</th>-->
-
-                        <!--<td>{{ withdrawal_sum }}</td>-->
-                    <!--</tr>-->
-
-                    <!--</tbody>-->
-                <!--</table>-->
-                <!--<hr>-->
-
-
-                <!--<h3>Interest Details</h3>-->
-                <!--<table class="table table-hover table-bordered">-->
-                    <!--<thead>-->
-                    <!--<tr>-->
-                        <!--<th>#</th>-->
-                        <!--<th>Date / Time</th>-->
-                        <!--<th>Details</th>-->
-                        <!--<th>Amount ($)</th>-->
-                    <!--</tr>-->
-                    <!--</thead>-->
-                    <!--<tbody>-->
-                    <!--<tr>-->
-                        <!--{% for obj in interest %}-->
-                        <!--<th scope="row">{{forloop.counter}}</th>-->
-                        <!--<td>{{ obj.timestamp }}</td>-->
-                        <!--<td>Interest</td>-->
-                        <!--<td>{{ obj.amount }}</td>-->
-                    <!--</tr>-->
-                    <!--{% endfor %}-->
-                    <!--<tr>-->
-                        <!--<th class="text-right" scope="row" colspan="3">Total</th>-->
-
-                        <!--<td>{{ interest_sum }}</td>-->
-                    <!--</tr>-->
-
-                    <!--</tbody>-->
-                <!--</table>-->
-            <!--</div>-->
-        <!--</div>-->
-    <!--</div>-->
-    <!--<hr>-->
-
-
-
-
-
-
-
-    <!--<head>-->
-
-        <!--<TITLE>Welcome to EpicEuro Bank Internet Banking</TITLE>-->
-
-
-
-        <!--<LINK rel="stylesheet" href="{% static 'accounts/style.css'%}" type=text/css>-->
-
-        <!--<META content="MSHTML 6.00.2900.2963" name=GENERATOR>-->
-
-        <!--<meta http-equiv="Content-Type" content="text/html; charset=utf-8">    &lt;!&ndash; Stylesheets &ndash;&gt;-->
-        <!--<link rel="stylesheet" type="text/css" href="{% static 'accounts/style.css'%}">-->
-
-
-    <!--</head>-->
-    <body leftMargin=0 topMargin=0 marginheight="0" marginwidth="0">
-    <A name=wpsMainContent></A>
-
-    <!--<TABLE cellSpacing=0 cellPadding=0 width=1000 bgColor=#ffffff border=5>-->
-        <!--<TBODY>-->
-        <!--<TR colspan="2">-->
-            <!--<TD width=550 height=32><IMG-->
-                    <!--src="/logo.png" width="156" height="70"></TD>-->
-        <!--</TR>-->
-        <!--<tr bgcolor="#700019">-->
-            <!--<td colspan="2" height="7"></td>-->
-        <!--</tr>-->
-        <!--<TR>-->
-            <!--<TD width=550 height=119><IMG height=119 src="./images/pb_ib_h.gif"-->
-                                          <!--width=163><IMG height=119 src="./images/pb_ib_h2.gif" width=387></TD>-->
-            <!--<TD width=228 align="right" vAlign=bottom><A-->
-                    <!--href="./index.php"><IMG-->
-                    <!--src="./images/octoBackToMainPage.gif" width="221" height="97" border=0></A></TD>-->
-        <!--</TR>-->
-        <!--</TBODY>-->
-    </TABLE>
-    <TABLE cellSpacing=3 cellPadding=1 width=750 border=0>
-        <TBODY>
-        <TR>
-            <TD width=1000 bgColor=#ed1823> <TABLE cellSpacing=30 cellPadding=0 width=1000 bgColor=#ffffff border=0>
-                <TBODY>
-                <TR>
-                    <TD vAlign=top width=750 height=23>
-                        <!-- Personal Banking Image Title -->
-                        <table border="0" cellpadding="30" cellspacing="0" width="1000">
-                            <tbody>
-                            <tr bgcolor="#ffffff">
-                                <td valign="top" width="250" height="23"><img src="./images/topbar_title_perbank.gif" width="250" height="56"></td>
-                                <td valign="top" width="257" height="23"><img src="./images/topbar_center2.gif" width="257" height="56"><br></td>
-                                <td width="263" height="56" valign="top" background="./images/topbar_right.gif"><table borderbolor="#000000" border="0" cellpadding="0" cellspacing="0" width="363" height="100%">
-                                    <tbody>
-                                    <tr>
-                                        <td align="right" valign="bottom" height="38"><a href="./logout.php"><img src="./images/butt_logout.gif" width="79" height="20" border="0"></a>&nbsp; </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="Content2" align="right" valign="bottom" height="18">You
-                                            are in a secured site&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td>
-                                    </tr>
-                                    </tbody>
-                                </table></td>
-                            </tr>
-                            </tbody>
-                        </table></TD>
-                </TR>
-                <TR>
-                    <TD vAlign=top>&nbsp; </TD>
-                </TR>
-                <TR>
-                    <TD vAlign=top> <TABLE cellSpacing=0 cellPadding=0 width=750 bgColor=#ffffff
-                                           border=0>
-                        <TBODY>
-                        <TR>
-                            <TD>
-                                <!-- one row, one cell table to span the page-->
-                                <A
-                                        name=wpsMainContent></A> <TABLE height="100%" cellSpacing=0 cellPadding=0 width="100%"
-                                                                        border=0>
-                                <TBODY>
-                                <TR>
-                                    <TD vAlign=top> <TABLE height="100%" cellSpacing=0 cellPadding=0
-                                                           width="100%" border=0>
-                                        <TBODY>
-                                        <TR width="100%">
-                                            <TD height="100%" vAlign=top><table border="0" cellpadding="0" cellspacing="0" height="100%">
-                                                <tbody>
-                                                <tr width="100%">
-                                                    <td valign="top" width="10"><img src="./images/trans.gif" width="10" height="3">                                              </td>
-                                                    <td class="wpsNavUnSelectedNode" valign="top" width="175" height="100%">
-                                                        <table border="0" cellpadding="0" cellspacing="0" width="175">
-                                                            <!--<tr><td class="wpsNavUnSelectedNode">&nbsp;</td></tr>-->
-                                                            <tbody>
-                                                            <tr>
-                                                                <td class="wpsNavSelectedNode">
-                                                                    <table border="0" cellpadding="0" cellspacing="2" width="100%">
-                                                                        <tbody>
-                                                                        <tr>
-                                                                            <td class="wpsNavSelectedNode" valign="middle">
-                                                                                <img alt="" src="./images/dot.gif" border="0" width="7" height="14">                                                              </td>
-                                                                            <td class="wpsNavSelectedNode" valign="middle" nowrap="nowrap">                                                              </td>
-                                                                            <td class="wpsNavSelectedNode" cellpadding="4" cellspacing="4" valign="middle" width="100%">
-                                                                                <!-- add start url -->
-                                                                                <a class="wpsNavSelectedNode" href="./index.php">
-                                                                                    <!-- end start url -->
-                                                                                    <span class="wpsNavSelectedNode">Account
-                                                                Enquiry</span>
-                                                                                    <!-- add end url -->
-                                                                                </a>
-                                                                                <!-- end end url -->                                                              </td>
-                                                                        </tr>
-                                                                        </tbody>
-                                                                    </table></td>
-                                                                <!--<td class="wpsNavUnselectedNode">&nbsp;</td>-->
-                                                            </tr>
-                                                            <!--<tr><td colspan="3"><img src ="/wps/images/tibs/e_shortcut_dotline2.gif"></td></tr> -->
-                                                            <tr>
-                                                                <td class="Side_nv_title"><table border="0" cellpadding="0" cellspacing="2" width="100%">
-                                                                    <tbody>
-                                                                    <tr>
-                                                                        <td class="Side_nv_title" valign="middle"><img alt="" src="./images/dot.gif" border="0" width="7" height="14"> </td>
-                                                                        <td class="Side_nv_title" valign="middle" nowrap="nowrap"></td>
-                                                                        <td class="Side_nv_title" cellpadding="4" cellspacing="4" valign="middle" width="100%"><!-- add start url -->
-                                                                            <a class="Side_nv_title" href="./transfer_funds.php">
-                                                                                <!-- end start url -->
-                                                                                <span class="Side_nv_title">Transfer
-                                                                  Funds</span>
-                                                                                <!-- add end url -->
-                                                                            </a>
-                                                                            <!-- end end url -->                                                              </td>
-                                                                    </tr>
-                                                                    </tbody>
-                                                                </table></td>
-                                                                <!--<td class="wpsNavUnselectedNode">&nbsp;</td>-->
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="Side_nv_title"><table border="0" cellpadding="0" cellspacing="2" width="100%">
-                                                                    <tbody>
-                                                                    <tr>
-                                                                        <td class="Side_nv_title" valign="middle"><img alt="" src="./images/dot.gif" border="0" width="7" height="14"> </td>
-                                                                        <td class="Side_nv_title" valign="middle" nowrap="nowrap"></td>
-                                                                        <td class="Side_nv_title" cellpadding="4" cellspacing="4" valign="middle" width="100%"><!-- add start url -->
-                                                                            <a class="Side_nv_title" href="#./bills.php">
-                                                                                <!-- end start url -->
-                                                                                <span class="Side_nv_title">Pay
-                                                                  Bills</span>
-                                                                                <!-- add end url -->
-                                                                            </a>
-                                                                            <!-- end end url -->                                                              </td>
-                                                                    </tr>
-                                                                    </tbody>
-                                                                </table></td>
-                                                                <!--<td class="wpsNavUnselectedNode">&nbsp;</td>-->
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="Side_nv_title"><table border="0" cellpadding="0" cellspacing="2" width="100%">
-                                                                    <tbody>
-                                                                    <tr>
-                                                                        <td class="Side_nv_title" valign="middle"><img alt="" src="./images/dot.gif" border="0" width="7" height="14"> </td>
-                                                                        <td class="Side_nv_title" valign="middle" nowrap="nowrap"></td>
-                                                                        <td class="Side_nv_title" cellpadding="4" cellspacing="4" valign="middle" width="100%"><!-- add start url -->
-                                                                            <a class="Side_nv_title" href="./#prepaid_reloads.php">
-                                                                                <!-- end start url -->
-                                                                                <span class="Side_nv_title">Prepaid
-                                                                  Reload</span>
-                                                                                <!-- add end url -->
-                                                                            </a>
-                                                                            <!-- end end url -->                                                              </td>
-                                                                    </tr>
-                                                                    </tbody>
-                                                                </table></td>
-                                                                <!--<td class="wpsNavUnselectedNode">&nbsp;</td>-->
-                                                            </tr>
-
-                                                            <tr>
-                                                                <td class="Side_nv_title"><table border="0" cellpadding="0" cellspacing="2" width="100%">
-                                                                    <tbody>
-                                                                    <tr>
-                                                                        <td class="Side_nv_title" valign="middle"><img alt="" src="./images/dot.gif" border="0" width="7" height="14"> </td>
-                                                                        <td class="Side_nv_title" valign="middle" nowrap="nowrap"></td>
-                                                                        <td class="Side_nv_title" cellpadding="4" cellspacing="4" valign="middle" width="100%"><!-- add start url -->
-                                                                            <a class="Side_nv_title" href="./western_union.php">
-                                                                                <!-- end start url -->
-                                                                                <span class="Side_nv_title">Western
-                                                                  Union</span>
-                                                                                <!-- add end url -->
-                                                                            </a>
-                                                                            <!-- end end url -->                                                              </td>
-                                                                    </tr>
-                                                                    </tbody>
-                                                                </table></td>
-                                                                <!--<td class="wpsNavUnselectedNode">&nbsp;</td>-->
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="Side_nv_title"><table border="0" cellpadding="0" cellspacing="2" width="100%">
-                                                                    <tbody>
-                                                                    <tr>
-                                                                        <td class="Side_nv_title" valign="middle"><img alt="" src="./images/dot.gif" border="0" width="7" height="14"> </td>
-                                                                        <td class="Side_nv_title" valign="middle" nowrap="nowrap"></td>
-                                                                        <td class="Side_nv_title" cellpadding="4" cellspacing="4" valign="middle" width="100%"><!-- add start url -->
-                                                                            <a class="Side_nv_title" href="./remittance.php">
-                                                                                <!-- end start url -->
-                                                                                <span class="Side_nv_title">Remittance</span>
-                                                                                <!-- add end url -->
-                                                                            </a>
-                                                                            <!-- end end url -->                                                              </td>
-                                                                    </tr>
-                                                                    </tbody>
-                                                                </table></td>
-                                                                <!--<td class="wpsNavUnselectedNode">&nbsp;</td>-->
-                                                            </tr>
-
-                                                            <tr>
-                                                                <td class="Side_nv_title">
-                                                                    <table border="0" cellpadding="0" cellspacing="2" width="100%">
-                                                                        <tbody>
-                                                                        <tr>
-                                                                            <td class="Side_nv_title" valign="middle">
-                                                                                <img alt="" src="./images/dot.gif" border="0" width="7" height="14">                                                              </td>
-                                                                            <td class="Side_nv_title" valign="middle" nowrap="nowrap">                                                              </td>
-                                                                            <td class="Side_nv_title" cellpadding="4" cellspacing="4" valign="middle" width="100%">
-                                                                                <!-- add start url -->
-                                                                                <a class="Side_nv_title" href="./#share_trading.php">
-                                                                                    <!-- end start url -->
-                                                                                    <span class="Side_nv_title">Standing
-                                                                Instructions</span>
-                                                                                    <!-- add end url -->
-                                                                                </a>
-                                                                                <!-- end end url -->                                                              </td>
-                                                                        </tr>
-                                                                        </tbody>
-                                                                    </table></td>
-                                                                <!--<td class="wpsNavUnselectedNode">&nbsp;</td>-->
-                                                            </tr>
-
-                                                            <!--<tr><td class="wpsNavSelectedBranch">&nbsp;</td></tr>-->
-                                                            <!--<tr><td colspan="3"><img src ="/wps/images/tibs/e_shortcut_dotline2.gif"></td></tr> -->
-                                                            <tr>
-                                                                <td class="Side_nv_title"><table border="0" cellpadding="0" cellspacing="2" width="100%">
-                                                                    <tbody>
-                                                                    <tr>
-                                                                        <td class="Side_nv_title" valign="middle"><img alt="" src="./images/dot.gif" border="0" width="7" height="14"> </td>
-                                                                        <td class="Side_nv_title" valign="middle" nowrap="nowrap"></td>
-                                                                        <td class="Side_nv_title" cellpadding="4" cellspacing="4" valign="middle" width="100%"><!-- add start url -->
-                                                                            <a class="Side_nv_title" href="./#mobile_banking.php">
-                                                                                <!-- end start url -->
-                                                                                <span class="Side_nv_title">Mobile
-                                                                  Banking</span>
-                                                                                <!-- add end url -->
-                                                                            </a>
-                                                                            <!-- end end url -->                                                              </td>
-                                                                    </tr>
-                                                                    </tbody>
-                                                                </table></td>
-                                                                <!--<td class="wpsNavUnselectedNode">&nbsp;</td>-->
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="Side_nv_title"><table border="0" cellpadding="0" cellspacing="2" width="100%">
-                                                                    <tbody>
-                                                                    <tr>
-                                                                        <td class="Side_nv_title" valign="middle"><img alt="" src="./images/dot.gif" border="0" width="7" height="14"> </td>
-                                                                        <td class="Side_nv_title" valign="middle" nowrap="nowrap"></td>
-                                                                        <td class="Side_nv_title" cellpadding="4" cellspacing="4" valign="middle" width="100%"><!-- add start url -->
-                                                                            <a class="Side_nv_title" href="./unit_trust.php">
-                                                                                <!-- end start url -->
-                                                                                <span class="Side_nv_title">Unit
-                                                                  Trust</span>
-                                                                                <!-- add end url -->
-                                                                            </a>
-                                                                            <!-- end end url -->                                                              </td>
-                                                                    </tr>
-                                                                    </tbody>
-                                                                </table></td>
-                                                                <!--<td class="wpsNavUnselectedNode">&nbsp;</td>-->
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="Side_nv_title"><table border="0" cellpadding="0" cellspacing="2" width="100%">
-                                                                    <tbody>
-                                                                    <tr>
-                                                                        <td class="Side_nv_title" valign="middle"><img alt="" src="./images/dot.gif" border="0" width="7" height="14"> </td>
-                                                                        <td class="Side_nv_title" valign="middle" nowrap="nowrap"></td>
-                                                                        <td class="Side_nv_title" cellpadding="4" cellspacing="4" valign="middle" width="100%"><!-- add start url -->
-                                                                            <a class="Side_nv_title" href="./#share_trading.php">
-                                                                                <!-- end start url -->
-                                                                                <span class="Side_nv_title">Share
-                                                                  Trading</span>
-                                                                                <!-- add end url -->
-                                                                            </a>
-                                                                            <!-- end end url -->                                                              </td>
-                                                                    </tr>
-                                                                    </tbody>
-                                                                </table></td>
-                                                                <!--<td class="wpsNavUnselectedNode">&nbsp;</td>-->
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="Side_nv_title"><table border="0" cellpadding="0" cellspacing="2" width="100%">
-                                                                    <tbody>
-                                                                    <tr>
-                                                                        <td class="Side_nv_title" valign="middle"><img alt="" src="./images/dot.gif" border="0" width="7" height="14"> </td>
-                                                                        <td class="Side_nv_title" valign="middle" nowrap="nowrap"></td>
-                                                                        <td class="Side_nv_title" cellpadding="4" cellspacing="4" valign="middle" width="100%"><!-- add start url -->
-                                                                            <a class="Side_nv_title" href="./#eipo.php">
-                                                                                <!-- end start url -->
-                                                                                <span class="Side_nv_title">eIPO</span>
-                                                                                <!-- add end url -->
-                                                                            </a>
-                                                                            <!-- end end url -->                                                              </td>
-                                                                    </tr>
-                                                                    </tbody>
-                                                                </table></td>
-                                                                <!--<td class="wpsNavUnselectedNode">&nbsp;</td>-->
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="Side_nv_title"><table border="0" cellpadding="0" cellspacing="2" width="100%">
-                                                                    <tbody>
-                                                                    <tr>
-                                                                        <td class="Side_nv_title" valign="middle"><img alt="" src="./images/dot.gif" border="0" width="7" height="14"> </td>
-                                                                        <td class="Side_nv_title" valign="middle" nowrap="nowrap"></td>
-                                                                        <td class="Side_nv_title" cellpadding="4" cellspacing="4" valign="middle" width="100%"><!-- add start url -->
-                                                                            <a class="Side_nv_title" href="./cheque_management.php">
-                                                                                <!-- end start url -->
-                                                                                <span class="Side_nv_title">Cheque
-                                                                  Management</span>
-                                                                                <!-- add end url -->
-                                                                            </a>
-                                                                            <!-- end end url -->                                                              </td>
-                                                                    </tr>
-                                                                    </tbody>
-                                                                </table></td>
-                                                                <!--<td class="wpsNavUnselectedNode">&nbsp;</td>-->
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="Side_nv_title"><table border="0" cellpadding="0" cellspacing="2" width="100%">
-                                                                    <tbody>
-                                                                    <tr>
-                                                                        <td class="Side_nv_title" valign="middle"><img alt="" src="./images/dot.gif" border="0" width="7" height="14"> </td>
-                                                                        <td class="Side_nv_title" valign="middle" nowrap="nowrap"></td>
-                                                                        <td class="Side_nv_title" cellpadding="4" cellspacing="4" valign="middle" width="100%"><!-- add start url -->
-                                                                            <a class="Side_nv_title" href="./#epf.php">
-                                                                                <!-- end start url -->
-                                                                                <span class="Side_nv_title">EPF</span>
-                                                                                <!-- add end url -->
-                                                                            </a>
-                                                                            <!-- end end url -->                                                              </td>
-                                                                    </tr>
-                                                                    </tbody>
-                                                                </table></td>
-                                                                <!--<td class="wpsNavUnselectedNode">&nbsp;</td>-->
-                                                            </tr>
-
-                                                            <tr>
-                                                                <td class="Side_nv_title"><table border="0" cellpadding="0" cellspacing="2" width="100%">
-                                                                    <tbody>
-                                                                    <tr>
-                                                                        <td class="Side_nv_title" valign="middle"><img alt="" src="./images/dot.gif" border="0" width="7" height="14"> </td>
-                                                                        <td class="Side_nv_title" valign="middle" nowrap="nowrap"></td>
-                                                                        <td class="Side_nv_title" cellpadding="4" cellspacing="4" valign="middle" width="100%"><!-- add start url -->
-                                                                            <a class="Side_nv_title" href="/name.pdf">
-                                                                                <!-- end start url -->
-                                                                                <span class="Side_nv_title">eApplication</span>
-                                                                                <!-- add end url -->
-                                                                            </a>
-                                                                            <!-- end end url -->                                                              </td>
-                                                                    </tr>
-                                                                    </tbody>
-                                                                </table></td>
-                                                                <!--<td class="wpsNavUnselectedNode">&nbsp;</td>-->
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="Side_nv_title"><table border="0" cellpadding="0" cellspacing="2" width="100%">
-                                                                    <tbody>
-                                                                    <tr>
-                                                                        <td class="Side_nv_title" valign="middle"><img alt="" src="./images/dot.gif" border="0" width="7" height="14"> </td>
-                                                                        <td class="Side_nv_title" valign="middle" nowrap="nowrap"></td>
-                                                                        <td class="Side_nv_title" cellpadding="4" cellspacing="4" valign="middle" width="100%"><!-- add start url -->
-                                                                            <a class="Side_nv_title" href="./#risk_profiler.php">
-                                                                                <!-- end start url -->
-                                                                                <span class="Side_nv_title">Risk
-                                                                  Profiler</span>
-                                                                                <!-- add end url -->
-                                                                            </a>
-                                                                            <!-- end end url -->                                                              </td>
-                                                                    </tr>
-                                                                    </tbody>
-                                                                </table></td>
-                                                                <!--<td class="wpsNavUnselectedNode">&nbsp;</td>-->
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="Side_nv_title"><table border="0" cellpadding="0" cellspacing="2" width="100%">
-                                                                    <tbody>
-                                                                    <tr>
-                                                                        <td class="Side_nv_title" valign="middle"><img alt="" src="./images/dot.gif" border="0" width="7" height="14"> </td>
-                                                                        <td class="Side_nv_title" valign="middle" nowrap="nowrap"></td>
-                                                                        <td class="Side_nv_title" cellpadding="4" cellspacing="4" valign="middle" width="100%"><!-- add start url -->
-                                                                            <a class="Side_nv_title" href="./click_transaction.php">
-                                                                                <!-- end start url -->
-                                                                                <span class="Side_nv_title">Clicks
-                                                                  Transactions</span>
-                                                                                <!-- add end url -->
-                                                                            </a>
-                                                                            <!-- end end url -->                                                              </td>
-                                                                    </tr>
-                                                                    </tbody>
-                                                                </table></td>
-                                                                <!--<td class="wpsNavUnselectedNode">&nbsp;</td>-->
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="Side_nv_title"><table border="0" cellpadding="0" cellspacing="2" width="100%">
-                                                                    <tbody>
-                                                                    <tr>
-                                                                        <td class="Side_nv_title" valign="middle"><img alt="" src="./images/dot.gif" border="0" width="7" height="14"> </td>
-                                                                        <td class="Side_nv_title" valign="middle" nowrap="nowrap"></td>
-                                                                        <td class="Side_nv_title" cellpadding="4" cellspacing="4" valign="middle" width="100%"><!-- add start url -->
-                                                                            <a class="Side_nv_title" href="./#message_center.php">
-                                                                                <!-- end start url -->
-                                                                                <span class="Side_nv_title">Message
-                                                                  Center</span>
-                                                                                <!-- add end url -->
-                                                                            </a>
-                                                                            <!-- end end url -->                                                              </td>
-                                                                    </tr>
-                                                                    </tbody>
-                                                                </table></td>
-                                                                <!--<td class="wpsNavUnselectedNode">&nbsp;</td>-->
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="Side_nv_title"><table border="0" cellpadding="0" cellspacing="2" width="100%">
-                                                                    <tbody>
-                                                                    <tr>
-                                                                        <td class="Side_nv_title" valign="middle"><img alt="" src="./images/dot.gif" border="0" width="7" height="14"> </td>
-                                                                        <td class="Side_nv_title" valign="middle" nowrap="nowrap"></td>
-                                                                        <td class="Side_nv_title" cellpadding="4" cellspacing="4" valign="middle" width="100%"><!-- add start url -->
-                                                                            <a class="Side_nv_title" href="./profile.php">
-                                                                                <!-- end start url -->
-                                                                                <span class="Side_nv_title">Update Profile</span>
-                                                                                <!-- add end url -->
-                                                                            </a>
-                                                                            <!-- end end url -->                                                              </td>
-                                                                    </tr>
-                                                                    </tbody>
-                                                                </table></td>
-                                                                <!--<td class="wpsNavUnselectedNode">&nbsp;</td>-->
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="Side_nv_title"><table border="0" cellpadding="0" cellspacing="2" width="100%">
-                                                                    <tbody>
-                                                                    <tr>
-                                                                        <td class="Side_nv_title" valign="middle"><img alt="" src="./images/dot.gif" border="0" width="7" height="14"> </td>
-                                                                        <td class="Side_nv_title" valign="middle" nowrap="nowrap"></td>
-                                                                        <td class="Side_nv_title" cellpadding="4" cellspacing="4" valign="middle" width="100%"><!-- add start url -->
-                                                                            <a class="Side_nv_title" href="./request_tac.php">
-                                                                                <!-- end start url -->
-                                                                                <!-- add end url -->
-                                                                            </a>
-                                                                            <!-- end end url -->
-                                                                            <a class="Side_nv_title" href="./#atm_services.php"><span class="Side_nv_title">ATM
-                                                                  Services</span></a></td>
-                                                                    </tr>
-                                                                    </tbody>
-                                                                </table></td>
-                                                                <!--<td class="wpsNavUnselectedNode">&nbsp;</td>-->
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="Side_nv_title"><table border="0" cellpadding="0" cellspacing="2" width="100%">
-                                                                    <tbody>
-                                                                    <tr>
-                                                                        <td class="Side_nv_title" valign="middle"><img alt="" src="./images/dot.gif" border="0" width="7" height="14"> </td>
-                                                                        <td class="Side_nv_title" valign="middle" nowrap="nowrap"></td>
-                                                                        <td class="Side_nv_title" cellpadding="4" cellspacing="4" valign="middle" width="100%"><!-- add start url -->
-                                                                            <a class="Side_nv_title" href="./#octo_tools.php">
-                                                                                <!-- end start url -->
-                                                                                <span class="Side_nv_title">Octo
-                                                                  Tools </span>
-                                                                                <!-- add end url -->
-                                                                            </a>
-                                                                            <!-- end end url -->                                                              </td>
-                                                                    </tr>
-                                                                    </tbody>
-                                                                </table></td>
-                                                                <!--<td class="wpsNavUnselectedNode">&nbsp;</td>-->
-                                                            </tr>
-
-
-                                                            <!--<tr><td colspan="3"><img src ="/wps/images/tibs/e_shortcut_dotline2.gif"></td></tr> -->
-
-                                                            <!--<tr><td colspan="3"><img src ="/wps/images/tibs/e_shortcut_dotline2.gif"></td></tr> -->
-
-                                                            <!--<tr><td colspan="3"><img src ="/wps/images/tibs/e_shortcut_dotline2.gif"></td></tr> -->
-
-                                                            <!--<tr><td colspan="3"><img src ="/wps/images/tibs/e_shortcut_dotline2.gif"></td></tr> -->
-
-                                                            <!--<tr><td colspan="3"><img src ="/wps/images/tibs/e_shortcut_dotline2.gif"></td></tr> -->
-
-                                                            <!--<tr><td colspan="3"><img src ="/wps/images/tibs/e_shortcut_dotline2.gif"></td></tr> -->
-
-                                                            <!--<tr><td colspan="3"><img src ="/wps/images/tibs/e_shortcut_dotline2.gif"></td></tr> -->
-
-                                                            <!--<tr><td colspan="3"><img src ="/wps/images/tibs/e_shortcut_dotline2.gif"></td></tr> -->
-
-                                                            <!--<tr><td colspan="3"><img src ="/wps/images/tibs/e_shortcut_dotline2.gif"></td></tr> -->
-
-                                                            <!--<tr><td colspan="3"><img src ="/wps/images/tibs/e_shortcut_dotline2.gif"></td></tr> -->
-
-                                                            <!--<tr><td colspan="3"><img src ="/wps/images/tibs/e_shortcut_dotline2.gif"></td></tr> -->
-
-                                                            <!--<tr><td colspan="3"><img src ="/wps/images/tibs/e_shortcut_dotline2.gif"></td></tr> -->
-
-                                                            <!--<tr><td colspan="3"><img src ="/wps/images/tibs/e_shortcut_dotline2.gif"></td></tr> -->
-
-                                                            <!--<tr><td colspan="3"><img src ="/wps/images/tibs/e_shortcut_dotline2.gif"></td></tr> -->
-                                                            </tbody>
-                                                        </table></td>
-                                                    <!-- spacing -->
-                                                    <td valign="top" width="1"><img width="1" height="3">                                              </td>
-                                                    <!-- spacing -->
-                                                    <td valign="top" width="1"> </td>
-                                                </tr>
-                                                </tbody>
-                                            </table></TD>
-                                            <!-- spacing -->
-                                            <TD vAlign=top width=19><IMG height=3 width=1>                                      </TD>
-                                            <!-- spacing -->
-
-
-                                            <TD vAlign=top width="100%">                                        <DIV id=mainContent>
-                                                <TABLE height="100%" cellSpacing=0 cellPadding=0 width="100%"
-                                                       border=0>
-                                                    <TBODY>
-                                                    <TR>
-                                                        <TD vAlign=top> <TABLE cellSpacing=0 cellPadding=0 width="100%"
-                                                                               align=center border=0>
-                                                            <TBODY>
-                                                            <TR height="60%">
-                                                                <TD vAlign=top> <TABLE cellSpacing=0 cellPadding=0 width="150%"
-                                                                                       align=center border=5>
-                                                                    <TBODY>
-                                                                    <TR>
-                                                                        <TD vAlign=top width="100%"><A
-                                                                                name=7_M1T0G5521042702HHH4E2300M0></A> <DIV class=wpsPortletBody>
-                                                                            <TABLE class=form id=alert cellSpacing=0
-                                                                                   cellPadding=0 align=center border=0>
-                                                                                <TBODY>
-                                                                                <TR>
-                                                                                    <TD colSpan=2><A
-                                                                                            href="#"
-                                                                                            target=_blank></A> </TD>
-                                                                                </TR>
-                                                                                <TR>
-                                                                                    <TD colSpan=2>&nbsp;</TD>
-                                                                                </TR>
-                                                                                <TR>
-                                                                                    <TD width="21%" rowSpan=2><IMG
-                                                                                            src="assets/images/no_photo.jpg" width="106" height="111"></TD>
-                                                                                    <TD width="79%"><SPAN
-                                                                                            style="FONT-SIZE: 14px; COLOR: #ff0000; FONT-FAMILY: Arial, Helvetica, sans-serif">Welcome
-                                                        henry Aboki</SPAN> </TD>
-                                                                                </TR>
-                                                                                <TR>
-                                                                                    <TD width="79%" height=45><TABLE cellSpacing=5 cellPadding=0 width="150%"
-                                                                                                                     border=5>
-                                                                                        <TBODY>
-                                                                                        <TR>
-                                                                                            <TD width="5%"><DIV align=left><IMG
-                                                                                                    src="./images/bullet01.gif" width="9" height="9"></DIV></TD>
-                                                                                            <TD width="95%"><SPAN class=bodytext_8><SPAN class=bodytext_red>This section is Enabled for <span class="txt_highlight">Offshore Domiciliary Account</span>.</SPAN></SPAN></TD>
-                                                                                        </TR>
-                                                                                        <tr>
-                                                                                            <td><div align="left">
-                                                                                                <DIV align="left"><IMG
-                                                                                                        src="./images/bullet01.gif" width="9" height="9"></DIV>
-                                                                                            </div></td>
-                                                                                            <td><span class="bodytext_8">Your Account Status: <span class="bodytext_red">Active</span> </span></td>
-                                                                                        </tr>
-                                                                                        </TBODY>
-                                                                                    </TABLE></TD>
-                                                                                </TR>
-                                                                                </TBODY>
-                                                                            </TABLE>
-                                                                        </DIV></TD>
-                                                                    </TR>
-                                                                    <TR>
-                                                                        <TD vAlign=top width="100%">
-                                                                            <!-- JSP skin view for /skins/html/ECAfterLoginSkin/Control.jsp -->
-                                                                            <DIV class=wpsPortletBody>
-                                                                                <TABLE cellSpacing=0 cellPadding=0 width="100%" border=5>
-                                                                                    <TBODY>
-                                                                                    <TR>
-                                                                                        <TD width=39 height="29"><IMG src="./images/grey_frame_icon.gif" width="39" height="29"></TD>
-                                                                                        <TD vAlign=center width=120 bgColor=#e2e0e1>
-                                                                                            <DIV class=Listheader>Accounts Enquiry</DIV></TD>
-                                                                                        <TD width=52><IMG
-                                                                                                src="./images/grey_frame_middle.gif" width="52" height="29"></TD>
-                                                                                        <TD align=right bgColor=#ffffff><A
-                                                                                                href="click_transaction_calendar.php"></A> <a href="#"><IMG
-                                                                                                src="./images/butt_acct_summary.gif" width="129" height="18"
-                                                                                                border=0></a></A> <IMG height=5
-                                                                                                                       src="./images/trans(1).gif"
-                                                                                                                       width=14></TD>
-                                                                                    </TR>
-                                                                                    </TBODY>
-                                                                                </TABLE>
-                                                                                <table bgcolor="#e2e0e1" border="0" cellpadding="0" cellspacing="0" width="100%">
-                                                                                    <tbody><tr  height="14">
-                                                                                        <td valign="bottom" width="14" height="14"><img src="./images/trans.gif" width="14" height="14"></td>
-                                                                                        <td height="14"></td>
-                                                                                        <td valign="top" width="14"  height="14"><img src="./images/grey_frame_topRight.gif" width="14" height="17"></td>
-                                                                                    </tr>
-                                                                                    <TR>
-                                                                                        <TD width=14 vAlign=top bgcolor="#e2e0e1">&nbsp;</TD>
-                                                                                        <TD bgcolor="#e2e0e1" class=Listdescription>You
-                                                                                            can
-                                                                                            view
-                                                                                            your
-                                                                                            current,
-                                                                                            current-i,
-                                                                                            savings,
-                                                                                            savings-i, Offshore
-                                                                                            and
-                                                                                            foreign
-                                                                                            currency
-                                                                                            information
-                                                                                            here.
-                                                                                            Just
-                                                                                            click
-                                                                                            on
-                                                                                            the
-                                                                                            account
-                                                                                            number
-                                                                                            to
-                                                                                            view
-                                                                                            details.
-                                                                                            To
-                                                                                            view
-                                                                                            all
-                                                                                            accounts
-                                                                                            that
-                                                                                            you
-                                                                                            have
-                                                                                            with
-                                                                                            EpicEuro Bank,
-                                                                                            kindly
-                                                                                            click
-                                                                                            on
-                                                                                            "<B>Account
-                                                                                                Summary</B>".                                                                          </TD>
-                                                                                        <TD width=14 vAlign=top bgcolor="#e2e0e1">&nbsp;</TD>
-                                                                                    </TR>
-                                                                                    <TR>
-                                                                                        <TD colSpan=3 bgcolor="#e2e0e1">&nbsp;</TD>
-                                                                                    </TR>
-                                                                                    <TR>
-                                                                                        <TD width=14 vAlign=top bgcolor="#e2e0e1">&nbsp;</TD>
-                                                                                        <TD bgcolor="#e2e0e1">
-
-
-
-                                                                                            <NOSCRIPT>
-                                                                                                <TABLE class=list cellSpacing=0 cellPadding=0
-                                                                                                       border=0>
-                                                                                                    <TBODY>
-                                                                                                    <TR class=hide>
-                                                                                                        <TD class=error>Please
-                                                                                                            enable
-                                                                                                            the
-                                                                                                            javascript
-                                                                                                            in
-                                                                                                            order
-                                                                                                            to
-                                                                                                            proceed.</TD>
-                                                                                                    </TR>
-                                                                                                    </TBODY>
-                                                                                                </TABLE>
-                                                                                            </NOSCRIPT>
-                                                                                            <TABLE width="512" align=center class=list>
-                                                                                                <TBODY>
-                                                                                                <TR>
-                                                                                                    <TD class=Toplabel colSpan=4><span class="txt_highlight">Offshore Domiciliary Account</span></TD>
-                                                                                                </TR>
-                                                                                                <div class="col-xs-4 col-md-6" style="background-color:blue; margin: 0px; padding:0px " >
-                                                                                                    <h3>Deposit Details</h3>
-                                                                                                    <table class="table table-hover table-bordered" >
-                                                                                                        <thead>
-                                                                                                        <tr>
-                                                                                                            <th>#</th>
-                                                                                                            <th>Date / Time</th>
-                                                                                                            <th>Details</th>
-                                                                                                            <th>Amount ($)</th>
-                                                                                                        </tr>
-                                                                                                        </thead>
-                                                                                                        <tbody>
-                                                                                                        <tr>
-                                                                                                            {% for obj in deposit %}
-                                                                                                            <th scope="row">{{forloop.counter}}</th>
-                                                                                                            <td>{{ obj.timestamp }}</td>
-                                                                                                            <td>Deposit</td>
-                                                                                                            <td>{{ obj.amount }}</td>
-                                                                                                        </tr>
-                                                                                                        {% endfor %}
-                                                                                                        <tr>
-                                                                                                            <th class="text-right" scope="row" colspan="3">Total</th>
-
-                                                                                                            <td>{{ deposit_sum }}</td>
-                                                                                                        </tr>
-
-                                                                                                        </tbody>
-                                                                                                    </table>
-                                                                                                    <hr>
-
-
-                                                                                                    <h3>Withdrawal Details</h3>
-                                                                                                    <table class="table table-hover table-bordered">
-                                                                                                        <thead>
-                                                                                                        <tr>
-                                                                                                            <th>#</th>
-                                                                                                            <th>Date / Time</th>
-                                                                                                            <th>Details</th>
-                                                                                                            <th>Amount ($)</th>
-                                                                                                        </tr>
-                                                                                                        </thead>
-                                                                                                        <tbody>
-                                                                                                        <tr>
-                                                                                                            {% for obj in withdrawal %}
-                                                                                                            <th scope="row">{{forloop.counter}}</th>
-                                                                                                            <td>{{ obj.timestamp }}</td>
-                                                                                                            <td>Withdrawal</td>
-                                                                                                            <td>{{ obj.amount }}</td>
-                                                                                                        </tr>
-                                                                                                        {% endfor %}
-                                                                                                        <tr>
-                                                                                                            <th class="text-right" scope="row" colspan="3">Total</th>
-
-                                                                                                            <td>{{ withdrawal_sum }}</td>
-                                                                                                        </tr>
-
-                                                                                                        </tbody>
-                                                                                                    </table>
-                                                                                                    <hr>
-
-
-                                                                                                    <h3>Interest Details</h3>
-                                                                                                    <table class="table table-hover table-bordered">
-                                                                                                        <thead>
-                                                                                                        <tr>
-                                                                                                            <th>#</th>
-                                                                                                            <th>Date / Time</th>
-                                                                                                            <th>Details</th>
-                                                                                                            <th>Amount ($)</th>
-                                                                                                        </tr>
-                                                                                                        </thead>
-                                                                                                        <tbody>
-                                                                                                        <tr>
-                                                                                                            {% for obj in interest %}
-                                                                                                            <th scope="row">{{forloop.counter}}</th>
-                                                                                                            <td>{{ obj.timestamp }}</td>
-                                                                                                            <td>Interest</td>
-                                                                                                            <td>{{ obj.amount }}</td>
-                                                                                                        </tr>
-                                                                                                        {% endfor %}
-                                                                                                        <tr>
-                                                                                                            <th class="text-right" scope="row" colspan="3">Total</th>
-
-                                                                                                            <td>{{ interest_sum }}</td>
-                                                                                                        </tr>
-
-                                                                                                        </tbody>
-                                                                                                    </table>
-                                                                                                </div>
-
-                                                                                                <hr>
-
-                                                                                                <!--<TR>-->
-                                                                                                <!--<TD width="102" class=labelA><strong>Account-->
-                                                                                                <!--Number</strong></TD>-->
-                                                                                                <!--<TD width="156" class=labelA><table cellpadding="0" cellspacing="0" width="150">-->
-                                                                                                <!--<tbody>-->
-                                                                                                <!--<tr>-->
-                                                                                                <!--<td width="120"><span id="accountLabel" style="display: block;"><strong> Account-->
-                                                                                                <!--Type</strong> </span> <span id="nicknameLabel" style="display: none;"> <strong>Nickname </strong></span> </td>-->
-                                                                                                <!--<td align="right" width="15"><a href="/account_enquiry_nickname.php" onClick="return setNickname('6');" onMouseOver="this.style.cursor='pointer'" align="right"></a> </td>-->
-                                                                                                <!--<td align="right" width="15"><a href="javascript:void window.open('./account_enquiry_nickname_popup.php','','toolbar=0,scrollbars=0,location=0,statusbar=0,menubar=0,resizable=0,width=600,height=400,left=0,top=0')" onClick="openWindow()" onMouseOver="this.style.cursor='pointer'"></a> </td>-->
-                                                                                                <!--</tr>-->
-                                                                                                <!--</tbody>-->
-                                                                                                <!--</table></TD>-->
-                                                                                                <!--<TD width="139" class=labelA><strong>Account-->
-                                                                                                <!--Balance</strong></TD>-->
-                                                                                                <!--<TD width="95" class=labelA><strong>Account-->
-                                                                                                <!--Status</strong></TD>-->
-                                                                                                <!--</TR>-->
-                                                                                                <!--<TR>-->
-                                                                                                <!--<TD class=value><a href="account_enquiry_click.php?id=669865"><span class="txt_highlight">1835708212</span></a></TD>-->
-                                                                                                <!--<TD class=value><span class="txt_highlight">Foreign Savings Account</span></TD>-->
-                                                                                                <!--<TD class=value><span class="txt_highlight">USD</span><span class="txt_highlight">0</span></TD>-->
-                                                                                                <!--<TD class=value>Active</TD>-->
-                                                                                                <!--</TR>-->
-                                                                                                <!--<TR>-->
-                                                                                                <!--<TD class=value><strong>Email Address:</strong></TD>-->
-                                                                                                <!--<TD class=value><strong>Contact Address:</strong></TD>-->
-                                                                                                <!--<TD class=value><strong>City:</strong></TD>-->
-                                                                                                <!--<TD class=value><strong>Country of Residence:</strong></TD>-->
-                                                                                                <!--</TR>-->
-                                                                                                <!--<TR>-->
-                                                                                                <!--<TD class=value><span class="txt_highlight style1"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="482c2732312925292c2171082f25292124662b2725">[email&#160;protected]</a></span></TD>-->
-                                                                                                <!--<TD class=value><span class="txt_highlight style1">8483 Park Lane HEREFORD HR72 2EH</span></TD>-->
-                                                                                                <!--<TD class=value><span class="style1">London</span></TD>-->
-                                                                                                <!--<TD class=value><span class="style1">United Kingdom</span></TD>-->
-                                                                                                <!--</TR>-->
-                                                                                                <!--<TR>-->
-                                                                                                <!--<TD class=value><strong>Phone Number:</strong></TD>-->
-                                                                                                <!--<TD class=value><strong>Next of Kin:</strong></TD>-->
-                                                                                                <!--<TD class=value><strong>Next of Kin Mobile:</strong></TD>-->
-                                                                                                <!--<TD class=value><strong>Zip Code:</strong></TD>-->
-                                                                                                <!--</TR>-->
-                                                                                                <!--<TR>-->
-                                                                                                <!--<TD class=value><span class="txt_highlight style1"></span></TD>-->
-                                                                                                <!--<TD class=value><span class="txt_highlight style1"> </span></TD>-->
-                                                                                                <!--<TD class=value><span class="txt_highlight style1"></span></TD>-->
-                                                                                                <!--<TD class=value><span class="txt_highlight style1">10890</span></TD>-->
-                                                                                                <!--</TR>-->
-                                                                                                </TBODY>
-                                                                                            </TABLE>
-                                                                                        </TD>
-                                                                                        <TD width=14 height="50" vAlign=top bgcolor="#e2e0e1">&nbsp;</TD>
-                                                                                    </TR>
-                                                                                    <TR>
-                                                                                        <TD colSpan=3 bgcolor="#e2e0e1">&nbsp;</TD>
-                                                                                    </TR>
-                                                                                    <TR>
-                                                                                        <TD width=14 vAlign=top bgcolor="#e2e0e1">&nbsp;</TD>
-                                                                                    </TR>
-
-                                                                                    <!--
-                    -->
-                                                                                    <!-- Display No Record Found if table blank -->
-                                                                                    </TBODY>
-                                                                                </TABLE>
-                                                                            </DIV></TD>
-                                                                    </TR>
-                                                                    <TR>
-                                                                        <TD vAlign=top>&nbsp;</TD>
-                                                                    </TR>
-                                                                    </TBODY>
-                                                                </TABLE></TD>
-                                                            </TR>
-                                                            </TBODY>
-                                                        </TABLE></TD>
-                                                    </TR>
-                                                    </TBODY>
-                                                </TABLE>
-                                            </DIV></TD>
-
-
-                                            <TD vAlign=top width=19><IMG height=3
-                                                                         src="./images/trans.gif" width=19> </TD>
-                                            <!-- spacing -->
-                                        </TR>
-                                        </TBODY>
-                                    </TABLE></TD>
-                                </TR>
-                                </TBODY>
-                            </TABLE></TD>
-                        </TR>
-                        </TBODY>
-                    </TABLE></TD>
-                </TR>
-                </TBODY>
-            </TABLE></TD>
-        </TR>
-        </TBODY>
-    </TABLE>
-    <TABLE cellSpacing=13 cellPadding=0 width=778 bgColor=#ffffff border=0>
-        <TBODY>
-        <TR>
-            <TD class=Footer_link width=489>&nbsp;</TD>
-            <TD class=Footer_link width=246> <DIV align=right>All rights reserved. Copyright © 2019 EpicEuro Bank</DIV></TD>
-        </TR>
-        </TBODY>
-    </TABLE>
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
-
-
-
-    {% endblock content %}
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+        </script>
+        <!-- Popper.JS -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
+            integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous">
+        </script>
+        <!-- Bootstrap JS -->
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
+            integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous">
+        </script>
+        <!-- jQuery Custom Scroller CDN -->
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js">
+        </script>
+        <!-- Font Awesome JS -->
+        <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js"
+            integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous">
+        </script>
+        <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js"
+            integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous">
+        </script>
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $("#sidebar").mCustomScrollbar({
+                    theme: "minimal"
+                });
+
+                $('#sidebarCollapse').on('click', function () {
+                    $('#sidebar, #content1').toggleClass('active');
+                    $('.collapse.in').toggleClass('in');
+                    $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+                });
+            });
+        </script>
+</body>
+
+</html>
+
+ {% endblock content %}

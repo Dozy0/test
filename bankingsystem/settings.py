@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'core',
     'transactions',
     'jstemplate',
+    'bootstrap4',
 ]
 
 MIDDLEWARE = [

@@ -1,0 +1,107 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Transfer</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
+        integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <!-- Scrollbar Custom CSS -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+
+    <!-- google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Lato|Open+Sans&display=swap" rel="stylesheet">
+
+    <!-- font-awesome -->
+    <script src="https://kit.fontawesome.com/73e4a67fd5.js"></script>
+
+    <!-- date picker css -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css" />
+    <!-- <a href="https://github.com/eternicode/bootstrap-datepicker">eternicode bootstrap-datepicker</a> -->
+    <!-- Our Custom CSS -->
+    <link rel="stylesheet" href="{% static 't/style.css'%}">
+    <link rel="stylesheet" href="{% static 't/loginform.css'%}">
+
+</head>
+
+<body>
+
+    <header>
+        <div id="content1">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+                <div class="container-fluid">
+                    <img src="{% static '/t/img/logo.png'%}" alt="Logo">
+                    <h3>Logo</h3>
+                </div>
+            </nav>
+    </header>
+
+    <section class="container">
+        <div class="row" style="padding-top: 200px !important">
+            <div class="col-md-6 split left">
+                <div class="card pt-4">
+                    <div class="card-body">
+                        <form>
+                            <div class="form-group row">
+                                <label for="number" class="col-sm-3 col-form-label text-sm">Account No:</label>
+                                <div class="col-sm-9">
+                                    <div class="input-group input-group-alternative">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="oi oi-account-login"></i></span>
+                                        </div>
+                                        <input type="number" class="form-control form-control-alternative-sm" id="email">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="password" class="col-sm-3 col-form-label text-sm">Password</label>
+                                <div class="col-sm-9">
+                                    <div class="input-group input-group-alternative">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fas fa-unlock-alt"></i></i></span>
+                                        </div>
+                                        <input type="password" class="form-control form-control-alternative-sm"
+                                            id="password">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-check" style="padding-left: 30%">
+                                <input class="form-check-input" type="checkbox" value="" id="remember-me">
+                                <label class="form-check-label" for="remember-me">
+                                    Remember me
+                                </label>
+                            </div>
+
+                            <div class="mb-4" style="padding-left: 26%">
+                                <button class="btn btn-success">Login</button>
+                            </div>
+                            <div class="account d-flex justify-content-between">
+                                <div class="">Not a member? <a href="">Signup</a></div>
+                                <div class=""> <a href=""> Forgot password?</a></div>
+                            </div>
+                            <!-- <p class="sign-up"></p> -->
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 split right">
+                <figure>
+                    <img src="{% static 't/img/bank 3.jpg'%}" alt="" style="width: 700px; height: 650px">
+                </figure>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>

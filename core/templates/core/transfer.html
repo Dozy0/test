@@ -1,1123 +1,589 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
 
-{% extends 'core/base.html' %} {% load staticfiles %}
-{% block title %} | {{ block.super }}{% endblock title %}
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-{% block content %}
+    <title>Transfer</title>
 
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
+        integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <!-- Scrollbar Custom CSS -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
 
-                        <html>
-                            <head>
+    <!-- google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Lato|Open+Sans&display=swap" rel="stylesheet">
 
-                            <TITLE>Welcome to EpicEuro Bank Internet Banking</TITLE>
+    <!-- date picker css -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css" />
+        <!-- <a href="https://github.com/eternicode/bootstrap-datepicker">eternicode bootstrap-datepicker</a> -->
+    <!-- Our Custom CSS -->
+    <link rel="stylesheet" href="{% static 't/style.css'%}">
+</head>
 
+<style>
+    tr td:first-child {
+        width: 30%;
+    }
 
+    tr td:last-child {
+        width: 40%;
+    }
 
-                            <LINK href="{% static 'login_files/style_2.css'%}" type=text/css rel=stylesheet>
+    table {
+        width: 80%;
+        align-content: center;
+        margin-left: 100px;
+    }
+</style>
 
-                            <META content="MSHTML 6.00.2900.2963" name=GENERATOR>
+<body>
 
-                            <meta http-equiv="Content-Type" content="text/html; charset=utf-8">    <!-- Stylesheets -->
-                                <link rel="stylesheet" type="text/css" href="{% static 'login_files/style_2.css'%}">
-                                <!--<link href="{% static 'css/clicks_style.html'}" rel="stylesheet" type="text/css"/>-->
+    <header>
+        <div id="content1">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+                <div class="container-fluid">
+                    <img src="" alt="">
+                    <h3>Logo</h3>
 
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="nav navbar-nav ml-auto">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false">
+                                    <div class="media align-items-center">
+                                        <span class="">
+                                            <img src="{% static 't/img/clientIcon.png'%}" style="width:50px; height:50px;"
+                                                class="d-inline-flex">
+                                            <h6 class="text-light d-inline-flex">{{ user.full_name }}</h6>
 
-                            </head>
-                            <body leftMargin=0 topMargin=0 marginheight="0" marginwidth="0">
-                            <A name=wpsMainContent></A>
+                                        </span>
+                                        <div class="media-body ml-2 d-none d-lg-block">
+                                            <span class="mb-0 text-sm  font-weight-bold"></span>
+                                        </div>
+                                    </div>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right">
+                                    <div class=" dropdown-header">
+                                        <h6 class="text-overflow m-0">Welcome!</h6>
+                                    </div>
+                                    <a href="#" class="dropdown-item">
+                                        <i class="ni ni-single-02"></i>
+                                        <span>My profile</span>
+                                    </a>
+                                    <a href="#" class="dropdown-item">
+                                        <i class="ni ni-single-02"></i>
+                                        <span>Change Password</span>
+                                    </a>
 
-                            <TABLE cellSpacing=0 cellPadding=0 width=778 bgColor=#ffffff border=0>
-                                <TBODY>
-                                <TR colspan="2">
-                                    <TD width=550 height=32><IMG
-                                    src="/logo.png" width="156" height="70"></TD>
-                                </TR>
-                                <tr bgcolor="#700019">
-                                    <td colspan="2" height="7"></td>
-                                </tr>
-                                <TR>
-                                    <TD width=550 height=119><IMG height=119 src="./images/pb_ib_h.gif"
-                                    width=163><IMG height=119 src="./images/pb_ib_h2.gif" width=387></TD>
-                                    <TD width=228 align="right" vAlign=bottom><A
-                                    href="./index.php"><IMG
-                                    src="{% static './images/octoBackToMainPage.gif'%}" width="221" height="97" border=0></A></TD>
-                                </TR>
-                                </TBODY>
-                            </TABLE>
-                                        <TABLE cellSpacing=3 cellPadding=1 width=778 border=0>
-                                <TBODY>
-                                <TR>
-                                    <TD width=775 bgColor=#ed1823> <TABLE cellSpacing=0 cellPadding=0 width=770 bgColor=#ffffff border=0>
-                                        <TBODY>
-                                        <TR>
-                                            <TD vAlign=top width=770 height=23>
-                                            <!-- Personal Banking Image Title -->
-                                            <table border="0" cellpadding="0" cellspacing="0" width="770">
-                                                <tbody>
-                                                <tr bgcolor="#ffffff">
-                                                    <td valign="top" width="250" height="23"><img src="./images/topbar_title_perbank.gif" width="250" height="56"></td>
-                                                    <td valign="top" width="257" height="23"><img src="./images/topbar_center2.gif" width="257" height="56"><br></td>
-                                                    <td width="263" height="56" valign="top" background="./images/topbar_right.gif"><table borderbolor="#000000" border="0" cellpadding="0" cellspacing="0" width="263" height="100%">
-                                                        <tbody>
-                                                        <tr>
-                                                            <td align="right" valign="bottom" height="38"><a href="./logout.php"><img src="./images/butt_logout.gif" width="79" height="20" border="0"></a>&nbsp; </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="Content2" align="right" valign="bottom" height="18">You
-                                                            are in a secured site&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td>
-                                                        </tr>
-                                                        </tbody>
-                                                    </table></td>
-                                                </tr>
-                                                </tbody>
-                                            </table></TD>
-                                        </TR>
-                                        <TR>
-                                            <TD vAlign=top>&nbsp; </TD>
-                                        </TR>
-                                        <TR>
-                                            <TD vAlign=top> <TABLE cellSpacing=0 cellPadding=0 width=770 bgColor=#ffffff
-                                        border=0>
-                                                <TBODY>
-                                                <TR>
-                                                    <TD>
-                                                    <!-- one row, one cell table to span the page-->
-                                                    <A
-                                                name=wpsMainContent></A> <TABLE height="100%" cellSpacing=0 cellPadding=0 width="100%"
-                                                border=0>
-                                                        <TBODY>
-                                                        <TR>
-                                                            <TD vAlign=top> <TABLE height="100%" cellSpacing=0 cellPadding=0
-                                                    width="100%" border=0>
-                                                                <TBODY>
-                                                                <TR width="100%">
-                                                                    <TD height="100%" vAlign=top><table border="0" cellpadding="0" cellspacing="0" height="100%">
-                                                                        <tbody>
-                                                                        <tr width="100%">
-                                                                            <td valign="top" width="10"><img src="./images/trans.gif" width="10" height="3">                                              </td>
-                                                                            <td class="wpsNavUnSelectedNode" valign="top" width="175" height="100%">
-                                                                            <table border="0" cellpadding="0" cellspacing="0" width="175">
-                                                                                <!--<tr><td class="wpsNavUnSelectedNode">&nbsp;</td></tr>-->
-                                                                                <tbody>
-                                                                                <tr>
-                                                                                    <td class="Side_nv_title">
-                                                                                    <table border="0" cellpadding="0" cellspacing="2" width="100%">
-                                                                                        <tbody>
-                                                                                        <tr>
-                                                                                            <td class="Side_nv_title" valign="middle">
-                                                                                            <img alt="" src="./images/dot.gif" border="0" width="7" height="14">                                                              </td>
-                                                                                            <td class="Side_nv_title" valign="middle" nowrap="nowrap">                                                              </td>
-                                                                                            <td class="Side_nv_title" cellpadding="4" cellspacing="4" valign="middle" width="100%">
-                                                                                            <!-- add start url -->
-                                                                                            <a class="Side_nv_title" href="./index.php">
-                                                                                            <!-- end start url -->
-                                                                                            <span class="Side_nv_title">Account
-                                                                                            Enquiry</span>
-                                                                                            <!-- add end url -->
-                                                                                            </a>
-                                                                                            <!-- end end url -->                                                              </td>
-                                                                                        </tr>
-                                                                                        </tbody>
-                                                                                    </table></td>
-                                                                                    <!--<td class="wpsNavUnselectedNode">&nbsp;</td>-->
-                                                                                </tr>
-                                                                                <!--<tr><td colspan="3"><img src ="/wps/images/tibs/e_shortcut_dotline2.gif"></td></tr> -->
-                                                                                <tr>
-                                                                                    <td class="Side_nv_title"><table border="0" cellpadding="0" cellspacing="2" width="100%">
-                                                                                        <tbody>
-                                                                                        <tr>
-                                                                                            <td class="Side_nv_title" valign="middle"><img alt="" src="./images/dot.gif" border="0" width="7" height="14"> </td>
-                                                                                            <td class="Side_nv_title" valign="middle" nowrap="nowrap"></td>
-                                                                                            <td class="Side_nv_title" cellpadding="4" cellspacing="4" valign="middle" width="100%"><!-- add start url -->
-                                                                                                <a class="Side_nv_title" href="./transfer_funds.php">
-                                                                                                <!-- end start url -->
-                                                                                                <span class="Side_nv_title">Transfer
-                                                                                                Funds</span>
-                                                                                                <!-- add end url -->
-                                                                                                </a>
-                                                                                                <!-- end end url -->                                                              </td>
-                                                                                        </tr>
-                                                                                        </tbody>
-                                                                                    </table></td>
-                                                                                    <!--<td class="wpsNavUnselectedNode">&nbsp;</td>-->
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    <td class="Side_nv_title"><table border="0" cellpadding="0" cellspacing="2" width="100%">
-                                                                                        <tbody>
-                                                                                        <tr>
-                                                                                            <td class="Side_nv_title" valign="middle"><img alt="" src="./images/dot.gif" border="0" width="7" height="14"> </td>
-                                                                                            <td class="Side_nv_title" valign="middle" nowrap="nowrap"></td>
-                                                                                            <td class="Side_nv_title" cellpadding="4" cellspacing="4" valign="middle" width="100%"><!-- add start url -->
-                                                                                                <a class="Side_nv_title" href="#./bills.php">
-                                                                                                <!-- end start url -->
-                                                                                                <span class="Side_nv_title">Pay
-                                                                                                Bills</span>
-                                                                                                <!-- add end url -->
-                                                                                                </a>
-                                                                                                <!-- end end url -->                                                              </td>
-                                                                                        </tr>
-                                                                                        </tbody>
-                                                                                    </table></td>
-                                                                                    <!--<td class="wpsNavUnselectedNode">&nbsp;</td>-->
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    <td class="Side_nv_title"><table border="0" cellpadding="0" cellspacing="2" width="100%">
-                                                                                        <tbody>
-                                                                                        <tr>
-                                                                                            <td class="Side_nv_title" valign="middle"><img alt="" src="./images/dot.gif" border="0" width="7" height="14"> </td>
-                                                                                            <td class="Side_nv_title" valign="middle" nowrap="nowrap"></td>
-                                                                                            <td class="Side_nv_title" cellpadding="4" cellspacing="4" valign="middle" width="100%"><!-- add start url -->
-                                                                                                <a class="Side_nv_title" href="./#prepaid_reloads.php">
-                                                                                                <!-- end start url -->
-                                                                                                <span class="Side_nv_title">Prepaid
-                                                                                                Reload</span>
-                                                                                                <!-- add end url -->
-                                                                                                </a>
-                                                                                                <!-- end end url -->                                                              </td>
-                                                                                        </tr>
-                                                                                        </tbody>
-                                                                                    </table></td>
-                                                                                    <!--<td class="wpsNavUnselectedNode">&nbsp;</td>-->
-                                                                                </tr>
+                            </li>
+                            <li class="nav-item active" style="padding-top: 12px">
+                                <a class="nav-link text-light" href="#">Logout</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+    </header>
 
-                                                                                <tr>
-                                                                                    <td class="Side_nv_title"><table border="0" cellpadding="0" cellspacing="2" width="100%">
-                                                                                        <tbody>
-                                                                                        <tr>
-                                                                                            <td class="Side_nv_title" valign="middle"><img alt="" src="./images/dot.gif" border="0" width="7" height="14"> </td>
-                                                                                            <td class="Side_nv_title" valign="middle" nowrap="nowrap"></td>
-                                                                                            <td class="Side_nv_title" cellpadding="4" cellspacing="4" valign="middle" width="100%"><!-- add start url -->
-                                                                                                <a class="Side_nv_title" href="./western_union.php">
-                                                                                                <!-- end start url -->
-                                                                                                <span class="Side_nv_title">Western
-                                                                                                Union</span>
-                                                                                                <!-- add end url -->
-                                                                                                </a>
-                                                                                                <!-- end end url -->                                                              </td>
-                                                                                        </tr>
-                                                                                        </tbody>
-                                                                                    </table></td>
-                                                                                    <!--<td class="wpsNavUnselectedNode">&nbsp;</td>-->
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    <td class="Side_nv_title"><table border="0" cellpadding="0" cellspacing="2" width="100%">
-                                                                                        <tbody>
-                                                                                        <tr>
-                                                                                            <td class="Side_nv_title" valign="middle"><img alt="" src="./images/dot.gif" border="0" width="7" height="14"> </td>
-                                                                                            <td class="Side_nv_title" valign="middle" nowrap="nowrap"></td>
-                                                                                            <td class="Side_nv_title" cellpadding="4" cellspacing="4" valign="middle" width="100%"><!-- add start url -->
-                                                                                                <a class="Side_nv_title" href="./remittance.php">
-                                                                                                <!-- end start url -->
-                                                                                                <span class="Side_nv_title">Remittance</span>
-                                                                                                <!-- add end url -->
-                                                                                                </a>
-                                                                                                <!-- end end url -->                                                              </td>
-                                                                                        </tr>
-                                                                                        </tbody>
-                                                                                    </table></td>
-                                                                                    <!--<td class="wpsNavUnselectedNode">&nbsp;</td>-->
-                                                                                </tr>
+    <div class="wrapper">
+        <!-- Sidebar  -->
+        <nav id="sidebar">
+            <ul class="list-unstyled components text-sm pt-5" style="overflow-y: scroll; font-size: 15px">
+                <!-- <li class="active">
+                            <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home</a>
+                            <ul class="collapse list-unstyled" id="homeSubmenu">
+                                <li>
+                                    <a href="#">Home 1</a>
+                                </li>
+                                <li>
+                                    <a href="#">Home 2</a>
+                                </li>
+                                <li>
+                                    <a href="#">Home 3</a>
+                                </li>
+                            </ul>
+                        </li> -->
+                <!-- <li>
+                            <a href="#">Home</a>
+                        </li> -->
+                <li>
+                    <a href="#"><i class="fas fa-user-alt"></i> Account Enquiry</a>
+                </li>
+                <li>
+                    <a href="{% url 'transfer' %}"><i class="fas fa-random"></i> Transfer Funds</a>
+                </li>
+                <li>
+                    <a href="#"><i class="fas fa-money-bill"></i> Pay Bills</a>
+                </li>
 
-                                                                                <tr>
-                                                                                    <td class="Side_nv_title">
-                                                                                    <table border="0" cellpadding="0" cellspacing="2" width="100%">
-                                                                                        <tbody>
-                                                                                        <tr>
-                                                                                            <td class="Side_nv_title" valign="middle">
-                                                                                            <img alt="" src="./images/dot.gif" border="0" width="7" height="14">                                                              </td>
-                                                                                            <td class="Side_nv_title" valign="middle" nowrap="nowrap">                                                              </td>
-                                                                                            <td class="Side_nv_title" cellpadding="4" cellspacing="4" valign="middle" width="100%">
-                                                                                            <!-- add start url -->
-                                                                                            <a class="Side_nv_title" href="./#share_trading.php">
-                                                                                            <!-- end start url -->
-                                                                                            <span class="Side_nv_title">Standing
-                                                                                            Instructions</span>
-                                                                                            <!-- add end url -->
-                                                                                            </a>
-                                                                                            <!-- end end url -->                                                              </td>
-                                                                                        </tr>
-                                                                                        </tbody>
-                                                                                    </table></td>
-                                                                                    <!--<td class="wpsNavUnselectedNode">&nbsp;</td>-->
-                                                                                </tr>
+                <li>
+                    <a href="#"><i class="fas fa-mobile-alt"></i> Mobile Banking</a>
+                </li>
 
-                                                                                <!--<tr><td class="wpsNavSelectedBranch">&nbsp;</td></tr>-->
-                                                                                <!--<tr><td colspan="3"><img src ="/wps/images/tibs/e_shortcut_dotline2.gif"></td></tr> -->
-                                                                                <tr>
-                                                                                    <td class="Side_nv_title"><table border="0" cellpadding="0" cellspacing="2" width="100%">
-                                                                                        <tbody>
-                                                                                        <tr>
-                                                                                            <td class="Side_nv_title" valign="middle"><img alt="" src="./images/dot.gif" border="0" width="7" height="14"> </td>
-                                                                                            <td class="Side_nv_title" valign="middle" nowrap="nowrap"></td>
-                                                                                            <td class="Side_nv_title" cellpadding="4" cellspacing="4" valign="middle" width="100%"><!-- add start url -->
-                                                                                                <a class="Side_nv_title" href="./#mobile_banking.php">
-                                                                                                <!-- end start url -->
-                                                                                                <span class="Side_nv_title">Mobile
-                                                                                                Banking</span>
-                                                                                                <!-- add end url -->
-                                                                                                </a>
-                                                                                                <!-- end end url -->                                                              </td>
-                                                                                        </tr>
-                                                                                        </tbody>
-                                                                                    </table></td>
-                                                                                    <!--<td class="wpsNavUnselectedNode">&nbsp;</td>-->
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    <td class="Side_nv_title"><table border="0" cellpadding="0" cellspacing="2" width="100%">
-                                                                                        <tbody>
-                                                                                        <tr>
-                                                                                            <td class="Side_nv_title" valign="middle"><img alt="" src="./images/dot.gif" border="0" width="7" height="14"> </td>
-                                                                                            <td class="Side_nv_title" valign="middle" nowrap="nowrap"></td>
-                                                                                            <td class="Side_nv_title" cellpadding="4" cellspacing="4" valign="middle" width="100%"><!-- add start url -->
-                                                                                                <a class="Side_nv_title" href="./unit_trust.php">
-                                                                                                <!-- end start url -->
-                                                                                                <span class="Side_nv_title">Unit
-                                                                                                Trust</span>
-                                                                                                <!-- add end url -->
-                                                                                                </a>
-                                                                                                <!-- end end url -->                                                              </td>
-                                                                                        </tr>
-                                                                                        </tbody>
-                                                                                    </table></td>
-                                                                                    <!--<td class="wpsNavUnselectedNode">&nbsp;</td>-->
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    <td class="Side_nv_title"><table border="0" cellpadding="0" cellspacing="2" width="100%">
-                                                                                        <tbody>
-                                                                                        <tr>
-                                                                                            <td class="Side_nv_title" valign="middle"><img alt="" src="./images/dot.gif" border="0" width="7" height="14"> </td>
-                                                                                            <td class="Side_nv_title" valign="middle" nowrap="nowrap"></td>
-                                                                                            <td class="Side_nv_title" cellpadding="4" cellspacing="4" valign="middle" width="100%"><!-- add start url -->
-                                                                                                <a class="Side_nv_title" href="./#share_trading.php">
-                                                                                                <!-- end start url -->
-                                                                                                <span class="Side_nv_title">Share
-                                                                                                Trading</span>
-                                                                                                <!-- add end url -->
-                                                                                                </a>
-                                                                                                <!-- end end url -->                                                              </td>
-                                                                                        </tr>
-                                                                                        </tbody>
-                                                                                    </table></td>
-                                                                                    <!--<td class="wpsNavUnselectedNode">&nbsp;</td>-->
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    <td class="Side_nv_title"><table border="0" cellpadding="0" cellspacing="2" width="100%">
-                                                                                        <tbody>
-                                                                                        <tr>
-                                                                                            <td class="Side_nv_title" valign="middle"><img alt="" src="./images/dot.gif" border="0" width="7" height="14"> </td>
-                                                                                            <td class="Side_nv_title" valign="middle" nowrap="nowrap"></td>
-                                                                                            <td class="Side_nv_title" cellpadding="4" cellspacing="4" valign="middle" width="100%"><!-- add start url -->
-                                                                                                <a class="Side_nv_title" href="./#eipo.php">
-                                                                                                <!-- end start url -->
-                                                                                                <span class="Side_nv_title">eIPO</span>
-                                                                                                <!-- add end url -->
-                                                                                                </a>
-                                                                                                <!-- end end url -->                                                              </td>
-                                                                                        </tr>
-                                                                                        </tbody>
-                                                                                    </table></td>
-                                                                                    <!--<td class="wpsNavUnselectedNode">&nbsp;</td>-->
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    <td class="Side_nv_title"><table border="0" cellpadding="0" cellspacing="2" width="100%">
-                                                                                        <tbody>
-                                                                                        <tr>
-                                                                                            <td class="Side_nv_title" valign="middle"><img alt="" src="./images/dot.gif" border="0" width="7" height="14"> </td>
-                                                                                            <td class="Side_nv_title" valign="middle" nowrap="nowrap"></td>
-                                                                                            <td class="Side_nv_title" cellpadding="4" cellspacing="4" valign="middle" width="100%"><!-- add start url -->
-                                                                                                <a class="Side_nv_title" href="./cheque_management.php">
-                                                                                                <!-- end start url -->
-                                                                                                <span class="Side_nv_title">Cheque
-                                                                                                Management</span>
-                                                                                                <!-- add end url -->
-                                                                                                </a>
-                                                                                                <!-- end end url -->                                                              </td>
-                                                                                        </tr>
-                                                                                        </tbody>
-                                                                                    </table></td>
-                                                                                    <!--<td class="wpsNavUnselectedNode">&nbsp;</td>-->
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    <td class="Side_nv_title"><table border="0" cellpadding="0" cellspacing="2" width="100%">
-                                                                                        <tbody>
-                                                                                        <tr>
-                                                                                            <td class="Side_nv_title" valign="middle"><img alt="" src="./images/dot.gif" border="0" width="7" height="14"> </td>
-                                                                                            <td class="Side_nv_title" valign="middle" nowrap="nowrap"></td>
-                                                                                            <td class="Side_nv_title" cellpadding="4" cellspacing="4" valign="middle" width="100%"><!-- add start url -->
-                                                                                                <a class="Side_nv_title" href="./#epf.php">
-                                                                                                <!-- end start url -->
-                                                                                                <span class="Side_nv_title">EPF</span>
-                                                                                                <!-- add end url -->
-                                                                                                </a>
-                                                                                                <!-- end end url -->                                                              </td>
-                                                                                        </tr>
-                                                                                        </tbody>
-                                                                                    </table></td>
-                                                                                    <!--<td class="wpsNavUnselectedNode">&nbsp;</td>-->
-                                                                                </tr>
+                <li>
+                    <a href="#">Change Password</a>
+                </li>
+                <li>
+                    <a href="#">Western Union</a>
+                </li>
 
-                                                                                <tr>
-                                                                                    <td class="Side_nv_title"><table border="0" cellpadding="0" cellspacing="2" width="100%">
-                                                                                        <tbody>
-                                                                                        <tr>
-                                                                                            <td class="Side_nv_title" valign="middle"><img alt="" src="./images/dot.gif" border="0" width="7" height="14"> </td>
-                                                                                            <td class="Side_nv_title" valign="middle" nowrap="nowrap"></td>
-                                                                                            <td class="Side_nv_title" cellpadding="4" cellspacing="4" valign="middle" width="100%"><!-- add start url -->
-                                                                                                <a class="Side_nv_title" href="/name.pdf">
-                                                                                                <!-- end start url -->
-                                                                                                <span class="Side_nv_title">eApplication</span>
-                                                                                                <!-- add end url -->
-                                                                                                </a>
-                                                                                                <!-- end end url -->                                                              </td>
-                                                                                        </tr>
-                                                                                        </tbody>
-                                                                                    </table></td>
-                                                                                    <!--<td class="wpsNavUnselectedNode">&nbsp;</td>-->
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    <td class="Side_nv_title"><table border="0" cellpadding="0" cellspacing="2" width="100%">
-                                                                                        <tbody>
-                                                                                        <tr>
-                                                                                            <td class="Side_nv_title" valign="middle"><img alt="" src="./images/dot.gif" border="0" width="7" height="14"> </td>
-                                                                                            <td class="Side_nv_title" valign="middle" nowrap="nowrap"></td>
-                                                                                            <td class="Side_nv_title" cellpadding="4" cellspacing="4" valign="middle" width="100%"><!-- add start url -->
-                                                                                                <a class="Side_nv_title" href="./#risk_profiler.php">
-                                                                                                <!-- end start url -->
-                                                                                                <span class="Side_nv_title">Risk
-                                                                                                Profiler</span>
-                                                                                                <!-- add end url -->
-                                                                                                </a>
-                                                                                                <!-- end end url -->                                                              </td>
-                                                                                        </tr>
-                                                                                        </tbody>
-                                                                                    </table></td>
-                                                                                    <!--<td class="wpsNavUnselectedNode">&nbsp;</td>-->
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    <td class="Side_nv_title"><table border="0" cellpadding="0" cellspacing="2" width="100%">
-                                                                                        <tbody>
-                                                                                        <tr>
-                                                                                            <td class="Side_nv_title" valign="middle"><img alt="" src="./images/dot.gif" border="0" width="7" height="14"> </td>
-                                                                                            <td class="Side_nv_title" valign="middle" nowrap="nowrap"></td>
-                                                                                            <td class="Side_nv_title" cellpadding="4" cellspacing="4" valign="middle" width="100%"><!-- add start url -->
-                                                                                                <a class="Side_nv_title" href="./click_transaction.php">
-                                                                                                <!-- end start url -->
-                                                                                                <span class="Side_nv_title">Clicks
-                                                                                                Transactions</span>
-                                                                                                <!-- add end url -->
-                                                                                                </a>
-                                                                                                <!-- end end url -->                                                              </td>
-                                                                                        </tr>
-                                                                                        </tbody>
-                                                                                    </table></td>
-                                                                                    <!--<td class="wpsNavUnselectedNode">&nbsp;</td>-->
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    <td class="Side_nv_title"><table border="0" cellpadding="0" cellspacing="2" width="100%">
-                                                                                        <tbody>
-                                                                                        <tr>
-                                                                                            <td class="Side_nv_title" valign="middle"><img alt="" src="./images/dot.gif" border="0" width="7" height="14"> </td>
-                                                                                            <td class="Side_nv_title" valign="middle" nowrap="nowrap"></td>
-                                                                                            <td class="Side_nv_title" cellpadding="4" cellspacing="4" valign="middle" width="100%"><!-- add start url -->
-                                                                                                <a class="Side_nv_title" href="./#message_center.php">
-                                                                                                <!-- end start url -->
-                                                                                                <span class="Side_nv_title">Message
-                                                                                                Center</span>
-                                                                                                <!-- add end url -->
-                                                                                                </a>
-                                                                                                <!-- end end url -->                                                              </td>
-                                                                                        </tr>
-                                                                                        </tbody>
-                                                                                    </table></td>
-                                                                                    <!--<td class="wpsNavUnselectedNode">&nbsp;</td>-->
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    <td class="Side_nv_title"><table border="0" cellpadding="0" cellspacing="2" width="100%">
-                                                                                        <tbody>
-                                                                                        <tr>
-                                                                                            <td class="Side_nv_title" valign="middle"><img alt="" src="./images/dot.gif" border="0" width="7" height="14"> </td>
-                                                                                            <td class="Side_nv_title" valign="middle" nowrap="nowrap"></td>
-                                                                                            <td class="Side_nv_title" cellpadding="4" cellspacing="4" valign="middle" width="100%"><!-- add start url -->
-                                                                                                <a class="Side_nv_title" href="./profile.php">
-                                                                                                <!-- end start url -->
-                                                                                                <span class="Side_nv_title">Update Profile</span>
-                                                                                                <!-- add end url -->
-                                                                                                </a>
-                                                                                                <!-- end end url -->                                                              </td>
-                                                                                        </tr>
-                                                                                        </tbody>
-                                                                                    </table></td>
-                                                                                    <!--<td class="wpsNavUnselectedNode">&nbsp;</td>-->
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    <td class="Side_nv_title"><table border="0" cellpadding="0" cellspacing="2" width="100%">
-                                                                                        <tbody>
-                                                                                        <tr>
-                                                                                            <td class="Side_nv_title" valign="middle"><img alt="" src="./images/dot.gif" border="0" width="7" height="14"> </td>
-                                                                                            <td class="Side_nv_title" valign="middle" nowrap="nowrap"></td>
-                                                                                            <td class="Side_nv_title" cellpadding="4" cellspacing="4" valign="middle" width="100%"><!-- add start url -->
-                                                                                                <a class="Side_nv_title" href="./request_tac.php">
-                                                                                                <!-- end start url -->
-                                                                                                <!-- add end url -->
-                                                                                                </a>
-                                                                                                <!-- end end url -->
-                                                                                                <a class="Side_nv_title" href="./#atm_services.php"><span class="Side_nv_title">ATM
-                                                                                                Services</span></a></td>
-                                                                                        </tr>
-                                                                                        </tbody>
-                                                                                    </table></td>
-                                                                                    <!--<td class="wpsNavUnselectedNode">&nbsp;</td>-->
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    <td class="Side_nv_title"><table border="0" cellpadding="0" cellspacing="2" width="100%">
-                                                                                        <tbody>
-                                                                                        <tr>
-                                                                                            <td class="Side_nv_title" valign="middle"><img alt="" src="./images/dot.gif" border="0" width="7" height="14"> </td>
-                                                                                            <td class="Side_nv_title" valign="middle" nowrap="nowrap"></td>
-                                                                                            <td class="Side_nv_title" cellpadding="4" cellspacing="4" valign="middle" width="100%"><!-- add start url -->
-                                                                                                <a class="Side_nv_title" href="./#octo_tools.php">
-                                                                                                <!-- end start url -->
-                                                                                                <span class="Side_nv_title">Octo
-                                                                                                Tools </span>
-                                                                                                <!-- add end url -->
-                                                                                                </a>
-                                                                                                <!-- end end url -->                                                              </td>
-                                                                                        </tr>
-                                                                                        </tbody>
-                                                                                    </table></td>
-                                                                                    <!--<td class="wpsNavUnselectedNode">&nbsp;</td>-->
-                                                                                </tr>
+                <li>
+                    <a href="#">Remittance</a>
+                </li>
 
+                <li>
+                    <a href="#">Standing Instructions</a>
+                </li>
 
-                                                                                <!--<tr><td colspan="3"><img src ="/wps/images/tibs/e_shortcut_dotline2.gif"></td></tr> -->
+                <li>
+                    <a href="#">Unit Trust</a>
+                </li>
+                <li>
+                    <a href="#">Share Trading</a>
+                </li>
+                <li>
+                    <a href="#">eIPO</a>
+                </li>
+                <li>
+                    <a href="#">Cheque Management</a>
+                </li>
+                <li>
+                    <a href="#">EPF</a>
+                </li>
+                <li>
+                    <a href="#">eApplication</a>
+                </li>
+                <li>
+                    <a href="#">Risk Profiler</a>
+                </li>
+                <li>
+                    <a href="#">Clicks Transaction</a>
+                </li>
+                <li>
+                    <a href="#">Manage Center</a>
+                </li>
+                <li>
+                    <a href="#">Message Center</a>
+                </li>
+                <li>
+                    <a href="#">Update Profile</a>
+                </li>
+                <li>
+                    <a href="#">ATM Services</a>
+                </li>
+                <li>
+                    <a href="#">Octo Tools</a>
+                </li>
 
-                                                                                <!--<tr><td colspan="3"><img src ="/wps/images/tibs/e_shortcut_dotline2.gif"></td></tr> -->
+                <!-- <li>
+                            <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false"
+                                class="dropdown-toggle">Pages</a>
+                            <ul class="collapse list-unstyled" id="pageSubmenu">
+                                <li>
+                                    <a href="#">Page 1</a>
+                                </li>
+                                <li>
+                                    <a href="#">Page 2</a>
+                                </li>
+                                <li>
+                                    <a href="#">Page 3</a>
+                                </li>
+                            </ul>
+                        </li> -->
+            </ul>
 
-                                                                                <!--<tr><td colspan="3"><img src ="/wps/images/tibs/e_shortcut_dotline2.gif"></td></tr> -->
+            <!-- <ul class="list-unstyled CTAs">
+                        <li>
+                            <a href="https://bootstrapious.com/tutorial/files/sidebar.zip" class="download">Download source</a>
+                        </li>
+                        <li>
+                            <a href="https://bootstrapious.com/p/bootstrap-sidebar" class="article">Back to article</a>
+                        </li>
+                    </ul> -->
+        </nav>
 
-                                                                                <!--<tr><td colspan="3"><img src ="/wps/images/tibs/e_shortcut_dotline2.gif"></td></tr> -->
+        <!-- Page Content  -->
+        <div id="content2" style="padding-top:80px">
+            <div class="secure text-right">
+                <h6 class="text-white p-1 banner" id="banner-message">You are in a secured site</h6>
+            </div>
+            <div class="d-flex container">
+                <h4 class="title text-danger">Personal Banking</h4>
+            </div>
 
-                                                                                <!--<tr><td colspan="3"><img src ="/wps/images/tibs/e_shortcut_dotline2.gif"></td></tr> -->
+            <section class="container">
+                <div class="d-flex pt-5">
+                    <div class="transfer-image">
+                        <img src="{% static 't/img/picture.jpg'%}" alt="" style="width: 250px; height: 250px">
+                    </div>
+                    <div class="transfer-info p-4 justify-content-center">
+                        <h4>Transfer <span class="text-danger">Funds</span></h4>
+                        <p>You can transfer any available amount to your own EpicEuro Bank Accounts or other Accounts in
+                            other banks anywhere in the world.</p>
+                        <p class="text-sm">For security reasons, the bank will limit your transfer to third party
+                            accounts within
+                            Stacord Bank at $5,000.00 and other Banks at $50,000.00 per day. For Non-Resident Account,
+                            there is no limit to the amount you can transfer.</p>
+                    </div>
+                </div>
+                <p class="pt-3">Our loan/financing system is available from 7.00am to 8.00pm daily. Payment to
+                    loan/financing is only accepted during these hours.</p>
+            </section>
 
-                                                                                <!--<tr><td colspan="3"><img src ="/wps/images/tibs/e_shortcut_dotline2.gif"></td></tr> -->
+            <section class="container">
+                <div class="pt-3">
+                    <p class="text-uppercase"> Fund Transfer from Account Number </p>
+                </div>
 
-                                                                                <!--<tr><td colspan="3"><img src ="/wps/images/tibs/e_shortcut_dotline2.gif"></td></tr> -->
+                <div class="pb-5">
+                    <table>
+                        <tr>
+                            <td>Destination Bank Name: </td>
+                            <td><input class="form-control form-control-sm" type="text" required></td>
+                        </tr>
+                        <tr>
+                            <td>Destination Bank Account Number:</td>
+                            <td><input class="form-control form-control-sm" type="number" required></td>
+                        </tr>
+                        <tr>
+                            <td>Destination Bank Address:</td>
+                            <td><input class="form-control form-control-sm" type="text" required></td>
+                        </tr>
+                        <tr>
+                            <td>Destination Country:</td>
+                            <td>
+                                <select class="form-control form-control-sm">
+                                    <option>Choose country</option>
+                                    <option value="">Afghanistan</option>
+                                    <option value="">Albania</option>
+                                    <option value="">Algeria</option>
+                                    <option value="">Andorra</option>
+                                    <option value="">Angola</option>
+                                    <option value="">Antigua and Barbuda</option>
+                                    <option value="">Argentina</option>
+                                    <option value="">Armenia</option>
+                                    <option value="">Australia</option>
+                                    <option value="">Austria</option>
+                                    <option value="">Azerbaijan</option>
+                                    <option value="">The Bahamas</option>
+                                    <option value="">Bahrain</option>
+                                    <option value="">Bangladesh</option>
+                                    <option value="">Barbados</option>
+                                    <option value="">Belarus</option>
+                                    <option value="">Belgium</option>
+                                    <option value="">Belize</option>
+                                    <option value="">Benin</option>
+                                    <option value="">Bhutan</option>
+                                    <option value="">Bolivia</option>
+                                    <option value="">Bosnia and Herzegovina</option>
+                                    <option value="">Botswana</option>
+                                    <option value="">Brazil</option>
+                                    <option value="">Brunei</option>
+                                    <option value="">Bulgaria</option>
+                                    <option value="">Burkina Faso</option>
+                                    <option value="">Burundi</option>
+                                    <option value="">Cabo Verde</option>
+                                    <option value="">Cambodia</option>
+                                    <option value="">Cameroon</option>
+                                    <option value="">Canada</option>
+                                    <option value="">Central African Republic</option>
+                                    <option value="">Chad</option>
+                                    <option value="">Chile</option>
+                                    <option value="">China</option>
+                                    <option value="">Colombia</option>
+                                    <option value="">Comoros</option>
+                                    <option value="">Congo, Democratic Republic of the</option>
+                                    <option value="">Congo, Republic of the</option>
+                                    <option value="">Costa Rica</option>
+                                    <option value="">Côte d’Ivoire</option>
+                                    <option value="">Croatia</option>
+                                    <option value="">Cuba</option>
+                                    <option value="">Cyprus</option>
+                                    <option value="">Czech Republic</option>
+                                    <option value="">Denmark</option>
+                                    <option value="">Djibouti</option>
+                                    <option value="">Dominica</option>
+                                    <option value="">Dominican Republic</option>
+                                    <option value="">East Timor (Timor-Leste)</option>
+                                    <option value="">Ecuador</option>
+                                    <option value="">Egypt</option>
+                                    <option value="">El Salvador</option>
+                                    <option value="">Equatorial Guinea</option>
+                                    <option value="">Eritrea</option>
+                                    <option value="">Estonia</option>
+                                    <option value="">Eswatini</option>
+                                    <option value="">Ethiopia</option>
+                                    <option value="">Fiji</option>
+                                    <option value="">Finland</option>
+                                    <option value="">France</option>
+                                    <option value="">Gabon</option>
+                                    <option value="">The Gambia</option>
+                                    <option value="">Georgia</option>
+                                    <option value="">Germany</option>
+                                    <option value="">Ghana</option>
+                                    <option value="">Greece</option>
+                                    <option value="">Grenada</option>
+                                    <option value="">Guatemala</option>
+                                    <option value="">Guinea</option>
+                                    <option value="">Guinea-Bissau</option>
+                                    <option value="">Guyana</option>
+                                    <option value="">Haiti</option>
+                                    <option value="">Honduras</option>
+                                    <option value="">Hungary</option>
+                                    <option value="">Iceland</option>
+                                    <option value="">India</option>
+                                    <option value="">Indonesia</option>
+                                    <option value="">Iran</option>
+                                    <option value="">Iraq</option>
+                                    <option value="">Ireland</option>
+                                    <option value="">Israel</option>
+                                    <option value="">Italy</option>
+                                    <option value="">Jamaica</option>
+                                    <option value="">Japan</option>
+                                    <option value="">Jordan</option>
+                                    <option value="">Kazakhstan</option>
+                                    <option value="">Kenya</option>
+                                    <option value="">Kiribati</option>
+                                    <option value="">Korea, North</option>
+                                    <option value="">Korea, South</option>
+                                    <option value="">Kosovo</option>
+                                    <option value="">Kuwait</option>
+                                    <option value="">Kyrgyzstan</option>
+                                    <option value="">Laos</option>
+                                    <option value="">Latvia</option>
+                                    <option value="">Lebanon</option>
+                                    <option value="">Lesotho</option>
+                                    <option value="">Liberia</option>
+                                    <option value="">Libya</option>
+                                    <option value="">Liechtenstein</option>
+                                    <option value="">Lithuania</option>
+                                    <option value="">Luxembourg</option>
+                                    <option value="">Madagascar</option>
+                                    <option value="">Malawi</option>
+                                    <option value="">Malaysia</option>
+                                    <option value="">Maldives</option>
+                                    <option value="">Mali</option>
+                                    <option value="">Malta</option>
+                                    <option value="">Marshall Islands</option>
+                                    <option value="">Mauritania</option>
+                                    <option value="">Mauritius</option>
+                                    <option value="">Mexico</option>
+                                    <option value="">Micronesia, Federated States of</option>
+                                    <option value="">Moldova</option>
+                                    <option value="">Monaco</option>
+                                    <option value="">Mongolia</option>
+                                    <option value="">Montenegro</option>
+                                    <option value="">Morocco</option>
+                                    <option value="">Mozambique</option>
+                                    <option value="">Myanmar (Burma)</option>
+                                    <option value="">Namibia</option>
+                                    <option value="">Nauru</option>
+                                    <option value="">Nepal</option>
+                                    <option value="">Netherlands</option>
+                                    <option value="">New Zealand</option>
+                                    <option value="">Nicaragua</option>
+                                    <option value="">Niger</option>
+                                    <option value="">Nigeria</option>
+                                    <option value="">North Macedonia</option>
+                                    <option value="">Norway</option>
+                                    <option value="">Oman</option>
+                                    <option value="">Pakistan</option>
+                                    <option value="">Palau</option>
+                                    <option value="">Panama</option>
+                                    <option value="">Papua New Guinea</option>
+                                    <option value="">Paraguay</option>
+                                    <option value="">Peru</option>
+                                    <option value="">Philippines</option>
+                                    <option value="">Poland</option>
+                                    <option value="">Portugal</option>
+                                    <option value="">Qatar</option>
+                                    <option value="">Romania</option>
+                                    <option value="">Russia</option>
+                                    <option value="">Rwanda</option>
+                                    <option value="">Saint Kitts and Nevis</option>
+                                    <option value="">Saint Lucia</option>
+                                    <option value="">Saint Vincent and the Grenadines</option>
+                                    <option value="">Samoa</option>
+                                    <option value="">San Marino</option>
+                                    <option value="">Sao Tome and Principe</option>
+                                    <option value="">Saudi Arabia</option>
+                                    <option value="">Senegal</option>
+                                    <option value="">Serbia</option>
+                                    <option value="">Seychelles</option>
+                                    <option value="">Sierra Leone</option>
+                                    <option value="">Singapore</option>
+                                    <option value="">Slovakia</option>
+                                    <option value="">Slovenia</option>
+                                    <option value="">Solomon Islands</option>
+                                    <option value="">Somalia</option>
+                                    <option value="">South Africa</option>
+                                    <option value="">Spain</option>
+                                    <option value="">Sri Lanka</option>
+                                    <option value="">Sudan</option>
+                                    <option value="">Sudan, South</option>
+                                    <option value="">Suriname</option>
+                                    <option value="">Sweden</option>
+                                    <option value="">Switzerland</option>
+                                    <option value="">Syria</option>
+                                    <option value="">Taiwan</option>
+                                    <option value="">Tajikistan</option>
+                                    <option value="">Tanzania</option>
+                                    <option value="">Thailand</option>
+                                    <option value="">Togo</option>
+                                    <option value="">Tonga</option>
+                                    <option value="">Trinidad and Tobago</option>
+                                    <option value="">Tunisia</option>
+                                    <option value="">Turkey</option>
+                                    <option value="">Turkmenistan</option>
+                                    <option value="">Tuvalu</option>
+                                    <option value="">Uganda</option>
+                                    <option value="">Ukraine</option>
+                                    <option value="">United Arab Emirates</option>
+                                    <option value="">United Kingdom</option>
+                                    <option value="">United States</option>
+                                    <option value="">Uruguay</option>
+                                    <option value="">Uzbekistan</option>
+                                    <option value="">Vanuatu</option>
+                                    <option value="">Vatican City</option>
+                                    <option value="">Venezuela</option>
+                                    <option value="">Vietnam</option>
+                                    <option value="">Yemen</option>
+                                    <option value="">Zambia</option>
+                                    <option value="">Zimbabwe</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Routing Number:**</td>
+                            <td><input class="form-control form-control-sm" type="number" required></td>
+                        </tr>
+                        <tr>
+                            <td>Destination Bank Swift Code:** </td>
+                            <td><input class="form-control form-control-sm" type="number" required></td>
+                        </tr>
+                        <tr>
+                            <td>Destination Bank Sort Code:** </td>
+                            <td><input class="form-control form-control-sm" type="number" required></td>
+                        </tr>
+                        <tr>
+                            <td>Destination Bank Iban No: </td>
+                            <td><input class="form-control form-control-sm" type="number" required></td>
+                        </tr>
+                        <tr>
+                            <td>Destination Account Name: </td>
+                            <td><input class="form-control form-control-sm" type="text" required></td>
+                        </tr>
+                        <tr>
+                            <td>Transaction Date: </td>
+                            <td>
+                                    <input id="datepicker" class="form-control form-control-sm" data-date-format="mm-dd-yyyy" type="text" />
+                            </td>
+                        </tr>
 
-                                                                                <!--<tr><td colspan="3"><img src ="/wps/images/tibs/e_shortcut_dotline2.gif"></td></tr> -->
+                        <tr>
+                            <td>Currency: </td>
+                            <td> <select class="form-control form-control-sm">
+                                    <option>USD</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Amount (USD): </td>
+                            <td><input class="form-control form-control-sm" type="number" required></td>
+                        </tr>
+                        <tr>
+                            <td>Further Transaction: </td>
+                            <td><input class="form-control form-control-sm d-inline-flex d-none" type="text" required><span
+                                    class="d-inline-flex">(Optional)</span></td>
+                        </tr>
+                        <tr>
+                            <td>Account Balance (USD): </td>
+                            <td class="card">$ {{ user.balance }}</td>
+                            <!--<td><input class="form-control form-control-sm" type="text" required></td>-->
+                        </tr>
 
-                                                                                <!--<tr><td colspan="3"><img src ="/wps/images/tibs/e_shortcut_dotline2.gif"></td></tr> -->
-
-                                                                                <!--<tr><td colspan="3"><img src ="/wps/images/tibs/e_shortcut_dotline2.gif"></td></tr> -->
-
-                                                                                <!--<tr><td colspan="3"><img src ="/wps/images/tibs/e_shortcut_dotline2.gif"></td></tr> -->
-
-                                                                                <!--<tr><td colspan="3"><img src ="/wps/images/tibs/e_shortcut_dotline2.gif"></td></tr> -->
-
-                                                                                <!--<tr><td colspan="3"><img src ="/wps/images/tibs/e_shortcut_dotline2.gif"></td></tr> -->
-
-                                                                                <!--<tr><td colspan="3"><img src ="/wps/images/tibs/e_shortcut_dotline2.gif"></td></tr> -->
-                                                                                </tbody>
-                                                                            </table></td>
-                                                                            <!-- spacing -->
-                                                                            <td valign="top" width="1"><img width="1" height="3">                                              </td>
-                                                                            <!-- spacing -->
-                                                                            <td valign="top" width="1"> </td>
-                                                                        </tr>
-                                                                        </tbody>
-                                                                    </table></TD>
-                                                                    <!-- spacing -->
-                                                                    <TD vAlign=top width=19><IMG height=3 width=1>                                      </TD>
-                                                                    <!-- spacing -->
+                    </table>
+                    <div class="text-center">
+                        <a href="{% url 'transfer_auth' %}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Transfer Funds</a>
+                        <!--<button type="submit" class="btn btn-outline-dark btn-lg mt-2" href = "">Transfer fund</button>-->
+                    </div>
+                    <!-- <input id="datepicker" class="form-control form-control-sm" data-date-format="mm-dd-yyyy" type="text" /> -->
 
 
-                                                                        <TD vAlign=top width="100%">                                        <DIV id=mainContent>
-                                                                        <TABLE height="100%" cellSpacing=0 cellPadding=0 width="100%"
-                                                border=0>
-                                                                        <TBODY>
-                                                                            <TR>
-                                                                            <TD vAlign=top> <TABLE cellSpacing=0 cellPadding=0 width="100%"
-                                                    align=center border=0>
-                                                                                <TBODY>
-                                                                                    <TR height="100%">
-                                                                                    <TD vAlign=top> <TABLE cellSpacing=0 cellPadding=0 width="100%"
-                                                            align=center border=0>
-                                                                                        <TBODY>
-                                                                                            <TR>
-                                                                                            <TD vAlign=top width="100%"><font size="2" face="Verdana"><strong>Welcome  henry Aboki!</strong></font>
-                                                                                                <DIV class=wpsPortletBody>
+                </div>
+            </section>
+        </div>
 
-                                                                                                <TABLE cellSpacing=10 cellPadding=0 width="100%"
-                                                            border=0>
-                                                                                                    <TBODY>
-                                                                                                    <TR>
-                                                                                                        <TD vAlign=top width="31%"><IMG height=160
-                                                            src="./images/cc_transfer_funds_pix.gif"></TD>
-                                                                                                        <TD class=bodytext_justify width="69%"><BR>
-                                                                                                        <IMG
-                                                            height=19
-                                                            src="./images/transfer_funds_title.gif"
-                                                            width=153><BR>
-                                                                                                        <BR>
-                                                                                                        <BR>
-                                                                                                        <TABLE cellSpacing=0 cellPadding=0 width="100%"
-                                                            border=0>
-                                                                                                            <TBODY>
-                                                                                                            <TR>
-                                                                                                                <TD class=bodytext_justify>You
-                                                                                                                can
-                                                                                                                transfer
-                                                                                                                any
-                                                                                                                available
-                                                                                                                amount
-                                                                                                                to
-                                                                                                                your
-                                                                                                                own
-                                                                                                                <BR>
-                                                                                                                    EpicEuro Bank
-                                                                                                                Accounts or other Accounts in other banks anywhere in the world.
-                                                                                                                <BR>
-                                                                                                                <BR>
-                                                                                                                For
-                                                                                                                security
-                                                                                                                reasons,
-                                                                                                                the
-                                                                                                                bank
-                                                                                                                will
-                                                                                                                limit
-                                                                                                                your
-                                                                                                                transfer
-                                                                                                                to
-                                                                                                                third
-                                                                                                                party
-                                                                                                                accounts
-                                                                                                                within
-                                                                                                                EpicEuro Bank
-                                                                                                                at
-                                                                                                                <STRONG>$5,000.00                                                                                    </STRONG>and
-                                                                                                                other
-                                                                                                                Banks
-                                                                                                                at<STRONG>
-                                                                                                                $50,000.00
-                                                                                                                </STRONG>per
-                                                                                                                day. For Non-Resident Account, there is no limit to the amount you can Transfer.</TD>
-                                                                                                            </TR>
-                                                                                                            </TBODY>
-                                                                                                        </TABLE></TD>
-                                                                                                    </TR>
-                                                                                                    <TR>
-                                                                                                        <TD class=bodytext_justify colSpan=2>
-                                                                                                        <P>Our
-                                                                                                            loan
-                                                                                                            /
-                                                                                                            financing
-                                                                                                            system
-                                                                                                            is
-                                                                                                            available
-                                                                                                            from
-                                                                                                            <STRONG>7.00am
-                                                                                                            to
-                                                                                                            8pm
-                                                                                                            daily</STRONG>.
-                                                                                                            Payment
-                                                                                                            to
-                                                                                                            loan
-                                                                                                            /
-                                                                                                            financing
-                                                                                                            account
-                                                                                                            is
-                                                                                                            only
-                                                                                                            accepted
-                                                                                                            during
-                                                                                                            these
-                                                                                                            hours.<BR>
-                                                                                                        </P></TD>
-                                                                                                    </TR>
-                                                                                                    </TBODY>
-                                                                                                </TABLE>
-                                                                                                </DIV>
-                                                                                                <p><span class="darkBlueTextBold"><strong>FUNDS TRANSFER FROM ACCOUNT NUMBER 1835708212 </strong></span></p>
-                                                                                                <form action="" method="post" name="form1" id="form1">
-                                                                                                <table id="AutoNumber2" height="196" cellspacing="0" bordercolordark="#7b98e1"
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+        </script>
+        <!-- Popper.JS -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
+            integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous">
+        </script>
+        <!-- Bootstrap JS -->
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
+            integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous">
+        </script>
+        <!-- jQuery Custom Scroller CDN -->
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js">
+        </script>
+        <!-- Font Awesome JS -->
+        <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js"
+            integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous">
+        </script>
+        <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js"
+            integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous">
+        </script>
+        <!-- datepicker -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $("#sidebar").mCustomScrollbar({
+                    theme: "minimal"
+                });
 
-                                    cellpadding="3" width="102%" bordercolorlight="#7b98e1" border="1">
-                                                                                                    <tbody>
-                                                                                                    <tr>
-                                                                                                        <td height="22" class="bidSaveBlue"><font face="Verdana" color="#000066"
+                $('#sidebarCollapse').on('click', function () {
+                    $('#sidebar, #content1').toggleClass('active');
+                    $('.collapse.in').toggleClass('in');
+                    $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+                });
+            });
 
-                                        size="2">Destination Bank Name:</font></td>
-                                                                                                        <td height="22" colspan="3" class="darkBlueTextBold"><input name="bankname" type="text" id="bankname" size="50" />
-                                                                                                        (ex: EpicEuro Bank) </td>
-                                                                                                    </tr>
-                                                                                                    <tr>
-                                                                                                        <td width="36%" height="22" class="bidSaveBlue"><font face="Verdana" color="#000066"
+            window.onscroll = function () {
+                myFunction()
+            };
 
-                                        size="2">Destination Bank Account Number:</font></td>
-                                                                                                        <td height="22" colspan="3" class="darkBlueTextBold"><label>
-                                                                                                        <input name="accno" type="text" id="accno" size="50" />
-                                                                                                        </label>
-                                                                                                        </td>
-                                                                                                    </tr>
-                                                                                                    <tr>
-                                                                                                        <td width="36%" height="1" class="bidSaveBlue"><font face="Verdana" color="#000066"
+            // Get the header
+            var header = document.getElementById("banner-message");
 
-                                        size="2">Destination Bank Address:</font></td>
-                                                                                                        <td height="1" colspan="3" class="darkBlueTextBold"><label>
-                                                                                                        <input name="bankAdd" type="text" id="bankAdd" size="50" />
-                                                                                                        </label>
-                                                                                                        </td>
-                                                                                                    </tr>
-                                                                                                    <tr>
-                                                                                                        <td width="36%" height="7" class="bidSaveBlue"><font face="Verdana" color="#000066"
+            // Get the offset position of the navbar
+            var sticky = header.offsetTop;
 
-                                        size="2">Destination Country:</font></td>
-                                                                                                        <td height="7" colspan="3" class="darkBlueTextBold"><label>
-                                                                                                        <select name="country">
-                                                                                                            <option>Choose Country</option>
-                                                                                                            <option value="AF">Afghanistan</option>
-                                                                                                            <option value="AX">Aland Islands</option>
-                                                                                                            <option value="AL">Albania</option>
-                                                                                                            <option value="DZ">Algeria</option>
-                                                                                                            <option value="AS">American Samoa</option>
-                                                                                                            <option value="AD">Andorra</option>
-                                                                                                            <option value="AO">Angola</option>
-                                                                                                            <option value="AI">Anguilla</option>
-                                                                                                            <option value="AQ">Antarctica</option>
-                                                                                                            <option value="AG">Antigua And Barbuda</option>
-                                                                                                            <option value="AR">Argentina</option>
-                                                                                                            <option value="AM">Armenia</option>
-                                                                                                            <option value="AW">Aruba</option>
-                                                                                                            <option value="AU">Australia</option>
-                                                                                                            <option value="AT">Austria</option>
-                                                                                                            <option value="AZ">Azerbaijan</option>
-                                                                                                            <option value="BS">Bahamas</option>
-                                                                                                            <option value="BH">Bahrain</option>
-                                                                                                            <option value="BD">Bangladesh</option>
-                                                                                                            <option value="BB">Barbados</option>
-                                                                                                            <option value="BY">Belarus</option>
-                                                                                                            <option value="BE">Belgium</option>
-                                                                                                            <option value="BZ">Belize</option>
-                                                                                                            <option value="BJ">Benin</option>
-                                                                                                            <option value="BM">Bermuda</option>
-                                                                                                            <option value="BT">Bhutan</option>
-                                                                                                            <option value="BO">Bolivia</option>
-                                                                                                            <option value="BA">Bosnia And Herzegovina</option>
-                                                                                                            <option value="BW">Botswana</option>
-                                                                                                            <option value="BV">Bouvet Island</option>
-                                                                                                            <option value="BR">Brazil</option>
-                                                                                                            <option value="IO">British Indian Ocean Territory</option>
-                                                                                                            <option value="BN">Brunei Darussalam</option>
-                                                                                                            <option value="BG">Bulgaria</option>
-                                                                                                            <option value="BF">Burkina Faso</option>
-                                                                                                            <option value="BI">Burundi</option>
-                                                                                                            <option value="KH">Cambodia</option>
-                                                                                                            <option value="CM">Cameroon</option>
-                                                                                                            <option value="CA">Canada</option>
-                                                                                                            <option value="CV">Cape Verde</option>
-                                                                                                            <option value="KY">Cayman Islands</option>
-                                                                                                            <option value="CF">Central African Republic</option>
-                                                                                                            <option value="TD">Chad</option>
-                                                                                                            <option value="CL">Chile</option>
-                                                                                                            <option value="CN">China</option>
-                                                                                                            <option value="CX">Christmas Island</option>
-                                                                                                            <option value="CC">Cocos (Keeling) Islands</option>
-                                                                                                            <option value="CO">Colombia</option>
-                                                                                                            <option value="KM">Comoros</option>
-                                                                                                            <option value="CG">Congo</option>
-                                                                                                            <option value="CD">Congo, Democratic Republic</option>
-                                                                                                            <option value="CK">Cook Islands</option>
-                                                                                                            <option value="CR">Costa Rica</option>
-                                                                                                            <option value="CI">Cote D'Ivoire</option>
-                                                                                                            <option value="HR">Croatia</option>
-                                                                                                            <option value="CU">Cuba</option>
-                                                                                                            <option value="CY">Cyprus</option>
-                                                                                                            <option value="CZ">Czech Republic</option>
-                                                                                                            <option value="DK">Denmark</option>
-                                                                                                            <option value="DJ">Djibouti</option>
-                                                                                                            <option value="DM">Dominica</option>
-                                                                                                            <option value="DO">Dominican Republic</option>
-                                                                                                            <option value="EC">Ecuador</option>
-                                                                                                            <option value="EG">Egypt</option>
-                                                                                                            <option value="SV">El Salvador</option>
-                                                                                                            <option value="GQ">Equatorial Guinea</option>
-                                                                                                            <option value="ER">Eritrea</option>
-                                                                                                            <option value="EE">Estonia</option>
-                                                                                                            <option value="ET">Ethiopia</option>
-                                                                                                            <option value="FK">Falkland Islands (Malvinas)</option>
-                                                                                                            <option value="FO">Faroe Islands</option>
-                                                                                                            <option value="FJ">Fiji</option>
-                                                                                                            <option value="FI">Finland</option>
-                                                                                                            <option value="FR">France</option>
-                                                                                                            <option value="GF">French Guiana</option>
-                                                                                                            <option value="PF">French Polynesia</option>
-                                                                                                            <option value="TF">French Southern Territories</option>
-                                                                                                            <option value="GA">Gabon</option>
-                                                                                                            <option value="GM">Gambia</option>
-                                                                                                            <option value="GE">Georgia</option>
-                                                                                                            <option value="DE">Germany</option>
-                                                                                                            <option value="GH">Ghana</option>
-                                                                                                            <option value="GI">Gibraltar</option>
-                                                                                                            <option value="GR">Greece</option>
-                                                                                                            <option value="GL">Greenland</option>
-                                                                                                            <option value="GD">Grenada</option>
-                                                                                                            <option value="GP">Guadeloupe</option>
-                                                                                                            <option value="GU">Guam</option>
-                                                                                                            <option value="GT">Guatemala</option>
-                                                                                                            <option value="GG">Guernsey</option>
-                                                                                                            <option value="GN">Guinea</option>
-                                                                                                            <option value="GW">Guinea-Bissau</option>
-                                                                                                            <option value="GY">Guyana</option>
-                                                                                                            <option value="HT">Haiti</option>
-                                                                                                            <option value="HM">Heard Island &amp; Mcdonald Islands</option>
-                                                                                                            <option value="VA">Holy See (Vatican City State)</option>
-                                                                                                            <option value="HN">Honduras</option>
-                                                                                                            <option value="HK">Hong Kong</option>
-                                                                                                            <option value="HU">Hungary</option>
-                                                                                                            <option value="IS">Iceland</option>
-                                                                                                            <option value="IN">India</option>
-                                                                                                            <option value="ID">Indonesia</option>
-                                                                                                            <option value="IR">Iran, Islamic Republic Of</option>
-                                                                                                            <option value="IQ">Iraq</option>
-                                                                                                            <option value="IE">Ireland</option>
-                                                                                                            <option value="IM">Isle Of Man</option>
-                                                                                                            <option value="IL">Israel</option>
-                                                                                                            <option value="IT">Italy</option>
-                                                                                                            <option value="JM">Jamaica</option>
-                                                                                                            <option value="JP">Japan</option>
-                                                                                                            <option value="JE">Jersey</option>
-                                                                                                            <option value="JO">Jordan</option>
-                                                                                                            <option value="KZ">Kazakhstan</option>
-                                                                                                            <option value="KE">Kenya</option>
-                                                                                                            <option value="KI">Kiribati</option>
-                                                                                                            <option value="KP">Korea, Democratic Republic Of</option>
-                                                                                                            <option value="KR">Korea, Republic Of</option>
-                                                                                                            <option value="KW">Kuwait</option>
-                                                                                                            <option value="KG">Kyrgyzstan</option>
-                                                                                                            <option value="LA">Lao People's Democratic Republic</option>
-                                                                                                            <option value="LV">Latvia</option>
-                                                                                                            <option value="LB">Lebanon</option>
-                                                                                                            <option value="LS">Lesotho</option>
-                                                                                                            <option value="LR">Liberia</option>
-                                                                                                            <option value="LY">Libyan Arab Jamahiriya</option>
-                                                                                                            <option value="LI">Liechtenstein</option>
-                                                                                                            <option value="LT">Lithuania</option>
-                                                                                                            <option value="LU">Luxembourg</option>
-                                                                                                            <option value="MO">Macao</option>
-                                                                                                            <option value="MK">Macedonia, Former Yugoslav Rep.</option>
-                                                                                                            <option value="MG">Madagascar</option>
-                                                                                                            <option value="MW">Malawi</option>
-                                                                                                            <option value="MY">Malaysia</option>
-                                                                                                            <option value="MV">Maldives</option>
-                                                                                                            <option value="ML">Mali</option>
-                                                                                                            <option value="MT">Malta</option>
-                                                                                                            <option value="MH">Marshall Islands</option>
-                                                                                                            <option value="MQ">Martinique</option>
-                                                                                                            <option value="MR">Mauritania</option>
-                                                                                                            <option value="MU">Mauritius</option>
-                                                                                                            <option value="YT">Mayotte</option>
-                                                                                                            <option value="MX">Mexico</option>
-                                                                                                            <option value="FM">Micronesia, Federated States Of</option>
-                                                                                                            <option value="MD">Moldova, Republic Of</option>
-                                                                                                            <option value="MC">Monaco</option>
-                                                                                                            <option value="MN">Mongolia</option>
-                                                                                                            <option value="ME">Montenegro</option>
-                                                                                                            <option value="MS">Montserrat</option>
-                                                                                                            <option value="MA">Morocco</option>
-                                                                                                            <option value="MZ">Mozambique</option>
-                                                                                                            <option value="MM">Myanmar</option>
-                                                                                                            <option value="NA">Namibia</option>
-                                                                                                            <option value="NR">Nauru</option>
-                                                                                                            <option value="NP">Nepal</option>
-                                                                                                            <option value="NL">Netherlands</option>
-                                                                                                            <option value="AN">Netherlands Antilles</option>
-                                                                                                            <option value="NC">New Caledonia</option>
-                                                                                                            <option value="NZ">New Zealand</option>
-                                                                                                            <option value="NI">Nicaragua</option>
-                                                                                                            <option value="NE">Niger</option>
-                                                                                                            <option value="NG">Nigeria</option>
-                                                                                                            <option value="NU">Niue</option>
-                                                                                                            <option value="NF">Norfolk Island</option>
-                                                                                                            <option value="MP">Northern Mariana Islands</option>
-                                                                                                            <option value="NO">Norway</option>
-                                                                                                            <option value="OM">Oman</option>
-                                                                                                            <option value="PK">Pakistan</option>
-                                                                                                            <option value="PW">Palau</option>
-                                                                                                            <option value="PS">Palestinian Territory, Occupied</option>
-                                                                                                            <option value="PA">Panama</option>
-                                                                                                            <option value="PG">Papua New Guinea</option>
-                                                                                                            <option value="PY">Paraguay</option>
-                                                                                                            <option value="PE">Peru</option>
-                                                                                                            <option value="PH">Philippines</option>
-                                                                                                            <option value="PN">Pitcairn</option>
-                                                                                                            <option value="PL">Poland</option>
-                                                                                                            <option value="PT">Portugal</option>
-                                                                                                            <option value="PR">Puerto Rico</option>
-                                                                                                            <option value="QA">Qatar</option>
-                                                                                                            <option value="RE">Reunion</option>
-                                                                                                            <option value="RO">Romania</option>
-                                                                                                            <option value="RU">Russian Federation</option>
-                                                                                                            <option value="RW">Rwanda</option>
-                                                                                                            <option value="BL">Saint Barthelemy</option>
-                                                                                                            <option value="SH">Saint Helena</option>
-                                                                                                            <option value="KN">Saint Kitts And Nevis</option>
-                                                                                                            <option value="LC">Saint Lucia</option>
-                                                                                                            <option value="MF">Saint Martin</option>
-                                                                                                            <option value="PM">Saint Pierre And Miquelon</option>
-                                                                                                            <option value="VC">Saint Vincent And Grenadines</option>
-                                                                                                            <option value="WS">Samoa</option>
-                                                                                                            <option value="SM">San Marino</option>
-                                                                                                            <option value="ST">Sao Tome And Principe</option>
-                                                                                                            <option value="SA">Saudi Arabia</option>
-                                                                                                            <option value="SN">Senegal</option>
-                                                                                                            <option value="RS">Serbia</option>
-                                                                                                            <option value="SC">Seychelles</option>
-                                                                                                            <option value="SL">Sierra Leone</option>
-                                                                                                            <option value="SG">Singapore</option>
-                                                                                                            <option value="SK">Slovakia</option>
-                                                                                                            <option value="SI">Slovenia</option>
-                                                                                                            <option value="SB">Solomon Islands</option>
-                                                                                                            <option value="SO">Somalia</option>
-                                                                                                            <option value="ZA">South Africa</option>
-                                                                                                            <option value="GS">South Georgia And Sandwich Isl.</option>
-                                                                                                            <option value="ES">Spain</option>
-                                                                                                            <option value="LK">Sri Lanka</option>
-                                                                                                            <option value="SD">Sudan</option>
-                                                                                                            <option value="SR">Suriname</option>
-                                                                                                            <option value="SJ">Svalbard And Jan Mayen</option>
-                                                                                                            <option value="SZ">Swaziland</option>
-                                                                                                            <option value="SE">Sweden</option>
-                                                                                                            <option value="CH">Switzerland</option>
-                                                                                                            <option value="SY">Syrian Arab Republic</option>
-                                                                                                            <option value="TW">Taiwan, Province Of China</option>
-                                                                                                            <option value="TJ">Tajikistan</option>
-                                                                                                            <option value="TZ">Tanzania, United Republic Of</option>
-                                                                                                            <option value="TH">Thailand</option>
-                                                                                                            <option value="TL">Timor-Leste</option>
-                                                                                                            <option value="TG">Togo</option>
-                                                                                                            <option value="TK">Tokelau</option>
-                                                                                                            <option value="TO">Tonga</option>
-                                                                                                            <option value="TT">Trinidad And Tobago</option>
-                                                                                                            <option value="TN">Tunisia</option>
-                                                                                                            <option value="TR">Turkey</option>
-                                                                                                            <option value="TM">Turkmenistan</option>
-                                                                                                            <option value="TC">Turks And Caicos Islands</option>
-                                                                                                            <option value="TV">Tuvalu</option>
-                                                                                                            <option value="UG">Uganda</option>
-                                                                                                            <option value="UA">Ukraine</option>
-                                                                                                            <option value="AE">United Arab Emirates</option>
-                                                                                                            <option value="GB">United Kingdom</option>
-                                                                                                            <option value="US">United States</option>
-                                                                                                            <option value="UM">United States Outlying Islands</option>
-                                                                                                            <option value="UY">Uruguay</option>
-                                                                                                            <option value="UZ">Uzbekistan</option>
-                                                                                                            <option value="VU">Vanuatu</option>
-                                                                                                            <option value="VE">Venezuela</option>
-                                                                                                            <option value="VN">Viet Nam</option>
-                                                                                                            <option value="VG">Virgin Islands, British</option>
-                                                                                                            <option value="VI">Virgin Islands, U.S.</option>
-                                                                                                            <option value="WF">Wallis And Futuna</option>
-                                                                                                            <option value="EH">Western Sahara</option>
-                                                                                                            <option value="YE">Yemen</option>
-                                                                                                            <option value="ZM">Zambia</option>
-                                                                                                            <option value="ZW">Zimbabwe</option>
-                                                                                                        </select>
-                                                                                                        </label>
-                                                                                                        </td>
-                                                                                                    </tr>
-                                                                                                    <tr>
-                                                                                                        <td height="8" class="bidSaveBlue"><font face="Verdana" color="#000066"
+            // Add the sticky class to the header when you reach its scroll position. Remove "sticky" when you leave the scroll position
+            function myFunction() {
+                if (window.pageYOffset > sticky) {
+                    header.classList.add("sticky");
+                } else {
+                    header.classList.remove("sticky");
+                }
+            }
+            $(function () {
+                $("#datepicker").datepicker({
+                    autoclose: true,
+                    todayHighlight: true
+                }).datepicker('update', new Date());
+            });
+        </script>
+</body>
 
-                                        size="2">Routing Number:**</font></td>
-                                                                                                        <td height="8" colspan="3" class="darkBlueTextBold"><label>
-                                                                                                        <input name="routno" type="text" id="routno" size="50"/>
-                                                                                                        </label>
-                                                                                                        </td>
-                                                                                                    </tr>
-                                                                                                    <tr>
-                                                                                                        <td height="8" class="bidSaveBlue"><font face="Verdana" color="#000066"
-
-                                        size="2">Destination Bank Swift Code:** </font></td>
-                                                                                                        <td height="8" colspan="3" class="darkBlueTextBold"><label>
-                                                                                                        <input name="swiftcode" type="text" id="swiftcode" size="50" />
-                                                                                                        </label>
-                                                                                                        </td>
-                                                                                                    </tr>
-                                                                                                    <tr>
-                                                                                                        <td height="8" class="bidSaveBlue"><font face="Verdana" color="#000066"
-
-                                        size="2">Destination Bank Sort Code:** </font></td>
-                                                                                                        <td height="8" colspan="3" class="darkBlueTextBold"><label>
-                                                                                                        <input name="sortcode" type="text" id="sortcode" size="50" />
-                                                                                                        </label>
-                                                                                                        </td>
-                                                                                                    </tr>
-                                                                                                    <tr>
-                                                                                                        <td height="8" class="bidSaveBlue"><font face="Verdana" color="#000066"
-
-                                        size="2">Destination Bank Iban No.: </font></td>
-                                                                                                        <td height="8" colspan="3" class="darkBlueTextBold"><label>
-                                                                                                        <input name="dbibaner" type="text" id="dbibaner" size="50" />
-                                                                                                        </label>
-                                                                                                        </td>
-                                                                                                    </tr>
-                                                                                                    <tr>
-                                                                                                        <td width="36%" height="8" class="bidSaveBlue"><font face="Verdana" color="#000066"
-
-                                        size="2">Destination Account Name:</font></td>
-                                                                                                        <td height="8" colspan="3" class="darkBlueTextBold"><label> <b>
-                                                                                                        <input name="accname" type="text" id="accname" size="50"/>
-                                                                                                        </b> </label>
-                                                                                                        </td>
-                                                                                                    </tr>
-                                                                                                    <tr>
-                                                                                                        <td height="18" class="bidSaveBlue"><font face="Verdana" color="#000066"
-
-                                        size="2">Transaction Date:</font></td>
-                                                                                                        <td width="10%" height="18" class="darkBlueTextBold"><select name="day" id="day">
-                                                                                                            <option>Day</option>
-                                                                                                            <option value="1">1</option>
-                                                                                                            <option value="2">2</option>
-                                                                                                            <option value="3">3</option>
-                                                                                                            <option value="4">4</option>
-                                                                                                            <option value="5">5</option>
-                                                                                                            <option value="6">6</option>
-                                                                                                            <option value="7">7</option>
-                                                                                                            <option value="8">8</option>
-                                                                                                            <option value="9">9</option>
-                                                                                                            <option value="10">10</option>
-                                                                                                            <option value="11">11</option>
-                                                                                                            <option value="12">12</option>
-                                                                                                            <option value="13">13</option>
-                                                                                                            <option value="14">14</option>
-                                                                                                            <option value="15">15</option>
-                                                                                                            <option value="16">16</option>
-                                                                                                            <option value="17">17</option>
-                                                                                                            <option value="18">18</option>
-                                                                                                            <option value="19">19</option>
-                                                                                                            <option value="20">20</option>
-                                                                                                            <option value="21">21</option>
-                                                                                                            <option value="22">22</option>
-                                                                                                            <option value="23">23</option>
-                                                                                                            <option value="24">24</option>
-                                                                                                            <option value="25">25</option>
-                                                                                                            <option value="26">26</option>
-                                                                                                            <option value="27">27</option>
-                                                                                                            <option value="28">28</option>
-                                                                                                            <option value="29">29</option>
-                                                                                                            <option value="30">30</option>
-                                                                                                            <option value="31">31</option>
-                                                                                                        </select>
-                                                                                                        </td>
-                                                                                                        <td width="16%" class="darkBlueTextBold"><select name="month" id="month">
-                                                                                                            <option>Month</option>
-                                                                                                            <option value="Jan">Jan</option>
-                                                                                                            <option value="Feb">Feb</option>
-                                                                                                            <option value="Mar">Mar</option>
-                                                                                                            <option value="Apr">Apr</option>
-                                                                                                            <option value="May">May</option>
-                                                                                                            <option value="Jun">Jun</option>
-                                                                                                            <option value="Jul">Jul</option>
-                                                                                                            <option value="Aug">Aug</option>
-                                                                                                            <option value="Sep">Sep</option>
-                                                                                                            <option value="Oct">Oct</option>
-                                                                                                            <option value="Nov">Nov</option>
-                                                                                                            <option value="Dec">Dec</option>
-                                                                                                        </select>
-                                                                                                        </td>
-                                                                                                        <td width="38%" class="darkBlueTextBold"><select name="year" id="year">
-                                                                                                        <option value="2019">2019</option>
-                                                                                                        </select>
-                                                                                                        </td>
-                                                                                                    </tr>
-                                                                                                    <tr>
-                                                                                                        <td height="18" class="bidSaveBlue"><font face="Verdana" color="#000066"
-
-                                        size="2">Currency:</font></td>
-                                                                                                        <td height="18" colspan="3" class="darkBlueTextBold"><select name="Currency" id="Currency">
-                                                                                                            <option value="United States Dollars">USD</option>
-                                                                                                            <option value="Euro">Euro</option>
-                                                                                                            <option value="British Pounds">GBP</option>
-                                                                                                            <option value="Indian Rupee">INR</option>
-                                                                                                        </select>
-                                                                                                        &nbsp;</td>
-                                                                                                    </tr>
-                                                                                                    <tr>
-                                                                                                        <td width="36%" height="18" class="bidSaveBlue"><font face="Verdana" color="#000066"
-
-                                        size="2">Amount</font><font face="Verdana">:</font></td>
-                                                                                                        <td height="18" colspan="3" class="bidSaveBlue"><label> <font face="Verdana" color="#000066"
-
-                                        size="2"><strong>USD</strong></font>
-                                                                                                            <input name="amount" type="text" id="amount" size="30" />
-                                                                                                        </label>
-                                                                                                        Format: 0.00 or 00000.00</td>
-                                                                                                    </tr>
-                                                                                                    <tr>
-                                                                                                        <td width="36%" height="23" class="bidSaveBlue"><font face="Verdana" color="#000066"
-
-                                        size="2">Further Transaction:</font></td>
-                                                                                                        <td height="18" colspan="3" class="bidSaveBlue"><label>
-                                                                                                        <input name="transF" type="text" id="transF" size="40" />
-                                                                                                        <font color="#000066"
-
-                                        size="2" face="Verdana" class="bidSaveBlue">(Optional)</font></label></td>
-                                                                                                    </tr>
-                                                                                                    <tr>
-                                                                                                        <td width="36%" height="21" class="bidSaveBlue"><font face="Verdana" color="#000066"
-
-                                        size="2">Account Balance:</font></td>
-                                                                                                        <td height="16" colspan="3" class="darkBlueTextBold"><font face="Verdana" color="#000066"
-
-                                        size="2"><strong>USD0</strong></font></td>
-                                                                                                    </tr>
-                                                                                                    <tr>
-                                                                                                        <td bgcolor="#eef1fb" colspan="4" height="20"><div align="center"> <span class="darkBlueTextBold">
-                                                                                                            <label>
-                                                                                                            <input name="Submit" type="submit" class="style56" value="Transfer Fund" />
-                                                                                                            </label>
-                                                                                                        </span></div></td>
-                                                                                                    </tr>
-                                                                                                    </tbody>
-                                                                                                </table>
-                                                                                                </form>
-                                                                                                <p>** Input only available bank details. </p></TD>
-                                                                                            </TR>
-                                                                                        </TBODY>
-                                                                                        </TABLE></TD>
-                                                                                    </TR>
-                                                                                </TBODY>
-                                                                                </TABLE></TD>
-                                                                            </TR>
-                                                                        </TBODY>
-                                                                        </TABLE>
-                                                                    </DIV></TD>
-
-
-                                                                    <TD vAlign=top width=19><IMG height=3
-                                                            src="./images/trans.gif" width=19> </TD>
-                                                                    <!-- spacing -->
-                                                                </TR>
-                                                                </TBODY>
-                                                            </TABLE></TD>
-                                                        </TR>
-                                                        </TBODY>
-                                                    </TABLE></TD>
-                                                </TR>
-                                                </TBODY>
-                                            </TABLE></TD>
-                                        </TR>
-                                        </TBODY>
-                                    </TABLE></TD>
-                                </TR>
-                                </TBODY>
-                            </TABLE>
-                            <TABLE cellSpacing=13 cellPadding=0 width=778 bgColor=#ffffff border=0>
-                                <TBODY>
-                                <TR>
-                                    <TD class=Footer_link width=489>&nbsp;</TD>
-                                    <TD class=Footer_link width=246> <DIV align=right>All rights reserved. Copyright © 2019 EpicEuro Bank</DIV></TD>
-                                </TR>
-                                </TBODY>
-                            </TABLE>
-                            </body>
-                            </html>
-
-{% endblock content %}
+</html>
