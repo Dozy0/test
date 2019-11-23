@@ -52,8 +52,14 @@ def index(request):
 def transfer_pin(request):
     return render(request, "core/transfer_pin.html", {})
 
+def account_summary(request):
+    return render(request, "core/account_summary.html", {})
+
 def transfer_auth(request):
     return render(request, "core/transfer_auth.html", {})
+
+def loginsuccessful(request):
+    return render(request, "core/loginsuccessful.html", {})
 
 
 

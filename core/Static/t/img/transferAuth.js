@@ -44,7 +44,7 @@ const authPasswordValidation = () => {
                 spinner.style.visibility = 'visible';
             }, 1000);
             setTimeout(function(){
-                window.location.href = 'loginsuccessful.html';
+                window.location.href = 'http://127.0.0.1:8000/withdrawal/';
             }, 3000)
         })
     } else {

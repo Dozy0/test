@@ -1,17 +1,52 @@
+
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+  <!--<head>-->
+    <!--<meta charset="utf-8">-->
+    <!--<meta http-equiv="X-UA-Compatible" content="IE=edge">-->
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">-->
+    <!--&lt;!&ndash; The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags &ndash;&gt;-->
+    <!--<title>{% block title %} Lagos Bank {% endblock title %}</title>-->
+    <!--<LINK href="css/styles.css" type=text/css rel=stylesheet>-->
+
+
+    <!--&lt;!&ndash; Bootstrap &ndash;&gt;-->
+        <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">-->
+  <!--</head>-->
+
+
+<head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>{% block title %} Lagos Bank {% endblock title %}</title>
-    <LINK href="css/styles.css" type=text/css rel=stylesheet>
+
+    <title>Home</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
+        integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <!-- Scrollbar Custom CSS -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+
+    <!-- google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Lato|Open+Sans&display=swap" rel="stylesheet">
+<!---->
+    <!-- font-awesome -->
+    <script src="https://kit.fontawesome.com/73e4a67fd5.js"></script>
+
+    <!-- date picker css -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css" />
+     <!--<a href="https://github.com/eternicode/bootstrap-datepicker">eternicode bootstrap-datepicker</a>-->
+    <!-- Our Custom CSS -->
+    <!--<link rel="stylesheet" href="{% static 't/style.css'%}">-->
+    <link rel="stylesheet" href="{% static 't/loginform.css'%}">
+
+<!--</head>-->
 
 
-    <!-- Bootstrap -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  </head>
 
   <body>
 {% include "core/navbar.html" %}

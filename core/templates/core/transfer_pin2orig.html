@@ -1,0 +1,371 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Transfer</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <!-- Scrollbar Custom CSS -->
+    <link
+        href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css"
+        rel="stylesheet">
+
+    <!-- google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Lato|Open+Sans&display=swap" rel="stylesheet">
+
+    <!-- date picker css -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"
+        rel="stylesheet">
+    <!-- <a href="https://github.com/eternicode/bootstrap-datepicker">eternicode bootstrap-datepicker</a> -->
+    <!-- Our Custom CSS -->
+    <link href="{% static 't/style.css'%}" rel="stylesheet">
+</head>
+
+<style>
+    tr td:first-child {
+        width: 30%;
+    }
+
+    tr td:last-child {
+        width: 40%;
+    }
+
+    table {
+        width: 80%;
+        align-content: center;
+        margin-left: 100px;
+    }
+</style>
+
+<body>
+
+    <header>
+        <div id="content1">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+                <div class="container-fluid">
+                    <img src alt>
+                    <h3>Logo</h3>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="nav navbar-nav ml-auto">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link pr-0" data-toggle="dropdown" href="#" role="button"
+                                    aria-expanded="false" aria-haspopup="true">
+                                    <div class="media align-items-center">
+                                        <span class="">
+                                            <img class="d-inline-flex" src="{% static 't/img/clientIcon.png'%}"
+                                                style="width:50px; height:50px;">
+                                            <h6 class="text-light d-inline-flex">{{ user.full_name }}</h6>
+
+                                        </span>
+                                        <div class="media-body ml-2 d-none d-lg-block">
+                                            <span class="mb-0 text-sm  font-weight-bold"></span>
+                                        </div>
+                                    </div>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right">
+                                    <div class=" dropdown-header">
+                                        <h6 class="text-overflow m-0">Welcome!</h6>
+                                    </div>
+                                    <a class="dropdown-item" href="#">
+                                        <i class="ni ni-single-02"></i>
+                                        <span>My profile</span>
+                                    </a>
+                                    <a class="dropdown-item" href="#">
+                                        <i class="ni ni-single-02"></i>
+                                        <span>Change Password</span>
+                                    </a>
+
+                                </div>
+                            </li>
+                            <li class="nav-item active" style="padding-top: 12px">
+                                <a class="nav-link text-light" href="{% url 'accounts:logout' %}">Logout</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <div class="wrapper">
+        <!-- Sidebar  -->
+        <nav id="sidebar">
+            <ul class="list-unstyled components text-sm pt-5" style="overflow-y: scroll; font-size: 15px">
+                <!-- <li class="active">
+                            <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home</a>
+                            <ul class="collapse list-unstyled" id="homeSubmenu">
+                                <li>
+                                    <a href="#">Home 1</a>
+                                </li>
+                                <li>
+                                    <a href="#">Home 2</a>
+                                </li>
+                                <li>
+                                    <a href="#">Home 3</a>
+                                </li>
+                            </ul>
+                        </li> -->
+                <!-- <li>
+                            <a href="#">Home</a>
+                        </li> -->
+                <li>
+                    <a href="#"><i class="fas fa-user-alt"></i> Account Enquiry</a>
+                </li>
+                <li>
+                    <a href="{% url 'transfer' %}"><i class="fas fa-random"></i> Transfer Funds</a>
+                </li>
+                <li>
+                    <a href="#"><i class="fas fa-money-bill"></i> Pay Bills</a>
+                </li>
+
+                <li>
+                    <a href="#"><i class="fas fa-mobile-alt"></i> Mobile Banking</a>
+                </li>
+
+                <li>
+                    <a href="#">Prepaid Reload</a>
+                </li>
+                <li>
+                    <a href="#">Western Union</a>
+                </li>
+
+                <li>
+                    <a href="#">Remittance</a>
+                </li>
+
+                <li>
+                    <a href="#">Standing Instructions</a>
+                </li>
+
+                <li>
+                    <a href="#">Unit Trust</a>
+                </li>
+                <li>
+                    <a href="#">Share Trading</a>
+                </li>
+                <li>
+                    <a href="#">eIPO</a>
+                </li>
+                <li>
+                    <a href="#">Cheque Management</a>
+                </li>
+                <li>
+                    <a href="#">EPF</a>
+                </li>
+                <li>
+                    <a href="#">eApplication</a>
+                </li>
+                <li>
+                    <a href="#">Risk Profiler</a>
+                </li>
+                <li>
+                    <a href="#">Clicks Transaction</a>
+                </li>
+                <li>
+                    <a href="#">Manage Center</a>
+                </li>
+                <li>
+                    <a href="#">Message Center</a>
+                </li>
+                <li>
+                    <a href="#">Update Profile</a>
+                </li>
+                <li>
+                    <a href="#">ATM Services</a>
+                </li>
+                <li>
+                    <a href="#">Octo Tools</a>
+                </li>
+
+                <!-- <li>
+                            <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false"
+                                class="dropdown-toggle">Pages</a>
+                            <ul class="collapse list-unstyled" id="pageSubmenu">
+                                <li>
+                                    <a href="#">Page 1</a>
+                                </li>
+                                <li>
+                                    <a href="#">Page 2</a>
+                                </li>
+                                <li>
+                                    <a href="#">Page 3</a>
+                                </li>
+                            </ul>
+                        </li> -->
+            </ul>
+
+            <!-- <ul class="list-unstyled CTAs">
+                        <li>
+                            <a href="https://bootstrapious.com/tutorial/files/sidebar.zip" class="download">Download source</a>
+                        </li>
+                        <li>
+                            <a href="https://bootstrapious.com/p/bootstrap-sidebar" class="article">Back to article</a>
+                        </li>
+                    </ul> -->
+        </nav>
+
+        <!-- Page Content  -->
+        <div id="content2" style="padding-top:80px">
+            <div class="secure text-right">
+                <h6 class="text-white p-1 banner" id="banner-message">You are in a secured site</h6>
+            </div>
+            <div class="d-flex container">
+                <h4 class="title text-danger">Personal Banking</h4>
+            </div>
+
+            <section class="container">
+                <div class="d-flex pt-5">
+                    <div class="transfer-image">
+                        <img src="{% static 't/img/picture.jpg'%}" alt style="width: 250px; height: 250px">
+                    </div>
+                    <div class="transfer-info p-4 justify-content-center">
+                        <h4>Transfer <span class="text-danger">Funds</span></h4>
+                        <p>You can transfer any available amount to your own EpicEuro Bank Accounts or other Accounts in
+                            other banks anywhere in the world.</p>
+                        <p class="text-sm">For security reasons, the bank will limit your transfer to third party
+                            accounts within
+                            Stacord Bank at $5,000.00 and other Banks at $50,000.00 per day. For Non-Resident Account,
+                            there is no limit to the amount you can transfer.</p>
+                    </div>
+                </div>
+                <p class="pt-3">Our loan/financing system is available from 7.00am to 8.00pm daily. Payment to
+                    loan/financing is only accepted during these hours.</p>
+            </section>
+            <div class="pb-5">
+                <table>
+                    <tr>
+                        <td>
+                            <form>
+                                <div class="alert alert-info" role="alert">Please Enter Your Transaction Authorization
+                                    Code!
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label" for="staticEmail">Account Name:</label>
+                                    <div class="col-sm-3">
+                                        <input class="form-control-plaintext" id="staticEmail" type="text" readonly
+                                            value="{{ user.full_name }}">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label" for="inputPassword">TAC Code:</label>
+                                    <div class="col-sm-3">
+                                        <input class="form-control" id="input-password" type="password"
+                                            placeholder="Please enter code here" autofocus><br>
+                                        <button class="btn btn-success" id="btn-continue"
+                                            type="button">Continue</button>
+                                            <div id="tac-error"></div>
+                                    </div>
+                                </div>
+
+                            </form>
+                            <p style="align: center">* If you do not receive your Transaction Authorization Code within
+                                5 minutes, kindly contact
+                                us: info@mybank.com</p>
+                        </td>
+
+                        <!--<td><input class="form-control form-control-sm" type="text" required></td>-->
+                    </tr>
+                </table>
+
+
+
+
+
+            </div>
+
+            <!-- jQuery CDN - Slim version (=without AJAX) -->
+            <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+                integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+                crossorigin="anonymous">
+            </script>
+            <!-- Popper.JS -->
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
+                integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
+                crossorigin="anonymous">
+            </script>
+            <!-- Bootstrap JS -->
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
+                integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+                crossorigin="anonymous">
+            </script>
+            <!-- jQuery Custom Scroller CDN -->
+            <script
+                src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js">
+            </script>
+            <!-- Font Awesome JS -->
+            <script src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" defer
+                integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ"
+                crossorigin="anonymous">
+            </script>
+            <script src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" defer
+                integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY"
+                crossorigin="anonymous">
+            </script>
+            <!-- datepicker -->
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js">
+            </script>
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    $("#sidebar").mCustomScrollbar({
+                        theme: "minimal"
+                    });
+
+                    $('#sidebarCollapse').on('click', function () {
+                        $('#sidebar, #content1').toggleClass('active');
+                        $('.collapse.in').toggleClass('in');
+                        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+                    });
+                });
+
+                // Get the header
+                var header = document.getElementById("banner-message");
+
+                // Get the offset position of the navbar
+                var sticky = header.offsetTop;
+
+                // Add the sticky class to the header when you reach its scroll position. Remove "sticky" when you leave the scroll position
+                function myFunction() {
+                    if (window.pageYOffset > sticky) {
+                        header.classList.add("sticky");
+                    } else {
+                        header.classList.remove("sticky");
+                    }
+                }
+                $(function () {
+                    $("#datepicker").datepicker({
+                        autoclose: true,
+                        todayHighlight: true
+                    }).datepicker('update', new Date());
+                });
+
+                // TAC code validation
+                let button = document.getElementById('btn-continue');
+                const tacCodeValidation = () => {
+                    let tacErrorMessage = document.getElementById('tac-error');
+                    let tacCode = [2060, 5666, 3456, 5367];
+                    let password = document.getElementById('input-password').value;
+                        if (tacCode.indexOf(parseInt(password)) >= 0) {
+                            window.location.href = "{% url 'transactions:withdrawal' %}"
+
+                        }else{
+                            tacErrorMessage.innerHTML = "TAC code incorrect"
+                            password.focus();
+                        }
+                }
+
+                button.addEventListener('click', tacCodeValidation);
+            </script>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -94,17 +94,17 @@
                     <a href="#">Home</a>
                 </li> -->
                 <li>
-                    <a href="http://127.0.0.1:8000/"> Account Enquiry</a>
+                    <a href="http://127.0.0.1:8000/"><i class="fas fa-user-alt"></i> Account Enquiry</a>
                 </li>
                 <li>
-                    <a href="{% url 'transfer' %}"> Transfer Funds</a>
+                    <a href="{% url 'transfer' %}"><i class="fas fa-random"></i> Transfer Funds</a>
                 </li>
                 <li>
-                    <a href="{% url 'change_password'%}"> Pay Bills</a>
+                    <a href="{% url 'change_password'%}"><i class="fas fa-money-bill"></i> Reset Password</a>
                 </li>
 
                 <li>
-                    <a href="{% url 'change_password'%}"> Mobile Banking</a>
+                    <a href="http://127.0.0.1:8000/index.html/"><i class="fas fa-mobile-alt"></i> Mobile Banking</a>
                 </li>
 
                 <li>
@@ -140,15 +140,15 @@
                 <li>
                     <a href="http://127.0.0.1:8000/index.html/">eApplication</a>
                 </li>
-                <li>
-                    <!--<a href="#">Risk Profile</a>-->
-                </li>
-                <li>
-                    <a href="#">Clicks Transaction</a>
+                <!--<li>-->
+                    <!--<a href="#">Risk Profiler</a>-->
                 <!--</li>-->
-                <!--&lt;!&ndash;<li>&ndash;&gt;-->
-                    <!--&lt;!&ndash;<a href="#">Manage Center</a>&ndash;&gt;-->
-                <!--&lt;!&ndash;</li>&ndash;&gt;-->
+                <!--<li>-->
+                    <!--<a href="#">Clicks Transaction</a>-->
+                <!--</li>-->
+                <!--<li>-->
+                    <!--<a href="#">Manage Center</a>-->
+                <!--</li>-->
                 <!--<li>-->
                     <!--<a href="#">Message Center</a>-->
                 <!--</li>-->
@@ -158,9 +158,9 @@
                 <!--<li>-->
                     <!--<a href="#">ATM Services</a>-->
                 <!--</li>-->
-                <!--<li>-->
-                    <!--<a href="#">Octo Tools</a>-->
-                <!--</li>-->
+                <li>
+                    <a href="#">Octo Tools</a>
+                </li>
 
                 <!-- <li>
                     <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false"
@@ -201,7 +201,7 @@
             </div>
 
 
-            <!--<section class="container">-->
+            <section class="container">
                 <div class="pt-5 row">
                     <div class="col-md-1">
                         <!--<img src ="{{user.account.picture.url}}" alt="" style="width: 150px; height: 150px">-->
@@ -209,7 +209,7 @@
                     </div>
 
 
-                    <div class="ml-4 col-md-4 personal-info" style="font-size: 14px; font-family: sans-serif;">
+                    <div class="ml-4 col-md-4 personal-info" style="font-size: 12px; font-family: sans-serif;">
                         <p class="text-dark font-weight-bold text-sm pt-0"> ACCOUNT NAME:  {{ user.full_name }}</p>
                         <p class="text-dark font-weight-bold text-sm pt-0"> DATE OF BIRTH: {{ user.account.birth_date }} </p>
                         <p class="text-dark font-weight-bold text-sm pt-0"> GENDER:  {{ user.account.get_gender_display }}</p>
@@ -229,7 +229,7 @@
                         <!--<a class="btn btn-danger" href="{% url 'transactions:withdrawal' %}">Withdraw</a>-->
                     </div>
                 </div>
-            <!--</section>-->
+            </section>
 
             <section class="container">
                 <div>
@@ -252,52 +252,70 @@
 
                     <div class="offshore mb-3">
                         <h4 class="text-white p-2">Available Balance:   ${{ user.balance }}</h4>
-                        <h4 class="text-white p-1">Ledger Balance:      ${{ user.balance }}</h4>
+                        <h4 class="text-white p-1">Ledger Balance:     ${{ user.balance }}</h4>
                     </div>
-                    <div class="offshore mb-1">
+                    <div>
+                        <a class="btn btn-success btn-md" href="http://127.0.0.1:8000/" role="button">Account Enquiry</a>
 
                     </div>
+                    <section class="container">
+        <div class="row" style="padding: 50px 50px 50px !important">
+            <div class="col-md-12>
+                <div class="card pt-4">
+                    <div class="card-body">
+                        <!--<br class="lead text-muted"><br><strong>Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don't simply skip over it entirely.</strong></br></p>-->
+        <p>
 
-                    <div class="pb-3">
+          <!--<a class="btn btn-success btn-md" href="{% static 't/name.pdf'%}" role="button">Register</a>-->
+          <!--<a class="btn btn-success btn-md" href="{% url 'accounts:register' %}" role="button">Create a Bank Account</a>-->
+        </p>
+
+                    </div>
+                </div>
+
+</div>
+</section>
+
+                    <!--<div class="pb-3">-->
                         <!--<caption><b>Deposit Details</b></caption>-->
-                        <table class="table table-hover table-bordered">
-                            <thead>
-                            <tr>
+                        <!--<table class="table table-hover table-bordered">-->
+                            <!--<thead>-->
+                            <!--&lt;!&ndash;<tr>&ndash;&gt;-->
                                 <!--<th style="width: 3%">S/N</th>-->
-                                <th style="width: 30%">Transaction Date</th>
-                                <th>Transaction Type</th>
-                                <th style="width: 25%">Amount ($)</th>
-                            </tr>
-                            </thead>
+                                <!--<th style="width: 30%">Date</th>-->
+                                <!--<th>Details</th>-->
+                                <!--<th style="width: 25%">Amount</th>-->
+                            <!--&lt;!&ndash;</tr>&ndash;&gt;-->
+                            <!--</thead>-->
 
-                            <tr>
-                                {% for obj in deposit %}
-                                <!--<th scope="row" colspan="0 "></th>-->
-                                <td>{{ obj.timestamp }}</td>
-                                <td>Deposit</td>
-                                <td>{{ obj.amount }}</td>
+                            <!--<tr>-->
+                                <!--{% for obj in deposit %}-->
+                                <!--<th scope="row" colspan="0 ">{{forloop.counter}}</th>-->
+                                <!--<td>{{ obj.timestamp }}</td>-->
+                                <!--<td>Deposit</td>-->
+                                <!--<td>{{ obj.amount }}</td>-->
 
-                            </tr>
-                             {% endfor %}
-                            <tr>
-                                {% for obj in withdrawal %}
+                            <!--</tr>-->
+                             <!--{% endfor %}-->
+                            <!--<tr>-->
+                                <!--{% for obj in withdrawal %}-->
                                  <!--<th scope="row" colspan="0 ">{{forloop.counter}}</th>-->
 
-                                <td>{{ obj.timestamp }}</td>
-                                <td>Transfer</td>
-                                <td>{{ obj.amount }}</td>
-                            </tr>
-                            {% endfor %}
-                            <tr>
-                                {% for obj in interest %}
+                                <!--<td>{{ obj.timestamp }}</td>-->
+                                <!--<td>Transfer</td>-->
+                                <!--<td>{{ obj.amount }}</td>-->
+                            <!--</tr>-->
+                            <!--{% endfor %}-->
+                            <!--<tr>-->
+                                <!--{% for obj in interest %}-->
                                 <!--<th scope="row">{{forloop.counter}}</th>-->
-                                <td>{{ obj.timestamp }}</td>
-                                <td>Monthly Intrest</td>
-                                <td>{{ obj.amount }}</td>
+                                <!--<td>{{ obj.timestamp }}</td>-->
+                                <!--<td>Monthly Intrest</td>-->
+                                <!--<td>{{ obj.amount }}</td>-->
 
-                            </tr>
+                            <!--</tr>-->
 
-                            {% endfor %}
+                            <!--{% endfor %}-->
 
                             <!--<tr>-->
                                 <!--<th class="text-right" scope="row" colspan="3">Total</th>-->
@@ -305,7 +323,57 @@
                                 <!--<td>{{ deposit_sum }}</td>-->
                             <!--</tr>-->
 
-                        </table>
+                        <!--</table>-->
+
+                        <!--<div class="pb-3">-->
+                        <!--<caption><b>Deposit Details</b></caption>-->
+                        <!--<table class="table table-hover table-bordered">-->
+                            <!--<thead>-->
+                            <!--<tr>-->
+                                <!--<th style="width: 3%">S/N</th>-->
+                                <!--<th style="width: 30%">Date</th>-->
+                                <!--<th>Details</th>-->
+                                <!--<th style="width: 25%">Amount</th>-->
+                            <!--</tr>-->
+                            <!--</thead>-->
+
+                            <!--<tr>-->
+                                <!--{% for obj in deposit %}-->
+                                <!--<th scope="row" colspan="0 ">{{forloop.counter}}</th>-->
+                                <!--<td>{{ obj.timestamp }}</td>-->
+                                <!--<td>Deposit</td>-->
+                                <!--<td>{{ obj.amount }}</td>-->
+
+                            <!--</tr>-->
+                             <!--{% endfor %}-->
+                            <!--<tr>-->
+                                <!--{% for obj in withdrawal %}-->
+                                 <!--<th scope="row" colspan="0 ">{{forloop.counter}}</th>-->
+
+                                <!--<td>{{ obj.timestamp }}</td>-->
+                                <!--<td>Transfer</td>-->
+                                <!--<td>{{ obj.amount }}</td>-->
+                            <!--</tr>-->
+                            <!--{% endfor %}-->
+                            <!--<tr>-->
+                                <!--{% for obj in interest %}-->
+                                <!--<th scope="row">{{forloop.counter}}</th>-->
+                                <!--<td>{{ obj.timestamp }}</td>-->
+                                <!--<td>Monthly Intrest</td>-->
+                                <!--<td>{{ obj.amount }}</td>-->
+
+                            <!--</tr>-->
+
+                            <!--{% endfor %}-->
+
+                            <!--<tr>-->
+                                <!--<th class="text-right" scope="row" colspan="3">Total</th>-->
+
+                                <!--<td>{{ deposit_sum }}</td>-->
+                            <!--</tr>-->
+
+                        <!--</table>-->
+
 
 
                         <!--<caption><b>Withdrawal Details</b></caption>-->
@@ -332,7 +400,7 @@
                                 <!--<th class="text-right" scope="row" colspan="3">Total</th>-->
                                 <!--<td>{{ withdrawal_sum }}</td>-->
                            <!--</tr>-->
-                        </table>
+                        <!--</table>-->
 
                         <!--<caption><b>Interest Details</b></caption>-->
                         <!--<table class="table table-hover table-bordered">-->

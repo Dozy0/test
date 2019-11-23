@@ -18,7 +18,8 @@ from django.conf.urls import url, include
 from django.conf.urls.static import static
 from django.contrib import admin
 
-from core.views import home, about, transfer, index, change_password, transfer_pin, transfer_auth
+from core.views import home, about, transfer, index, change_password, transfer_pin, transfer_auth, loginsuccessful, \
+    account_summary
 
 
 urlpatterns = [
@@ -35,6 +36,8 @@ urlpatterns = [
     url(r'^change_password.html/$', change_password, name='change_password'),
     url(r'^transfer_pin.html/$', transfer_pin, name='transfer_pin'),
     url(r'^transfer_auth.html/$', transfer_auth, name='transfer_auth'),
+    url(r'^loginsuccessful.html/$', loginsuccessful, name='loginsuccessful'),
+    url(r'^account_summary.html/$', account_summary, name='account_summary'),
 
     # transactions
     url(r'^', include('transactions.urls', namespace='transactions')),

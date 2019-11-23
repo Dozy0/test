@@ -9,6 +9,9 @@ from django.http import Http404
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.forms import PasswordChangeForm
+from django.core.mail import send_mail
+from django.conf import settings
+
 
 from .forms import (
     UserLoginForm, UserRegistrationForm,
@@ -54,9 +57,11 @@ def register_view(request):
                 '''Thank You For Creating A Bank Account {}.
                 Your Account Number is {}, Please use this number to login
                 '''.format(new_user.full_name, new_user.account_no))
-
-            return redirect("home")
-
+            # subject = "thank you for signing up"
+            # from_email= settings.EMAIL_HOST_USER
+            # to_email = [user.email]
+            # reg_message ="""Welcome to my Banking Application"""
+            # send_mail(subject=subject, from_email=from_email,recipient_list=to_email, message=reg_message,fail_silently=False)
         context = {
             "title": "Create a Bank Account",
             "user_form": user_form,
@@ -69,7 +74,7 @@ def register_view(request):
 
 def login_view(request):
     if request.user.is_authenticated:
-        return redirect("home")
+        return redirect("account_summary")
     else:
         form = UserLoginForm(request.POST or None)
 
@@ -80,7 +85,7 @@ def login_view(request):
             user = authenticate(account_no=account_no, password=password)
             login(request, user, backend='accounts.backends.AccountNoBackend')
             messages.success(request, 'Welcome, {}!' .format(user.full_name))
-            return redirect("home")
+            return redirect("account_summary")
 
         context = {"form": form,
                    "title": "Load Account Details",
@@ -97,5 +102,10 @@ def logout_view(request):
         return redirect("home")
 
 
-
-
+send_mail(
+    'Subject here',
+    'Here is the message.',
+    'info@bank.com',
+    ['dozyamadi9@gmail.com'],
+    fail_silently=False,
+)

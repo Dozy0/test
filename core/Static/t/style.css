@@ -228,13 +228,14 @@ td {
 }
 
 .sticky {
-    position: fixed;
+    position: relative;
     top: 0;
     width: 100%
 }
 
-/* #datepicker{ margin: 0 20px 20px 20px;} */
+#datepicker{ margin: 0 20px 20px 20px;}
 #datepicker > span:hover{cursor: pointer;}
+
 
 /* .sticky + .content {
     padding-top: 102px;
@@ -245,6 +246,17 @@ td {
 /* tr:nth-child(even) {
     background-color: #dddddd;
   } */
+
+  #spinner{
+      position: absolute;
+      top: 350px;
+      left: 400px;
+      right: 100px;
+      bottom: 150px;
+      float: right;
+      margin: auto;
+      z-index: 1;
+  }
 
 /* ---------------------------------------------------
     MEDIAQUERIES

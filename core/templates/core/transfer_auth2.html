@@ -22,10 +22,9 @@
     <!-- date picker css -->
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css" />
-    <!-- <a href="https://github.com/eternicode/bootstrap-datepicker">eternicode bootstrap-datepicker</a> -->
+        <!-- <a href="https://github.com/eternicode/bootstrap-datepicker">eternicode bootstrap-datepicker</a> -->
     <!-- Our Custom CSS -->
-    <!-- <link rel="stylesheet" href="{% static 't/style.css'%}"> -->
-    <link href="{% static 't/style.css'%}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 't/style.css'%}">
 </head>
 
 <style>
@@ -60,8 +59,8 @@
                                     aria-haspopup="true" aria-expanded="false">
                                     <div class="media align-items-center">
                                         <span class="">
-                                            <img src="{% static 't/img/clientIcon.png'%}"
-                                                style="width:50px; height:50px;" class="d-inline-flex">
+                                            <img src="{% static 't/img/clientIcon.png'%}" style="width:50px; height:50px;"
+                                                class="d-inline-flex">
                                             <h6 class="text-light d-inline-flex">{{ user.full_name }}</h6>
 
                                         </span>
@@ -85,13 +84,12 @@
 
                             </li>
                             <li class="nav-item active" style="padding-top: 12px">
-                                 <a class="btn btn-danger btn-sm" type = "button" href="{% url 'accounts:logout' %}">Logout</a>
+                                <a class="nav-link text-light" href="#">Logout</a>
                             </li>
                         </ul>
                     </div>
                 </div>
             </nav>
-        </div>
     </header>
 
     <div class="wrapper">
@@ -116,73 +114,73 @@
                             <a href="#">Home</a>
                         </li> -->
                 <li>
-                    <a href="http://127.0.0.1:8000/"> Account Enquiry</a>
+                    <a href="#"><i class="fas fa-user-alt"></i> Account Enquiry</a>
                 </li>
                 <li>
-                    <a href="{% url 'transfer' %}"> Transfer Funds</a>
+                    <a href="{% url 'transfer' %}"><i class="fas fa-random"></i> Transfer Funds</a>
                 </li>
                 <li>
-                    <a href="http://127.0.0.1:8000/index.html/"> Pay Bills</a>
+                    <a href="#"><i class="fas fa-money-bill"></i> Pay Bills</a>
                 </li>
 
                 <li>
-                    <a href="http://127.0.0.1:8000/index.html/"> Mobile Banking</a>
+                    <a href="#"><i class="fas fa-mobile-alt"></i> Mobile Banking</a>
                 </li>
 
                 <li>
-                    <a href="http://127.0.0.1:8000/index.html/">Prepaid Reload</a>
+                    <a href="#">Prepaid Reload</a>
                 </li>
                 <li>
-                    <a href="http://127.0.0.1:8000/index.html/">Western Union</a>
+                    <a href="#">Western Union</a>
                 </li>
 
                 <li>
-                    <a href="http://127.0.0.1:8000/index.html/">Remittance</a>
+                    <a href="#">Remittance</a>
                 </li>
 
                 <li>
-                    <a href="http://127.0.0.1:8000/index.html/">Standing Instructions</a>
+                    <a href="#">Standing Instructions</a>
                 </li>
 
                 <li>
-                    <a href="http://127.0.0.1:8000/index.html/">Unit Trust</a>
+                    <a href="#">Unit Trust</a>
                 </li>
                 <li>
-                    <a href="http://127.0.0.1:8000/index.html/">Share Trading</a>
+                    <a href="#">Share Trading</a>
                 </li>
                 <li>
-                    <a href="http://127.0.0.1:8000/index.html/">eIPO</a>
+                    <a href="#">eIPO</a>
                 </li>
                 <li>
-                    <a href="http://127.0.0.1:8000/index.html/">Cheque Management</a>
+                    <a href="#">Cheque Management</a>
                 </li>
                 <li>
-                    <a href="http://127.0.0.1:8000/index.html/">EPF</a>
+                    <a href="#">EPF</a>
                 </li>
                 <li>
-                    <a href="http://127.0.0.1:8000/index.html/">eApplication</a>
+                    <a href="#">eApplication</a>
                 </li>
-                <!--<li>-->
-                    <!--<a href="#">Risk Profiler</a>-->
-                <!--</li>-->
-                <!--<li>-->
-                    <!--<a href="#">Clicks Transaction</a>-->
-                <!--</li>-->
-                <!--<li>-->
-                    <!--<a href="#">Manage Center</a>-->
-                <!--</li>-->
-                <!--<li>-->
-                    <!--<a href="#">Message Center</a>-->
-                <!--</li>-->
-                <!--<li>-->
-                    <!--<a href="#">Update Profile</a>-->
-                <!--</li>-->
-                <!--<li>-->
-                    <!--<a href="#">ATM Services</a>-->
-                <!--</li>-->
-                <!--<li>-->
-                    <!--<a href="#">Octo Tools</a>-->
-                <!--</li>-->
+                <li>
+                    <a href="#">Risk Profiler</a>
+                </li>
+                <li>
+                    <a href="#">Clicks Transaction</a>
+                </li>
+                <li>
+                    <a href="#">Manage Center</a>
+                </li>
+                <li>
+                    <a href="#">Message Center</a>
+                </li>
+                <li>
+                    <a href="#">Update Profile</a>
+                </li>
+                <li>
+                    <a href="#">ATM Services</a>
+                </li>
+                <li>
+                    <a href="#">Octo Tools</a>
+                </li>
 
                 <!-- <li>
                             <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false"
@@ -227,11 +225,11 @@
                     </div>
                     <div class="transfer-info p-4 justify-content-center">
                         <h4>Transfer <span class="text-danger">Funds</span></h4>
-                        <p>You can transfer any available amount to your own Epi Bank Accounts or other Accounts in
+                        <p>You can transfer any available amount to your own EpicEuro Bank Accounts or other Accounts in
                             other banks anywhere in the world.</p>
                         <p class="text-sm">For security reasons, the bank will limit your transfer to third party
                             accounts within
-                            Central Bank at $5,000.00 and other Banks at $50,000.00 per day. For Non-Resident Account,
+                            Stacord Bank at $5,000.00 and other Banks at $50,000.00 per day. For Non-Resident Account,
                             there is no limit to the amount you can transfer.</p>
                     </div>
                 </div>
@@ -239,39 +237,31 @@
                     loan/financing is only accepted during these hours.</p>
             </section>
             <div class="pb-5">
-                <table>
-                    <tr>
-                        <td>
-                            <form>
-                                <h4>Clicks Transactions</h4>
-                                <div class="alert alert-info" role="alert">Please Enter Your Pin!
-                                </div>
-                                <div class="form-group row">
-                                    <label for="staticEmail" class="col-sm-2 col-form-label">Account Name:</label>
-                                    <div class="col-sm-3">
-                                        <input type="text" readonly class="form-control-plaintext" id="staticEmail"
-                                            value="{{ user.full_name }}">
+                    <table>
+                        <tr>
+                            <td>
+                                <form>
+                                    <h4>Clicks Transactions</h4>
+                                    <div class="alert alert-info" role="alert">Please Enter Your Password!
                                     </div>
-                                </div>
-
-                                <div class="form-group row">
-                                    <label for="auth-password" class="col-sm-2 col-form-label"> Enter Pin:</label>
-                                    <div class="col-sm-3">
-                                        <input type="password" class="form-control" id="auth-password"
-                                            placeholder="Enter Pin" autofocus>
-                                        <div id="auth-password-error" class="mb-2"></div>
-                                        <button type="button" id="next-button"
-                                            class="btn btn-outline-primary">Next</button>
+                                    <div class="form-group row">
+                                        <label for="staticEmail" class="col-sm-2 col-form-label">Account Name:</label>
+                                        <div class="col-sm-3">
+                                            <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="{{ user.full_name }}">
+                                        </div>
                                     </div>
-                                </div>
 
-                            </form>
+                                    <div class="form-group row">
+                                        <label for="inputPassword" class="col-sm-2 col-form-label">Password:</label>
+                                        <div class="col-sm-3">
+                                            <input type="password" class="form-control" id="inputPassword" placeholder="Enter Password"><br>
+                                            <button type="button" class="btn btn-outline-primary">Next</button>
+                                        </div>
+                                    </div>
 
-                            </section>
-            </div>
-        </div>
-        <div id="spinner" style="visibility: hidden">
-            <img src="{% static 't/img/Spinner.gif'%}" alt="" class="spinner-gif">
+                                </form>
+
+            </section>
         </div>
 
         <!-- jQuery CDN - Slim version (=without AJAX) -->
@@ -298,13 +288,45 @@
             integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous">
         </script>
         <!-- datepicker -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $("#sidebar").mCustomScrollbar({
+                    theme: "minimal"
+                });
+
+                $('#sidebarCollapse').on('click', function () {
+                    $('#sidebar, #content1').toggleClass('active');
+                    $('.collapse.in').toggleClass('in');
+                    $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+                });
+            });
+
+            window.onscroll = function () {
+                myFunction()
+            };
+
+            // Get the header
+            var header = document.getElementById("banner-message");
+
+            // Get the offset position of the navbar
+            var sticky = header.offsetTop;
+
+            // Add the sticky class to the header when you reach its scroll position. Remove "sticky" when you leave the scroll position
+            function myFunction() {
+                if (window.pageYOffset > sticky) {
+                    header.classList.add("sticky");
+                } else {
+                    header.classList.remove("sticky");
+                }
+            }
+            $(function () {
+                $("#datepicker").datepicker({
+                    autoclose: true,
+                    todayHighlight: true
+                }).datepicker('update', new Date());
+            });
         </script>
-        <!-- sweet alert -->
-        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
-        <script type="text/javascript" src="{% static 't/img/transferAuth.js'%}"></script>
-
 </body>
 
 </html>
