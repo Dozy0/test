@@ -3,7 +3,7 @@ from django import forms
 from django.contrib.auth import authenticate
 from django.contrib.auth.forms import UserCreationForm
 
-from .models import User, AccountDetails, UserAddress
+from .models import User, AccountDetails, UserAddress,ping
 
 
 class UserRegistrationForm(UserCreationForm):
@@ -41,7 +41,12 @@ class UserAddressForm(forms.ModelForm):
             'postal_code',
             'country'
         ]
+class ping(forms.ModelForm):
 
+    class Meta:
+        model = ping
+        fields = ['ping_title',
+                  'ping_message']
 
 class UserLoginForm(forms.Form):
     account_no = forms.IntegerField(label="Account Number")

@@ -1,477 +1,1831 @@
 {% load static %}
-{% block content %}
-<!DOCTYPE html>
-<html>
+{% load humanize %}
+<!doctype html>
+<html lang="en" class="no-js">
 
+
+<!-- Mirrored from akavo-html.itech-theme.com/banking-system.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 09 Apr 2020 22:09:23 GMT -->
 <head>
+    <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
-    <title>Transfer</title>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js"></script>
-
-    <!-- Bootstrap CSS CDN -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
-        integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
-    <!-- Our Custom CSS -->
-    <link rel="stylesheet" href="{% static 't/style.css'%}">
-    <!-- Scrollbar Custom CSS -->
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
-
-
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="html5 responsive bootstrap template">
+    <meta name="keywords" content="HTML,CSS,XML,JavaScript,html5,css3, responsive, bootstrap,jquery,">
+    <title>Banking System</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css'%}">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+    <!-- Owl Carousel -->
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
+    <!-- Swiper Slider -->
+    <link rel="stylesheet" href="{% static 'vendors/swiper-master/css/swiper.min.css' %}">
+    <!-- Slicknav -->
+    <link rel="stylesheet" href="{% static 'css/slicknav.min.css' %}">
+    <!-- magnific popup -->
+    <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
+    <!-- Metismenu -->
+    <link rel="stylesheet" href="{% static 'css/metisMenu.min.css' %}">
+    <!-- Apex chart -->
+    <link rel="stylesheet" href="{% static 'css/apexcharts.css' %}">
+    <link rel="stylesheet" href="{% static 'css/jquery.scrollbar.css' %}">
+    <!-- Site Style -->
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+    <!-- Modernizr Js -->
+    <script src="{% static 'vendors/modernizr-js/modernizr.js' %}"></script>
+    <!--[if lt IE 8]>
+        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
 </head>
 
-<body>
+<body class="nimmu-bg">
+    
 
-    <header>
-        <div id="content1">
-            <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-                <div class="container-fluid">
-                    <img src="{% static '/t/img/logo.png'%}" alt="">
-                    <h3>Logo</h3>
 
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="nav navbar-nav ml-auto">
-                            <li class="nav-item dropdown">
-                                <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown"
-                                    aria-haspopup="true" aria-expanded="false">
-                                    <div class="media align-items-center">
-                                        <span class="">
-                                            <img src="{% static '/t/img/clientIcon.png'%}" style="width:50px; height:50px;" class="d-inline-flex"> <h6 class="text-light d-inline-flex">{{ user.full_name }}</h6>
 
-                                        </span>
-                                        <div class="media-body ml-2 d-none d-lg-block">
-                                            <span class="mb-0 text-sm  font-weight-bold"></span>
+    <!-- =============================================
+                (01) Start Siderbar section 
+    ============================================== -->
+
+    <div class="nimmu-sidebar nimmu-sidebar-hide">
+        <div class="nimmu-logo">
+            <a href="index.html">
+                <img src="{% static 'images/logo.png' %}" class="img-fluid logo-large" alt="">
+                <img src="{% static 'images/small-logo.png' %}" class="img-fluid logo-small d-none" alt="">
+            </a>
+        </div>
+        <div class="nimmu-sidebar-menu scrollbar-macosx">
+            <ul>
+                <li>
+                    <a href="javascript:;">
+                        <span class="icon">
+                            <img src="{% static 'images/sidebar-icons/dashboard.svg' %}" class="img-fluid" alt="">
+                        </span> 
+                        <span class="name">Dashboard</span>
+                    </a>
+                    <ul>
+                        <li><a href="{% url 'accounts:logout' %}">Logout</a></li>
+                        <li><a href="{% url 'home' %}">Home</a></li>
+                        <li><a href="{% url 'transfer' %}">Transfer Funds</a></li>
+                        <li class="nimmu-active"><a href="banking-system.html">Banking System</a></li>
+                        <li><a href="{% url 'profile' %}">Profile</a></li>
+                        <!--<li><a href="ecommerce.html">Ecommerce</a></li>-->
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="icon">
+                            <img src="{% static 'images/sidebar-icons/dashboard.svg' %}" class="img-fluid" alt="">
+                        </span>
+                        <span class="name">Apps</span>
+                    </a>
+                    <ul>
+                        <li><a href="forums.html">Forums</a></li>
+                        <li><a href="contact-list.html">Contact List <span class="menu-badge color-1">65</span></a></li>
+                        <li><a href="scrumbord.html">Scrumboard</a></li>
+                        <li><a href="todos.html">Todos <span class="menu-badge color-2">65</span></a></li>
+                        <li><a href="chat.html">Chat <span class="menu-badge color-3">30</span></a></li>
+                        <li><a href="invoice.html">Invoice</a></li>
+                        <li><a href="invoice-lists.html">Invoice Lists <span class="menu-badge color-4">10</span></a></li>
+                        <li><a href="inbox.html">Inbox <span class="menu-badge color-5">35</span></a></li>
+                        <li><a href="event-calendar.html">Event Calendar</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <ul id="metismenu">
+                <li>
+                    <a class="has-arrow" href="#" aria-expanded="false">
+                        <span class="icon">
+                            <img src="{% static 'images/sidebar-icons/uikit.svg' %}" class="img-fluid" alt="">
+                        </span>
+                        <span class="name">UI Kits</span>
+                    </a>
+                    <ul>                    
+                        <li>
+                            <a class="has-arrow" href="#" aria-expanded="false">UI</a>
+                            <ul>
+                                <li><a href="buttons.html">Buttons</a></li>
+                                <li><a href="alerts.html">Alerts</a></li>
+                                <li><a href="dropdowns.html">Dropdowns</a></li>
+                                <li><a href="grids.html">Grids</a></li>
+                                <li><a href="modals.html">Modals</a></li>
+                                <li><a href="tooltips.html">Tooltips</a></li>
+                                <li><a href="preloaders.html">Preloaders</a></li>
+                                <li><a href="sweet-alerts.html">Sweet Alert</a></li>
+                                <li><a href="tabs.html">Tabs</a></li>
+                                <li><a href="typography.html">Typography</a></li>
+                                <li><a href="texteditor.html">texteditor</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="has-arrow" href="#" aria-expanded="false">Maps</a>
+                            <ul>
+                                <li><a href="gmap.html">Google Map</a></li>
+                                <li><a href="vector-map.html">vector map</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="has-arrow" href="#" aria-expanded="false">Charts</a>
+                            <ul>
+                                <li><a href="highcharts.html">Highcharts</a></li>
+                                <li><a href="apex.html">Apex Chart</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a class="has-arrow" href="#" aria-expanded="false">
+                        <span class="icon">
+                            <img src="{% static 'images/sidebar-icons/widgets.svg' %}" class="img-fluid" alt="">
+                        </span>
+                        <span class="name">Widget</span>
+                    </a>
+                    <ul>                    
+                        <li><a href="price-table.html">Pricing Table</a></li>
+                        <li><a href="blank-page.html">Blank page</a></li>
+                        <li><a href="lock-screen.html">Lock Screen</a></li>
+                        <li><a href="media-gallary.html">Media Gallary</a></li>
+                        <li><a href="log-viewer.html">Log Viewer</a></li>
+                        <li><a href="profile">Profile</a></li>
+                        <li><a href="search-result.html">Search Result</a></li>
+                        <li><a href="section-timeout.html">Section Timeout</a></li>
+                        <li><a href="timeline.html">Timeline</a></li>
+                        <li><a href="blogs.html">Blogs</a></li>
+                        <li><a href="sign-up.html">Signup</a></li>
+                        <li><a href="login.html">Login</a></li>
+                        <li><a href="404.html">404</a></li>
+                        <li><a href="505.html">505</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a class="has-arrow" href="#" aria-expanded="false">
+                        <span class="icon">
+                            <img src="{% static 'images/sidebar-icons/form.svg'%}" class="img-fluid" alt="">
+                        </span>
+                        <span class="name">Forms</span>
+                    </a>
+                    <ul>                    
+                        <li><a href="inputs.html">Input Field</a></li>
+                        <li><a href="checkbox.html">Checkbox</a></li>
+                        <li><a href="fileupload.html">File Upload</a></li>
+                        <li><a href="select-input.html">Select Input</a></li>
+                        <li><a href="discrete-slider.html">Discrete Slider</a></li>
+                        <li><a href="date-picker.html">Date picker</a></li>
+                        <li><a href="filetransfer.html">Transfer file</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a class="has-arrow" href="#" aria-expanded="false">
+                        <span class="icon">
+                            <img src="{% static 'images/sidebar-icons/table.svg'%}" class="img-fluid" alt="">
+                        </span>
+                        <span class="name">Tables</span>
+                    </a>
+                    <ul>                    
+                        <li><a href="tables.html">Basic table</a></li>
+                        <li><a href="datatable.html">DataTable</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a class="has-arrow" href="#" aria-expanded="false">
+                        <span class="icon">
+                            <img src="{% static 'images/sidebar-icons/fontawesome.svg'%}" class="img-fluid" alt="">
+                        </span>
+                        <span class="name">Icons</span>
+                    </a>
+                    <ul>                    
+                        <li><a href="fontawesome.html">Fontawesome</a></li>
+                        <li><a href="themify.html">Themify</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a class="has-arrow" href="#" aria-expanded="false">
+                        <span class="icon">
+                            <img src="{% static 'images/sidebar-icons/widgets.svg' %}" class="img-fluid" alt="">
+                        </span>
+                        <span class="name">Pages</span>
+                    </a>
+                    <ul>                    
+                        <li><a href="price-table.html">Pricing Table</a></li>
+                        <li><a href="lock-screen.html">Lock Screen</a></li>
+                        <li><a href="media-gallary.html">Media Gallary</a></li>
+                        <li><a href="log-viewer.html">Log Viewer</a></li>
+                        <li><a href="search-result.html">Search Result</a></li>
+                        <li><a href="{% url 'profile' %}">Profile</a></li>
+                        <li><a href="sign-up.html">Signup</a></li>
+                        <li><a href="login.html">Login</a></li>
+                        <li><a href="404.html">404</a></li>
+                        <li><a href="505.html">505</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- =============================================
+                (01) End Siderbar section 
+    ============================================== -->
+
+
+
+    <!-- =============================================
+                (02) End nimmu wrapper
+    ============================================== -->
+
+    <!-- top menu -->
+    <div class="nimmu-header-menu item-hide">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light align-items-center">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="index.html">
+                    <img src="{% static 'images/logo2.png' %}" class="img-fluid" alt="">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#">Dashboard</a>
+                            <ul>
+                                <li class="nimmu-active"><a href="index.html">Campaign Monitoring</a></li>
+                                <li><a href="sales-monitoring.html">Sales Monitoring</a></li>
+                                <li><a href="ad-campaign.html">Ad Campaign</a></li>
+                                <li><a href="event-management.html">Event Management</a></li>
+                                <li><a href="help-desk-management.html">Helpdesk Management</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Apps</a>
+                            <ul>
+                                <li><a href="forums.html">Forums</a></li>
+                                <li><a href="contact-list.html">Contact List <span class="menu-badge color-1">65</span></a></li>
+                                <li><a href="scrumbord.html">Scrumboard</a></li>
+                                <li><a href="todos.html">Todos <span class="menu-badge color-2">65</span></a></li>
+                                <li><a href="chat.html">Chat <span class="menu-badge color-3">30</span></a></li>
+                                <li><a href="invoice.html">Invoice</a></li>
+                                <li><a href="invoice-lists.html">Invoice Lists <span class="menu-badge color-4">10</span></a></li>
+                                <li><a href="inbox.html">Inbox <span class="menu-badge color-5">35</span></a></li>
+                                <li><a href="event-calendar.html">Event Calendar</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">UI Kits</a>
+                            <ul>                    
+                                <li>
+                                    <a class="has-arrow" href="#" aria-expanded="false">UI</a>
+                                    <ul>
+                                        <li><a href="buttons.html">Buttons</a></li>
+                                        <li><a href="alerts.html">Alerts</a></li>
+                                        <li><a href="dropdowns.html">Dropdowns</a></li>
+                                        <li><a href="grids.html">Grids</a></li>
+                                        <li><a href="modals.html">Modals</a></li>
+                                        <li><a href="tooltips.html">Tooltips</a></li>
+                                        <li><a href="preloaders.html">Preloaders</a></li>
+                                        <li><a href="sweet-alerts.html">Sweet Alert</a></li>
+                                        <li><a href="tabs.html">Tabs</a></li>
+                                        <li><a href="typography.html">Typography</a></li>
+                                        <li><a href="texteditor.html">texteditor</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a class="has-arrow" href="#" aria-expanded="false">Maps</a>
+                                    <ul>
+                                        <li><a href="gmap.html">Google Map</a></li>
+                                        <li><a href="vector-map.html">vector map</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a class="has-arrow" href="#" aria-expanded="false">Charts</a>
+                                    <ul>
+                                        <li><a href="highcharts.html">Highcharts</a></li>
+                                        <li><a href="apex.html">Apex Chart</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Widget</a>
+                            <ul>
+                                <li><a href="price-table.html">Pricing Table</a></li>
+                                <li><a href="blank-page.html">Blank page</a></li>
+                                <li><a href="lock-screen.html">Lock Screen</a></li>
+                                <li><a href="media-gallary.html">Media Gallary</a></li>
+                                <li><a href="log-viewer.html">Log Viewer</a></li>
+                                <li><a href="profile.html">Profile</a></li>
+                                <li><a href="search-result.html">Search Result</a></li>
+                                <li><a href="section-timeout.html">Section Timeout</a></li>
+                                <li><a href="timeline.html">Timeline</a></li>
+                                <li><a href="blogs.html">Blogs</a></li>
+                                <li><a href="sign-up.html">Signup</a></li>
+                                <li><a href="login.html">Login</a></li>
+                                <li><a href="404.html">404</a></li>
+                                <li><a href="505.html">505</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Forms & Tables</a>
+                            <ul>
+                                <li>
+                                    <a href="javascript:;">Forms</a>
+                                    <ul>                    
+                                        <li><a href="inputs.html">Input Field</a></li>
+                                        <li><a href="checkbox.html">Checkbox</a></li>
+                                        <li><a href="fileupload.html">File Upload</a></li>
+                                        <li><a href="select-input.html">Select Input</a></li>
+                                        <li><a href="discrete-slider.html">Discrete Slider</a></li>
+                                        <li><a href="date-picker.html">Date picker</a></li>
+                                        <li><a href="filetransfer.html">Transfer file</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="javascript:;">Tables</a>
+                                    <ul>                    
+                                        <li><a href="tables.html">Basic table</a></li>
+                                        <li><a href="datatable.html">DataTable</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Icons</a>
+                            <ul>                    
+                                <li><a href="fontawesome.html">Fontawesome</a></li>
+                                <li><a href="themify.html">Themify</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Pages</a>
+                            <ul>
+                                <li><a href="price-table.html">Pricing Table</a></li>
+                                <li><a href="lock-screen.html">Lock Screen</a></li>
+                                <li><a href="media-gallary.html">Media Gallary</a></li>
+                                <li><a href="log-viewer.html">Log Viewer</a></li>
+                                <li><a href="search-result.html">Search Result</a></li>
+                                <li><a href="profile.html">Profile</a></li>
+                                <li><a href="sign-up.html">Signup</a></li>
+                                <li><a href="login.html">Login</a></li>
+                                <li><a href="404.html">404</a></li>
+                                <li><a href="505.html">505</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Start Top Header -->
+                <div class="nimmu-top-header">
+                    <div class="container-fluid">
+                        <div class="row justify-content-end align-items-center">
+                            <div class="col-lg-1 col-2 d-lg-none d-block">
+                                <div class="sidebar-icon">
+                                    <i class="fa fa-bars"></i>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-10">
+                                <ul class="d-flex justify-content-end align-items-center">
+                                    <li>
+                                        <div class="btn-group">
+                                          <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="fa fa-envelope"></i>
+                                            <span class="message-value">12</span>
+                                          </button>
+                                          <div class="dropdown-menu dropdown-menu-messages dropdown-menu-right">
+                                            <div class="card">
+                                                <div class="card-header d-flex justify-content-between align-items-center">
+                                                    <h5>Messages</h5>
+                                                    <a href="javascript:;">Clear All</a>
+                                                </div>
+                                                <div class="card-body scrollbar-macosx">
+                                                    <ul>
+                                                        <li class="nimmu-single-notification active">
+                                                            <a href="javascript:;">
+                                                                <div class="icon">
+                                                                    <i class="fa fa-envelope-o"></i>
+                                                                </div>
+                                                                <div class="content">
+                                                                    <h6>voluptas sit aspernatur aut</h6>
+                                                                    <p>Sed ut perspiciatis unde omnis iste natus error sit</p>
+                                                                </div>
+                                                            </a>
+                                                        </li>
+                                                        <li class="nimmu-single-notification">
+                                                            <a href="javascript:;">
+                                                                <div class="icon">
+                                                                    <i class="fa fa-envelope-o"></i>
+                                                                </div>
+                                                                <div class="content">
+                                                                    <h6>voluptas sit aspernatur aut</h6>
+                                                                    <p>Sed ut perspiciatis unde omnis iste natus error sit</p>
+                                                                </div>
+                                                            </a>
+                                                        </li>
+                                                        <li class="nimmu-single-notification">
+                                                            <a href="javascript:;">
+                                                                <div class="icon">
+                                                                    <i class="fa fa-envelope-o"></i>
+                                                                </div>
+                                                                <div class="content">
+                                                                    <h6>voluptas sit aspernatur aut</h6>
+                                                                    <p>Sed ut perspiciatis unde omnis iste natus error sit</p>
+                                                                </div>
+                                                            </a>
+                                                        </li>
+                                                        <li class="nimmu-single-notification">
+                                                            <a href="javascript:;">
+                                                                <div class="icon">
+                                                                    <i class="fa fa-envelope-o"></i>
+                                                                </div>
+                                                                <div class="content">
+                                                                    <h6>voluptas sit aspernatur aut</h6>
+                                                                    <p>Sed ut perspiciatis unde omnis iste natus error sit</p>
+                                                                </div>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <div class="card-footer text-center">
+                                                    <a href="javscript:;">See all</a>
+                                                </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="btn-group">
+                                          <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="fa fa-bell"></i>
+                                            <span class="siglan"></span>
+                                          </button>
+                                          <div class="dropdown-menu dropdown-menu-notification dropdown-menu-right">
+                                            <div class="card">
+                                                <div class="card-header d-flex justify-content-between align-items-center">
+                                                    <h5>Notification</h5>
+                                                    <a href="javascript:;">Clear All</a>
+                                                </div>
+                                                <div class="card-body scrollbar-macosx">
+                                                    <ul>
+                                                        <li class="nimmu-single-notification active">
+                                                            <a href="javascript:;">
+                                                                <div class="icon">
+                                                                    <i class="fa fa-bell-o"></i>
+                                                                </div>
+                                                                <div class="content">
+                                                                    <h6>voluptas sit aspernatur aut</h6>
+                                                                    <p>Sed ut perspiciatis unde omnis iste natus error sit</p>
+                                                                </div>
+                                                            </a>
+                                                        </li>
+                                                        <li class="nimmu-single-notification">
+                                                            <a href="javascript:;">
+                                                                <div class="icon">
+                                                                    <i class="fa fa-bell-o"></i>
+                                                                </div>
+                                                                <div class="content">
+                                                                    <h6>voluptas sit aspernatur aut</h6>
+                                                                    <p>Sed ut perspiciatis unde omnis iste natus error sit</p>
+                                                                </div>
+                                                            </a>
+                                                        </li>
+                                                        <li class="nimmu-single-notification">
+                                                            <a href="javascript:;">
+                                                                <div class="icon">
+                                                                    <i class="fa fa-bell-o"></i>
+                                                                </div>
+                                                                <div class="content">
+                                                                    <h6>voluptas sit aspernatur aut</h6>
+                                                                    <p>Sed ut perspiciatis unde omnis iste natus error sit</p>
+                                                                </div>
+                                                            </a>
+                                                        </li>
+                                                        <li class="nimmu-single-notification">
+                                                            <a href="javascript:;">
+                                                                <div class="icon">
+                                                                    <i class="fa fa-bell-o"></i>
+                                                                </div>
+                                                                <div class="content">
+                                                                    <h6>voluptas sit aspernatur aut</h6>
+                                                                    <p>Sed ut perspiciatis unde omnis iste natus error sit</p>
+                                                                </div>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <div class="card-footer text-center">
+                                                    <a href="javscript:;">See all</a>
+                                                </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                    </li>
+                                    <li class="nimmu-fullscreen-btn">
+                                        <i class="fa fa-arrows-alt"></i>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Top Header -->
+            </div>
+        </nav>
+    </div>
+    <!-- top menu -->
+
+
+    <div class="nimmu-wrapper">
+        <!-- Start Top Header -->
+        <div class="nimmu-top-header nimmu-top-header-primary">
+            <div class="container-fluid">
+                <div class="row justify-content-end align-items-center">
+                    <div class="col-lg-1 col-2 d-lg-none d-block">
+                        <div class="sidebar-icon">
+                            <i class="fa fa-bars"></i>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-10">
+                        <ul class="d-flex justify-content-end align-items-center">
+                            <li>
+                                <div class="btn-group">
+                                  <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fa fa-bell"></i>
+                                    <span class="siglan"></span>
+                                  </button>
+                                  <div class="dropdown-menu dropdown-menu-notification dropdown-menu-right">
+                                    <div class="card">
+                                        <div class="card-header d-flex justify-content-between align-items-center">
+                                            <h5>Notification</h5>
+                                            <a href="javascript:;">Clear All</a>
+                                        </div>
+                                        <div class="card-body scrollbar-macosx">
+                                            <ul>
+                                                <li class="nimmu-single-notification active">
+                                                    <a href="javascript:;">
+                                                        <div class="icon">
+                                                            <i class="fa fa-bell-o"></i>
+                                                        </div>
+                                                        <div class="content">
+                                                            <h6>voluptas sit aspernatur aut</h6>
+                                                            <p>{{ user.account.info }} </p>
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                                <li class="nimmu-single-notification">
+                                                    <a href="javascript:;">
+                                                        <div class="icon">
+                                                            <i class="fa fa-bell-o"></i>
+                                                        </div>
+                                                        <div class="content">
+                                                            <h6>voluptas sit aspernatur aut</h6>
+                                                            <p>Sed ut perspiciatis unde omnis iste natus error sit</p>
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                                <li class="nimmu-single-notification">
+                                                    <a href="javascript:;">
+                                                        <div class="icon">
+                                                            <i class="fa fa-bell-o"></i>
+                                                        </div>
+                                                        <div class="content">
+                                                            <h6>voluptas sit aspernatur aut</h6>
+                                                            <p>Sed ut perspiciatis unde omnis iste natus error sit</p>
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                                <li class="nimmu-single-notification">
+                                                    <a href="javascript:;">
+                                                        <div class="icon">
+                                                            <i class="fa fa-bell-o"></i>
+                                                        </div>
+                                                        <div class="content">
+                                                            <h6>voluptas sit aspernatur aut</h6>
+                                                            <p>Sed ut perspiciatis unde omnis iste natus error sit</p>
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="card-footer text-center">
+                                            <a href="javscript:;">See all</a>
                                         </div>
                                     </div>
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right">
-                                    <div class=" dropdown-header">
-                                        <h6 class="text-overflow m-0">Welcome!</h6>
-                                    </div>
-                                    <a href="#" class="dropdown-item">
-                                        <i class="ni ni-single-02"></i>
-                                        <span>My profile</span>
-                                    </a>
-                                    <a href="#" class="dropdown-item">
-                                        <i class="ni ni-single-02"></i>
-                                        <span>Change Password</span>
-                                    </a>
-
+                                  </div>
+                                </div>
                             </li>
-                            <li class="nav-item active" style="padding-top: 12px">
-                                <a class="btn btn-danger btn-sm" type = "button" href="{% url 'accounts:logout' %}">Logout</a>
+                            <li>
+                                <div class="btn-group">
+                                  <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <!-- <img src="images/all-icons/top-header-icons/mail.svg" class="img-fluid" alt=""> -->
+                                    <i class="fa fa-envelope"></i>
+                                    <span class="message-value">12</span>
+                                  </button>
+                                  <div class="dropdown-menu dropdown-menu-messages dropdown-menu-right">
+                                    <div class="card">
+                                        <div class="card-header d-flex justify-content-between align-items-center">
+                                            <h5>Messages</h5>
+                                            <a href="javascript:;">Clear All</a>
+                                        </div>
+                                        <div class="card-body scrollbar-macosx">
+                                            <ul>
+                                                <li class="nimmu-single-notification active">
+                                                    <a href="javascript:;">
+                                                        <div class="icon">
+                                                            <i class="fa fa-envelope-o"></i>
+                                                        </div>
+                                                        <div class="content">
+                                                            <h6>voluptas sit aspernatur aut</h6>
+                                                            <p>Sed ut perspiciatis unde omnis iste natus error sit</p>
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                                <li class="nimmu-single-notification">
+                                                    <a href="javascript:;">
+                                                        <div class="icon">
+                                                            <i class="fa fa-envelope-o"></i>
+                                                        </div>
+                                                        <div class="content">
+                                                            <h6>voluptas sit aspernatur aut</h6>
+                                                            <p>Sed ut perspiciatis unde omnis iste natus error sit</p>
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                                <li class="nimmu-single-notification">
+                                                    <a href="javascript:;">
+                                                        <div class="icon">
+                                                            <i class="fa fa-envelope-o"></i>
+                                                        </div>
+                                                        <div class="content">
+                                                            <h6>voluptas sit aspernatur aut</h6>
+                                                            <p>Sed ut perspiciatis unde omnis iste natus error sit</p>
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                                <li class="nimmu-single-notification">
+                                                    <a href="javascript:;">
+                                                        <div class="icon">
+                                                            <i class="fa fa-envelope-o"></i>
+                                                        </div>
+                                                        <div class="content">
+                                                            <h6>voluptas sit aspernatur aut</h6>
+                                                            <p>Sed ut perspiciatis unde omnis iste natus error sit</p>
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="card-footer text-center">
+                                            <a href="javscript:;">See all</a>
+                                        </div>
+                                    </div>
+                                  </div>
+                                </div>
+                            </li>
+                            <li class="nimmu-fullscreen-btn">
+                                <i class="fa fa-arrows-alt"></i>
+                            </li>
+                            <li>
+                                <div class="btn-group">
+                                  <button type="button" class="btn dropdown-toggle d-flex align-items-center" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <span class="nimmu-avater">
+                                        <img src="{{user.account.picture.url}}" class="img-fluid" alt="">
+                                    </span>
+                                    <span><span class="nimmu-profile-name">{{ user.full_name }}</span> <i class="fa fa-angle-down"></i></span>
+                                  </button>
+                                  <div class="dropdown-menu dropdown-menu-right nimmu-profile-option">
+                                    <ul>
+                                        <li><a href="javascript:;">Profile</a></li>
+                                        <li><a href="{% url 'accounts:logout' %}">Logout</a></li>
+                                    </ul>
+                                  </div>
+                                </div>
                             </li>
                         </ul>
                     </div>
                 </div>
-            </nav>
-    </header>
-
-    <div class="wrapper">
-        <!-- Sidebar  -->
-        <nav id="sidebar">
-            <ul class="list-unstyled components text-sm pt-5" style="overflow-y: scroll; font-size: 15px">
-                <!-- <li class="active">
-                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home</a>
-                    <ul class="collapse list-unstyled" id="homeSubmenu">
-                        <li>
-                            <a href="#">Home 1</a>
-                        </li>
-                        <li>
-                            <a href="#">Home 2</a>
-                        </li>
-                        <li>
-                            <a href="#">Home 3</a>
-                        </li>
-                    </ul>
-                </li> -->
-                <!-- <li>
-                    <a href="#">Home</a>
-                </li> -->
-                <li>
-                    <a href="http://127.0.0.1:8000/"><i class="fas fa-user-alt"></i> Account Enquiry</a>
-                </li>
-                <li>
-                    <a href="{% url 'transfer' %}"><i class="fas fa-random"></i> Transfer Funds</a>
-                </li>
-                <li>
-                    <a href="{% url 'change_password'%}"><i class="fas fa-money-bill"></i> Reset Password</a>
-                </li>
-
-                <li>
-                    <a href="http://127.0.0.1:8000/index.html/"><i class="fas fa-mobile-alt"></i> Mobile Banking</a>
-                </li>
-
-                <li>
-                    <a href="http://127.0.0.1:8000/index.html/">Prepaid Reload</a>
-                </li>
-                <li>
-                    <a href="http://127.0.0.1:8000/index.html/">Western Union</a>
-                </li>
-
-                <li>
-                    <a href="http://127.0.0.1:8000/index.html/">Remittance</a>
-                </li>
-
-                <li>
-                    <a href="http://127.0.0.1:8000/index.html/">Standing Instructions</a>
-                </li>
-
-                <li>
-                    <a href="http://127.0.0.1:8000/index.html/">Unit Trust</a>
-                </li>
-                <li>
-                    <a href="http://127.0.0.1:8000/index.html/">Share Trading</a>
-                </li>
-                <li>
-                    <a href="http://127.0.0.1:8000/index.html/">eIPO</a>
-                </li>
-                <li>
-                    <a href="http://127.0.0.1:8000/index.html/">Cheque Management</a>
-                </li>
-                <li>
-                    <a href="http://127.0.0.1:8000/index.html/">EPF</a>
-                </li>
-                <li>
-                    <a href="http://127.0.0.1:8000/index.html/">eApplication</a>
-                </li>
-                <!--<li>-->
-                    <!--<a href="#">Risk Profiler</a>-->
-                <!--</li>-->
-                <!--<li>-->
-                    <!--<a href="#">Clicks Transaction</a>-->
-                <!--</li>-->
-                <!--<li>-->
-                    <!--<a href="#">Manage Center</a>-->
-                <!--</li>-->
-                <!--<li>-->
-                    <!--<a href="#">Message Center</a>-->
-                <!--</li>-->
-                <!--<li>-->
-                    <!--<a href="#">Update Profile</a>-->
-                <!--</li>-->
-                <!--<li>-->
-                    <!--<a href="#">ATM Services</a>-->
-                <!--</li>-->
-                <li>
-                    <a href="#">Octo Tools</a>
-                </li>
-
-                <!-- <li>
-                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false"
-                        class="dropdown-toggle">Pages</a>
-                    <ul class="collapse list-unstyled" id="pageSubmenu">
-                        <li>
-                            <a href="#">Page 1</a>
-                        </li>
-                        <li>
-                            <a href="#">Page 2</a>
-                        </li>
-                        <li>
-                            <a href="#">Page 3</a>
-                        </li>
-                    </ul>
-                </li> -->
-            </ul>
-
-            <!-- <ul class="list-unstyled CTAs">
-                <li>
-                    <a href="https://bootstrapious.com/tutorial/files/sidebar.zip" class="download">Download source</a>
-                </li>
-                <li>
-                    <a href="https://bootstrapious.com/p/bootstrap-sidebar" class="article">Back to article</a>
-                </li>
-            </ul> -->
-        </nav>
-
-        <!-- Page Content  -->
-
-        <div id="content2" style="padding-top: 80px">
-            <div class="secure text-right">
-                <h6 class="text-white p-1 banner">You are in a secured site</h6>
             </div>
-             <div align="center">{% include "core/messages.html" %}</div>
-            <div class="d-flex container">
-                <h4 class="text-danger title">Account Summary</h4>
+        </div>
+        <!-- End Top Header -->
+
+        <!-- Start breadcrumb -->
+
+
+        <div class="nimmu-breadcrumb">
+            <div class="container-fluid">
+
+                <div class="row">
+
+                    <div align="center">{% include "core/messages.html" %}</div>
+                    <div class="col-12">
+                        <ul class="d-flex">
+                            <li>Emirates Dashboard</li>
+                            <!--<li>Banking System</li>-->
+                        </ul>
+                    </div>
+                </div>
             </div>
-
-
-            <section class="container">
-                <div class="pt-5 row">
-                    <div class="col-md-1">
-                        <!--<img src ="{{user.account.picture.url}}" alt="" style="width: 150px; height: 150px">-->
-
-                    </div>
-
-
-                    <div class="ml-4 col-md-4 personal-info" style="font-size: 12px; font-family: sans-serif;">
-                        <p class="text-dark font-weight-bold text-sm pt-0"> ACCOUNT NAME:  {{ user.full_name }}</p>
-                        <p class="text-dark font-weight-bold text-sm pt-0"> DATE OF BIRTH: {{ user.account.birth_date }} </p>
-                        <p class="text-dark font-weight-bold text-sm pt-0"> GENDER:  {{ user.account.get_gender_display }}</p>
-                        <p class="text-dark font-weight-bold text-sm pt-0"> CONTACT NO: {{ user.contact_no }}</p>
-
-
-                    </div>
-
-                    <div class="col-md-4 account-info">
-                        <p class="text-dark font-weight-bold text-sm pt-0"> EMAIL ADDRESS: {{ user.email }} </p>
-                        <p class="text-dark font-weight-bold text-sm pt-0"> ACCOUNT CREATED: {{ user.date_joined|date:'d-m-Y' }} </p>
-                        <p class="text-dark font-weight-bold text-sm pt-0"> ACCOUNT NO: {{ user.account_no }} </p>
-                        <p class="text-dark font-weight-bold text-sm pt-0"> ADDRESS: {{ user.full_address }} </p>
-                        <!--<p class="text-dark font-weight-bold text-am pt-0"> ACCOUNT BALANCE($)</p>-->
-                        <!--<p class="card"><b>$ {{ user.balance }}</b></p>-->
-                        <!--<button class="btn btn-outline-success text-sm" href ="{% url 'transfer' %}">Transfer</button>-->
-                        <!--<a class="btn btn-danger" href="{% url 'transactions:withdrawal' %}">Withdraw</a>-->
-                    </div>
-                </div>
-            </section>
-
-            <section class="container">
-                <div>
-                    <!-- <button class="btn btn-outline-dark ml-4 fa-pull-right">Account Summary</button> -->
-                    <!-- <div>
-                        <p class="account-summary-info"> You can view your current, savings-i, Offshore and foreign
-                            currency
-                            information here. Just click
-                            on the account number to view details. To view all accounts that you have with EpicEuro
-                            Bank.
-                            Kindly click on "Account Summary"
-                        </p>
-                    </div> -->
-
-
-
-
-
-
-
-                    <div class="offshore mb-3">
-                        <h4 class="text-white p-2">Available Balance:   ${{ user.balance }}</h4>
-                        <h4 class="text-white p-1">Ledger Balance:     ${{ user.balance }}</h4>
-                    </div>
-                    <div>
-                        <a class="btn btn-success btn-md" href="http://127.0.0.1:8000/" role="button">Account Enquiry</a>
-
-                    </div>
-                    <section class="container">
-        <div class="row" style="padding: 50px 50px 50px !important">
-            <div class="col-md-12>
-                <div class="card pt-4">
-                    <div class="card-body">
-                        <!--<br class="lead text-muted"><br><strong>Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don't simply skip over it entirely.</strong></br></p>-->
-        <p>
-
-          <!--<a class="btn btn-success btn-md" href="{% static 't/name.pdf'%}" role="button">Register</a>-->
-          <!--<a class="btn btn-success btn-md" href="{% url 'accounts:register' %}" role="button">Create a Bank Account</a>-->
-        </p>
-
-                    </div>
-                </div>
-
-</div>
-</section>
-
-                    <!--<div class="pb-3">-->
-                        <!--<caption><b>Deposit Details</b></caption>-->
-                        <!--<table class="table table-hover table-bordered">-->
-                            <!--<thead>-->
-                            <!--&lt;!&ndash;<tr>&ndash;&gt;-->
-                                <!--<th style="width: 3%">S/N</th>-->
-                                <!--<th style="width: 30%">Date</th>-->
-                                <!--<th>Details</th>-->
-                                <!--<th style="width: 25%">Amount</th>-->
-                            <!--&lt;!&ndash;</tr>&ndash;&gt;-->
-                            <!--</thead>-->
-
-                            <!--<tr>-->
-                                <!--{% for obj in deposit %}-->
-                                <!--<th scope="row" colspan="0 ">{{forloop.counter}}</th>-->
-                                <!--<td>{{ obj.timestamp }}</td>-->
-                                <!--<td>Deposit</td>-->
-                                <!--<td>{{ obj.amount }}</td>-->
-
-                            <!--</tr>-->
-                             <!--{% endfor %}-->
-                            <!--<tr>-->
-                                <!--{% for obj in withdrawal %}-->
-                                 <!--<th scope="row" colspan="0 ">{{forloop.counter}}</th>-->
-
-                                <!--<td>{{ obj.timestamp }}</td>-->
-                                <!--<td>Transfer</td>-->
-                                <!--<td>{{ obj.amount }}</td>-->
-                            <!--</tr>-->
-                            <!--{% endfor %}-->
-                            <!--<tr>-->
-                                <!--{% for obj in interest %}-->
-                                <!--<th scope="row">{{forloop.counter}}</th>-->
-                                <!--<td>{{ obj.timestamp }}</td>-->
-                                <!--<td>Monthly Intrest</td>-->
-                                <!--<td>{{ obj.amount }}</td>-->
-
-                            <!--</tr>-->
-
-                            <!--{% endfor %}-->
-
-                            <!--<tr>-->
-                                <!--<th class="text-right" scope="row" colspan="3">Total</th>-->
-
-                                <!--<td>{{ deposit_sum }}</td>-->
-                            <!--</tr>-->
-
-                        <!--</table>-->
-
-                        <!--<div class="pb-3">-->
-                        <!--<caption><b>Deposit Details</b></caption>-->
-                        <!--<table class="table table-hover table-bordered">-->
-                            <!--<thead>-->
-                            <!--<tr>-->
-                                <!--<th style="width: 3%">S/N</th>-->
-                                <!--<th style="width: 30%">Date</th>-->
-                                <!--<th>Details</th>-->
-                                <!--<th style="width: 25%">Amount</th>-->
-                            <!--</tr>-->
-                            <!--</thead>-->
-
-                            <!--<tr>-->
-                                <!--{% for obj in deposit %}-->
-                                <!--<th scope="row" colspan="0 ">{{forloop.counter}}</th>-->
-                                <!--<td>{{ obj.timestamp }}</td>-->
-                                <!--<td>Deposit</td>-->
-                                <!--<td>{{ obj.amount }}</td>-->
-
-                            <!--</tr>-->
-                             <!--{% endfor %}-->
-                            <!--<tr>-->
-                                <!--{% for obj in withdrawal %}-->
-                                 <!--<th scope="row" colspan="0 ">{{forloop.counter}}</th>-->
-
-                                <!--<td>{{ obj.timestamp }}</td>-->
-                                <!--<td>Transfer</td>-->
-                                <!--<td>{{ obj.amount }}</td>-->
-                            <!--</tr>-->
-                            <!--{% endfor %}-->
-                            <!--<tr>-->
-                                <!--{% for obj in interest %}-->
-                                <!--<th scope="row">{{forloop.counter}}</th>-->
-                                <!--<td>{{ obj.timestamp }}</td>-->
-                                <!--<td>Monthly Intrest</td>-->
-                                <!--<td>{{ obj.amount }}</td>-->
-
-                            <!--</tr>-->
-
-                            <!--{% endfor %}-->
-
-                            <!--<tr>-->
-                                <!--<th class="text-right" scope="row" colspan="3">Total</th>-->
-
-                                <!--<td>{{ deposit_sum }}</td>-->
-                            <!--</tr>-->
-
-                        <!--</table>-->
-
-
-
-                        <!--<caption><b>Withdrawal Details</b></caption>-->
-                        <!--<table class="table table-hover table-bordered">-->
-                            <!--<tr>-->
-                                <!--<th style="width: 3%">S/N</th>-->
-                                <!--<th style="width: 30%">Date</th>-->
-                                <!--<th>Details</th>-->
-                                <!--<th style="width: 25%">Amount</th>-->
-                            <!--</tr>-->
-
-
-                            <!--<tr>-->
-                                <!--{% for obj in withdrawal %}-->
-                                 <!--<th scope="row" colspan="0 ">{{forloop.counter}}</th>-->
-
-                                <!--<td>{{ obj.timestamp }}</td>-->
-                                <!--<td>Withdrawal</td>-->
-                                <!--<td>{{ obj.amount }}</td>-->
-                            <!--</tr>-->
-                            <!--{% endfor %}-->
-
-                           <!--<tr>-->
-                                <!--<th class="text-right" scope="row" colspan="3">Total</th>-->
-                                <!--<td>{{ withdrawal_sum }}</td>-->
-                           <!--</tr>-->
-                        <!--</table>-->
-
-                        <!--<caption><b>Interest Details</b></caption>-->
-                        <!--<table class="table table-hover table-bordered">-->
-                            <!--<tr>-->
-                                <!--<th style="width: 3%">S/N</th>-->
-                                <!--<th style="width: 30%">Date</th>-->
-                                <!--<th>Details</th>-->
-                                <!--<th style="width: 25%">Amount</th>-->
-                            <!--</tr>-->
-
-
-                            <!--<tr>-->
-                                <!--{% for obj in interest %}-->
-                                <!--<th scope="row">{{forloop.counter}}</th>-->
-                                <!--<td>{{ obj.timestamp }}</td>-->
-                                <!--<td>Monthly Intrest</td>-->
-                                <!--<td>{{ obj.amount }}</td>-->
-
-                            <!--</tr>-->
-                            <!--{% endfor %}-->
-
-                             <!--<tr>-->
-                                 <!--<th class="text-right" scope="row" colspan="3">Total</th>-->
-
-                                 <!--<td>{{ interest_sum }}</td>-->
-                             <!--</tr>-->
-                        </table>
-                    </div>
-                </div>
-            </section>
         </div>
 
-        <!-- jQuery CDN - Slim version (=without AJAX) -->
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
-        </script>
-        <!-- Popper.JS -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
-            integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous">
-        </script>
-        <!-- Bootstrap JS -->
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
-            integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous">
-        </script>
-        <!-- jQuery Custom Scroller CDN -->
-        <script
-            src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js">
-        </script>
-        <!-- Font Awesome JS -->
-        <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js"
-            integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous">
-        </script>
-        <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js"
-            integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous">
-        </script>
+        <!-- End breadcrumb -->
 
-        <script type="text/javascript">
-            $(document).ready(function () {
-                $("#sidebar").mCustomScrollbar({
-                    theme: "minimal"
-                });
+        <!-- nimmu content area -->
+        <div class="nimmu-content-area">
+            <div class="container-fluid">
+                
+                <!-- Start nimmu analytic area -->
+                <div class="nimmu-analytic-area banking-system">
+                    <div class="row no-gutters">
+                        <div class="col-xl-3 col-md-6 col-12 mb-xl-0 mb-4">
+                            <div class="nimmu-default-card">
+                                <div class="nimmu-analytic">
+                                    <div class="featured-area">
+                                        <ul class="d-flex align-items-center">
+                                            <li class="icon"><img src="{% static 'images/featured/bsystem-icon1.png' %}" class="img-fluid" alt=""></li>
+                                            <li>
+                                                <h2 class="title">{{ user.account_no }}</h2>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <p>Account No.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-md-6 col-12 mb-xl-0 mb-4">
+                            <div class="nimmu-default-card">
+                                <div class="nimmu-analytic">
+                                    <div class="featured-area">
+                                        <ul class="d-flex align-items-center">
+                                            <li class="icon"><img src="{% static 'images/featured/bsystem-icon2.png' %}" class="img-fluid" alt=""></li>
+                                            <li>
+                                                <h2 class="title">${{ user.balance|intcomma }}</h2>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <p>Available Balance</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-md-6 col-12 mb-xl-0 mb-lg-4 mb-4">
+                            <div class="nimmu-default-card">
+                                <div class="nimmu-analytic">
+                                    <div class="featured-area">
+                                        <ul class="d-flex align-items-center">
+                                            <li class="icon"><img src="{% static 'images/featured/bsystem-icon3.png' %}" class="img-fluid" alt=""></li>
+                                            <li>
+                                                <h2 class="title">5.41%</h2>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <p>State Tax Return</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-md-6 col-12">
+                            <div class="nimmu-default-card">
+                                <div class="nimmu-analytic">
+                                    <div class="featured-area">
+                                        <ul class="d-flex align-items-center">
+                                            <li class="icon"><img src="{% static 'images/featured/bsystem-icon4.png' %}" class="img-fluid" alt=""></li>
+                                            <li>
+                                                <h2 class="title">32</h2>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <p>Open Trades</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End nimmu analytic area -->
 
-                $('#sidebarCollapse').on('click', function () {
-                    $('#sidebar, #content1').toggleClass('active');
-                    $('.collapse.in').toggleClass('in');
-                    $('a[aria-expanded=true]').attr('aria-expanded', 'false');
-                });
-            });
-        </script>
+
+                <!-- Start nimmu trafic area -->
+                <div class="nimmu-trafic-area">
+                    <div class="row">
+                        <div class="col-xl-10 col-16">
+                            <div class="nimmu-default-card">
+                                <div class="nimmu-card-header nimmu-mb-30">
+                                    <div class="d-felx justify-content-between align-items-center">
+                                        <div class="nimmu-header-left">
+                                            <h3>Transactions</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="nimmu-card-body">
+                                     <div class="row mt-4">
+                    <div class="col-12">
+                        <div class="nimmu-default-card">
+                            <div class="nimmu-card-header nimmu-mb-30">
+                                <div class="d-felx justify-content-between align-items-center">
+                                    <div class="nimmu-header-left">
+                                        <!--<h3>Hoverable Table</h3>-->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table table-borderless table-striped table-hover nimmu-table-hover nimmu-basic-table">
+                                   <thead>
+                            <tr>
+                                <th style="width: 3%">S/N</th>
+                                <th style="width: 30%">Transaction Date</th>
+                                <th>Transaction Type</th>
+                                <th style="width: 25%">Amount ($)</th>
+                            </tr>
+                            </thead>
+
+                            <tr>
+                                {% for obj in deposit %}
+                                <!--<th scope="row" colspan="0 "></th>-->
+                                <td>{{ obj.timestamp }}</td>
+                                <td>Deposit</td>
+                                <td>{{ obj.amount }}</td>
+
+                            </tr>
+                             {% endfor %}
+                            <tr>
+                                {% for obj in withdrawal %}
+                                 <!--<th scope="row" colspan="0 ">{{forloop.counter}}</th>-->
+
+                                <td>{{ obj.timestamp }}</td>
+                                <td>Transfer</td>
+                                <td>{{ obj.amount }}</td>
+                            </tr>
+                            {% endfor %}
+                            <tr>
+                                {% for obj in interest %}
+                                <!--<th scope="row">{{forloop.counter}}</th>-->
+                                <td>{{ obj.timestamp }}</td>
+                                <td>Monthly Intrest</td>
+                                <td>{{ obj.amount }}</td>
+
+                            </tr>
+
+                            {% endfor %}
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+                                    <div id="comparison"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--<div class="col-xl-4 col-12 mb-xl-0 mb-4">-->
+                            <!--<div class="nimmu-default-card transactions-card transactions-card-2">-->
+                                <!--<div class="nimmu-card-header nimmu-mb-30">-->
+                                    <!--<h3>Transactions</h3>-->
+                                    <!--<a href="javascript:;">See All</a>-->
+                                <!--</div>-->
+                                <!--<div class="nimmu-card-body">-->
+                                    <!--<ul class="transactions-list scrollbar-macosx">-->
+                                        <!--<li>-->
+                                            <!--<div class="icon">-->
+                                                <!--<img src="{% static 'images/transactions/auth-icon1.png' %}" class="img-fluid" alt="">-->
+                                            <!--</div>-->
+                                            <!--<div class="title">-->
+                                                <!--<h4>William Davis</h4>-->
+                                                <!--<p>05 Nov</p>-->
+                                            <!--</div>-->
+                                            <!--<div class="amount">-->
+                                                <!--<h4>$1350.00</h4>-->
+                                                <!--<p>Sent</p>-->
+                                            <!--</div>-->
+                                        <!--</li>-->
+                                        <!--<li>-->
+                                            <!--<div class="icon">-->
+                                                <!--<img src="{% static 'images/transactions/auth-icon2.png' %}" class="img-fluid" alt="">-->
+                                            <!--</div>-->
+                                            <!--<div class="title">-->
+                                                <!--<h4>Cody Thibeault</h4>-->
+                                                <!--<p>05 Nov</p>-->
+                                            <!--</div>-->
+                                            <!--<div class="amount">-->
+                                                <!--<h4>$3278.00</h4>-->
+                                                <!--<p>Received</p>-->
+                                            <!--</div>-->
+                                        <!--</li>-->
+                                        <!--<li>-->
+                                            <!--<div class="icon">-->
+                                                <!--<img src="{% static 'images/transactions/auth-icon3.png' %}" class="img-fluid" alt="">-->
+                                            <!--</div>-->
+                                            <!--<div class="title">-->
+                                                <!--<h4>Sue Molloy</h4>-->
+                                                <!--<p>05 Nov</p>-->
+                                            <!--</div>-->
+                                            <!--<div class="amount">-->
+                                                <!--<h4>$6541.00</h4>-->
+                                                <!--<p>decline</p>-->
+                                            <!--</div>-->
+                                        <!--</li>-->
+                                        <!--<li>-->
+                                            <!--<div class="icon">-->
+                                                <!--<img src="{% static 'images/transactions/auth-icon4.png' %}" class="img-fluid" alt="">-->
+                                            <!--</div>-->
+                                            <!--<div class="title">-->
+                                                <!--<h4>Sue Molloy</h4>-->
+                                                <!--<p>05 Nov</p>-->
+                                            <!--</div>-->
+                                            <!--<div class="amount">-->
+                                                <!--<h4>$6541.00</h4>-->
+                                                <!--<p>decline</p>-->
+                                            <!--</div>-->
+                                        <!--</li>-->
+                                        <!--<li>-->
+                                            <!--<div class="icon">-->
+                                                <!--<img src="{% static 'images/transactions/auth-icon1.png' %}" class="img-fluid" alt="">-->
+                                            <!--</div>-->
+                                            <!--<div class="title">-->
+                                                <!--<h4>William Davis</h4>-->
+                                                <!--<p>05 Nov</p>-->
+                                            <!--</div>-->
+                                            <!--<div class="amount">-->
+                                                <!--<h4>$1350.00</h4>-->
+                                                <!--<p>Sent</p>-->
+                                            <!--</div>-->
+                                        <!--</li>-->
+                                        <!--<li>-->
+                                            <!--<div class="icon">-->
+                                                <!--<img src="{% static 'images/transactions/auth-icon2.png' %}" class="img-fluid" alt="">-->
+                                            <!--</div>-->
+                                            <!--<div class="title">-->
+                                                <!--<h4>Cody Thibeault</h4>-->
+                                                <!--<p>05 Nov</p>-->
+                                            <!--</div>-->
+                                            <!--<div class="amount">-->
+                                                <!--<h4>$3278.00</h4>-->
+                                                <!--<p>Received</p>-->
+                                            <!--</div>-->
+                                        <!--</li>-->
+                                        <!--<li>-->
+                                            <!--<div class="icon">-->
+                                                <!--<img src="{% static 'images/transactions/auth-icon3.png' %}" class="img-fluid" alt="">-->
+                                            <!--</div>-->
+                                            <!--<div class="title">-->
+                                                <!--<h4>Sue Molloy</h4>-->
+                                                <!--<p>05 Nov</p>-->
+                                            <!--</div>-->
+                                            <!--<div class="amount">-->
+                                                <!--<h4>$6541.00</h4>-->
+                                                <!--<p>decline</p>-->
+                                            <!--</div>-->
+                                        <!--</li>-->
+                                        <!--<li>-->
+                                            <!--<div class="icon">-->
+                                                <!--<img src="{% static 'images/transactions/auth-icon4.png' %}" class="img-fluid" alt="">-->
+                                            <!--</div>-->
+                                            <!--<div class="title">-->
+                                                <!--<h4>Sue Molloy</h4>-->
+                                                <!--<p>05 Nov</p>-->
+                                            <!--</div>-->
+                                            <!--<div class="amount">-->
+                                                <!--<h4>$6541.00</h4>-->
+                                                <!--<p>decline</p>-->
+                                            <!--</div>-->
+                                        <!--</li>-->
+                                    <!--</ul>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!-- End nimmu trafic area -->
+
+
+                <!-- Start nimmu trafic area -->
+                <div class="nimmu-trafic-area">
+                    <div class="row">
+                        <div class="col-xl-4 col-12">
+                            <div class="nimmu-default-card master-card-area">
+                                <div class="nimmu-card-header d-flex justify-content-between align-items-center mb-4">
+                                    <h3>Credit Card</h3>
+                                    <a href="javascript:;" class="add-card">Add Card</a>
+                                </div>
+                                <div class="nimmu-card-body">
+                                    <div class="master-card">
+                                        <h5>Plutinam Plus</h5>
+                                        <h2>Bruce Lambert</h2>
+                                        <p class="cardNumber">5126 4587 2214 5845</p>
+                                        <div class="master-card-footer">
+                                            <img src="{% static 'images/visa.png' %}" class="img-fluid" alt="">
+                                            <p>12/07</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-8 col-12 mb-xl-0 mb-4">
+                            <div class="nimmu-default-card">
+                                <div class="nimmu-card-header cypto-trading">
+                                    <div class="nimmu-header-left">
+                                        <h3>History Chart</h3>
+                                    </div>
+                                    <div class="chart-coin-list">
+                                        <ul class="d-flex">
+                                            <li><span class="color-box color-box-1"></span> Saving</li>
+                                            <li><span class="color-box color-box-2"></span> Saving</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="nimmu-card-body">
+                                    <div id="nimmu-audience-growth" style="padding-top: 20px;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End nimmu trafic area -->
+
+                <div class="banking-system-status-area mt-4">
+                    <div class="row">
+                        <div class="col-xl-6 mb-xl-0 mb-4">
+                            <div class="nimmu-default-card">
+                                <div class="nimmu-card-header mb-4">
+                                    <h3>Loans</h3>
+                                </div>
+                                <div class="nimmu-card-body">
+                                    <div class="lons-area">
+                                        <h1>Total $37,650</h1>
+                                        <div class="row">
+                                            <div class="col-lg-6 mb-4">
+                                                <div class="lon-card">
+                                                    <h4>Car Loan</h4>
+                                                    <div class="lon-card-inner">
+                                                        <div class="amount">
+                                                            <h3>$9,700</h3>
+                                                        </div>
+                                                        <div class="progress">
+                                                            <div class="progress-bar" role="progressbar" style="width: 70%" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 mb-4">
+                                                <div class="lon-card">
+                                                    <h4>Home Loan</h4>
+                                                    <div class="lon-card-inner lon-card-home">
+                                                        <div class="amount">
+                                                            <h3>$13,450</h3>                                            
+                                                        </div>
+                                                        <div class="progress">
+                                                            <div class="progress-bar" role="progressbar" style="width: 70%" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 mb-lg-0 mb-4">
+                                                <div class="lon-card">
+                                                    <h4>Cash Loan</h4>
+                                                    <div class="lon-card-inner lon-card-cash">
+                                                        <div class="amount">
+                                                            <h3>$6,500</h3>                                            
+                                                        </div>
+                                                        <div class="progress">
+                                                            <div class="progress-bar" role="progressbar" style="width: 70%" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="lon-card">
+                                                    <h4>Renewable</h4>
+                                                    <div class="lon-card-inner lon-card-renewable">
+                                                        <div class="amount">
+                                                            <h3>$8,000</h3>                                            
+                                                        </div>
+                                                        <div class="progress">
+                                                            <div class="progress-bar" role="progressbar" style="width: 70%" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-6">
+                            <div class="nimmu-default-card">
+                                <div class="nimmu-card-header mb-4">
+                                    <h3>Recent Vendors</h3>
+                                </div>
+                                <div class="nimmu-card-body">
+                                    <div class="row">
+                                        <div class="col-xl-3 col-md-6 mb-xl-0 mb-4">
+                                            <div class="vendor-card">
+                                                <img src="{% static 'images/transactions/auth-icon1.png' %}" alt="">
+                                                <h4>Wiliam Davis</h4>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-3 col-md-6 mb-xl-0 mb-4">
+                                            <div class="vendor-card">
+                                                <img src="{% static 'images/transactions/auth-icon2.png' %}" alt="">
+                                                <h4>Cody Thibeault</h4>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-3 col-md-6 mb-xl-0 mb-4">
+                                            <div class="vendor-card">
+                                                <img src="{% static 'images/transactions/auth-icon3.png' %}" alt="">
+                                                <h4>Sue Molloy</h4>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-3 col-md-6">
+                                            <div class="vendor-card">
+                                                <img src="{% static 'images/transactions/auth-icon4.png' %}" alt="">
+                                                <h4>Eloise Reinke</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-5 mb-4">
+                                        <div class="col-12">
+                                            <button class="btn btn-primary btn-block vendor-btn vendor-btn-1">Add New Vendors</button>
+                                            <div class="row mt-4">
+                                                <div class="col-lg-6 mb-lg-0 mb-4">
+                                                    <button class="btn btn-primary btn-block vendor-btn vendor-btn-2">Add New Vendors</button>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <button class="btn btn-primary btn-block vendor-btn vendor-btn-3">Add New Vendors</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+        <!-- nimmu content area -->
+
+        <!-- Statr footer area -->
+        <footer class="nimmu-footer">
+            <div class="container-fluid">
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <div class="nimmu-footer-btn text-md-left text-right mb-md-0 mb-3">
+                            <!--<a href="https://themeforest.net/item/akavo-react-admin-template/25445120" class="nimmu-ftr-btn nimmu-btn-info">Buy Now</a>-->
+                            <!--<a href="https://themeforest.net/item/akavo-react-admin-template/25445120/comments" class="nimmu-ftr-btn nimmu-btn-success">Feedback</a>-->
+                        </div>
+                    </div>
+                    <div class="col-lg-6 text-md-right text-center">
+                        <p> All rights reserved</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- End footer area -->
+    </div>
+
+
+    <!-- =============================================
+                (02) End nimmu wrapper
+    ============================================== -->
+
+
+
+
+    <!-- =============================================
+                Start right sidebar
+    ============================================== -->
+
+    <div class="nimmu-right-sidebar-show-btn">
+        <i class="fa fa-cogs"></i>
+    </div>
+
+    <div class="nimmu-right-sidebar nimmu-right-sidebar-hide">
+        <div class="nimmu-right-bar-close"><i class="fa fa-close"></i></div>
+        <h2>Customizer</h2>
+        <p>This customizer allows you to see the different variations of the EasyDev. Create your own visual style for every project you do!</p>
+
+        <ul class="nimmu-right-sidebar-switch">
+            <li>
+                <label class="switch">
+                  <input type="checkbox" class="nimmu-collaps-menu">
+                  <span class="slider round"></span>
+                </label>
+                Collapsed Menu
+            </li>
+            <li>
+                <label class="switch">
+                  <input type="checkbox" class="nimmu-top-menu">
+                  <span class="slider round"></span>
+                </label>
+                Top Menu
+            </li>
+            <li>
+                <label class="switch">
+                  <input type="checkbox" class="nimmu-squared-card-box">
+                  <span class="slider round"></span>
+                </label>
+                Squared Card Box
+            </li>
+            <li>
+                <label class="switch">
+                  <input type="checkbox" class="nimmu-box-shadows">
+                  <span class="slider round"></span>
+                </label>
+                Block's Shadows
+            </li>
+        </ul>
+
+        <div class="layouts">
+            <h3>Layouts</h3>
+            <div class="layouts-inner scrollbar-macosx ">
+                <ul>
+                    <li>
+                        <a href="index.html">
+                            <h4>Campaign Monitoring</h4>
+                            <img src="{% static 'images/screenshot/img1.png' %}" class="img-fluid" alt="">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="cryptocurrency.html">
+                            <h4>Cryptocurrency</h4>
+                            <img src="{% static 'images/screenshot/img2.png' %}" class="img-fluid" alt="">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="banking-system.html">
+                            <h4>Banking System</h4>
+                            <img src="{% static 'images/screenshot/img3.png' %}" class="img-fluid" alt="">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="crm.html">
+                            <h4>CRM</h4>
+                            <img src="{% static 'images/screenshot/img4.png' %}" class="img-fluid" alt="">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="ecommerce.html">
+                            <h4>Ecommerce</h4>
+                            <img src="{% static 'images/screenshot/img5.png' %}" class="img-fluid" alt="">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- =============================================
+                End right sidebar
+    ============================================== -->
+
+    <!-- live chat -->
+    <div class="nimmu-live-chat-btn">
+        <img src="{% static 'images/live-chat.svg' %}" class="img-fluid" alt="">
+    </div>
+
+    <div class="nimmu-chat-bot nimmu-chat-bot-hide">
+        <div class="chat-title">
+            <!-- <div class="chat-close"><i class="fa fa-close"></i></div> -->
+            <h4>My New Awesome Title</h4>
+            <p>And my cool subtitle</p>
+        </div>
+        <div class="chat"></div>
+        <div class="busy"></div>
+        <div class="input">
+            <input type="text" placeholder="Type a message..." />
+            <a><i class="fa fa-paper-plane-o"></i></a>
+        </div>
+    </div>
+    <!-- live chat -->
+    
+
+
+
+    <!-- =============================================
+                   Jquery plugins
+    ============================================== -->
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <!-- Bootstrap -->
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <!-- Owl Carousel -->
+    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+    <!-- Counterup -->
+    <script src="{% static 'js/waypoints.min.js' %}"></script>
+    <script src="{% static 'js/counterup.min.js' %}"></script>
+    <!-- Slicknav -->
+    <script src="{% static 'js/jquery.slicknav.min.js' %}"></script>
+    <!-- magnific popup -->
+    <script src="{% static 'js/magnific-popup.min.js' %}"></script>
+    <!-- Swiper Slider -->
+    <script src="{% static 'vendors/swiper-master/js/swiper.min.js' %}"></script>
+    <!-- Metismenu -->
+    <script src="{% static 'js/metisMenu.min.js' %}"></script>
+    <!-- scroll bar -->
+    <script src="{% static 'js/jquery.scrollbar.min.js' %}"></script>
+
+    <!-- Apex chart -->
+    <script src="{% static 'js/apexcharts.min.js' %}"></script>
+    <script src="{% static 'js/jquery.circlechart.js' %}"></script>
+
+    <!-- high chart -->
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+
+    <!-- amchart -->
+    <script src="https://amcharts.com/lib/4/core.js"></script>
+    <script src="https://www.amcharts.com/lib/4/charts.js"></script>
+    <script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
+
+
+    <!-- main js -->
+    <script src="{% static 'js/scripts.js' %}"></script>
+
+    <script>
+        Highcharts.chart('nimmu-audience-growth', {
+            chart: {
+                type: 'column'
+            },
+            title: {
+                text: ''
+            },
+            xAxis: {
+                categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: ''
+                }
+            },
+            tooltip: {
+                enabled: false,
+                pointFormat: '<span style="color:{series.color}">{series.name}</span>: <b>{point.y}</b> ({point.percentage:.0f}%)<br/>',
+                shared: true
+            },
+            plotOptions: {
+                column: {
+                    stacking: 'normal',
+                    pointWidth: 5,
+                },
+            },
+            legend: {
+                align: 'right',
+                x: 0,
+                verticalAlign: 'top',
+                y: -17,
+                floating: false,
+                shadow: false,
+                enabled: false
+            },
+            exporting: {
+                enabled: false
+            },
+            series: [{
+                name: 'BTC',
+                data: [2, 4, 4, 2, 5, 2, 4, 4, 2, 1, 2, 3],
+                color: '#3B53DB'
+            }, {
+                name: 'ETH',
+                data: [2, 2, 3, 2, 1, 2, 4, 4, 2, 5, 4, 2, ],
+                color: '#0EB7FE'
+            }, {
+                name: 'LTC',
+                data: [3, 3, 4, 7, 2, 2, 4, 4, 2, 5, 7, 2, ],
+                color: '#F1682C'
+            }],
+            // DashStyle:'Dash',
+        });
+
+        am4core.ready(function() {
+
+        // Themes begin
+        am4core.useTheme(am4themes_animated);
+        // Themes end
+
+        var chart = am4core.create("candle-stick", am4charts.XYChart);
+        chart.paddingRight = 20;
+
+        chart.dateFormatter.inputDateFormat = "yyyy-MM-dd";
+
+        var dateAxis = chart.xAxes.push(new am4charts.DateAxis());
+        dateAxis.renderer.grid.template.location = 0;
+
+        var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+        valueAxis.tooltip.disabled = true;
+
+        var series = chart.series.push(new am4charts.CandlestickSeries());
+        series.dataFields.dateX = "date";
+        series.dataFields.valueY = "close";
+        series.dataFields.openValueY = "open";
+        series.dataFields.lowValueY = "low";
+        series.dataFields.highValueY = "high";
+        series.simplifiedProcessing = true;
+        series.tooltipText = "Open:${openValueY.value}\nLow:${lowValueY.value}\nHigh:${highValueY.value}\nClose:${valueY.value}";
+
+        chart.cursor = new am4charts.XYCursor();
+
+        // a separate series for scrollbar
+        var lineSeries = chart.series.push(new am4charts.LineSeries());
+        lineSeries.dataFields.dateX = "date";
+        lineSeries.dataFields.valueY = "close";
+        // need to set on default state, as initially series is "show"
+        lineSeries.defaultState.properties.visible = false;
+
+        // hide from legend too (in case there is one)
+        lineSeries.hiddenInLegend = true;
+        lineSeries.fillOpacity = 0.5;
+        lineSeries.strokeOpacity = 0.5;
+
+        // var scrollbarX = new am4charts.XYChartScrollbar();
+        // scrollbarX.series.push(lineSeries);
+        // chart.scrollbarX = scrollbarX;
+
+        chart.data = [ {
+            "date": "2011-08-01",
+            "open": "136.65",
+            "high": "136.96",
+            "low": "134.15",
+            "close": "136.49"
+          }, {
+            "date": "2011-08-02",
+            "open": "135.26",
+            "high": "135.95",
+            "low": "131.50",
+            "close": "131.85"
+          }, {
+            "date": "2011-08-05",
+            "open": "132.90",
+            "high": "135.27",
+            "low": "128.30",
+            "close": "135.25"
+          }, {
+            "date": "2011-08-06",
+            "open": "134.94",
+            "high": "137.24",
+            "low": "132.63",
+            "close": "135.03"
+          }, {
+            "date": "2011-08-07",
+            "open": "136.76",
+            "high": "136.86",
+            "low": "132.00",
+            "close": "134.01"
+          }, {
+            "date": "2011-08-08",
+            "open": "131.11",
+            "high": "133.00",
+            "low": "125.09",
+            "close": "126.39"
+          }, {
+            "date": "2011-08-09",
+            "open": "123.12",
+            "high": "127.75",
+            "low": "120.30",
+            "close": "125.00"
+          }, {
+            "date": "2011-08-12",
+            "open": "128.32",
+            "high": "129.35",
+            "low": "126.50",
+            "close": "127.79"
+          }, {
+            "date": "2011-08-13",
+            "open": "128.29",
+            "high": "128.30",
+            "low": "123.71",
+            "close": "124.03"
+          }, {
+            "date": "2011-08-14",
+            "open": "122.74",
+            "high": "124.86",
+            "low": "119.65",
+            "close": "119.90"
+          }, {
+            "date": "2011-08-15",
+            "open": "117.01",
+            "high": "118.50",
+            "low": "111.62",
+            "close": "117.05"
+          }, {
+            "date": "2011-08-16",
+            "open": "122.01",
+            "high": "123.50",
+            "low": "119.82",
+            "close": "122.06"
+          }, {
+            "date": "2011-08-19",
+            "open": "123.96",
+            "high": "124.50",
+            "low": "120.50",
+            "close": "122.22"
+          }, {
+            "date": "2011-08-20",
+            "open": "122.21",
+            "high": "128.96",
+            "low": "121.00",
+            "close": "127.57"
+          }, {
+            "date": "2011-08-21",
+            "open": "131.22",
+            "high": "132.75",
+            "low": "130.33",
+            "close": "132.51"
+          }, {
+            "date": "2011-08-22",
+            "open": "133.09",
+            "high": "133.34",
+            "low": "129.76",
+            "close": "131.07"
+          }, {
+            "date": "2011-08-23",
+            "open": "130.53",
+            "high": "135.37",
+            "low": "129.81",
+            "close": "135.30"
+          }, {
+            "date": "2011-08-26",
+            "open": "133.39",
+            "high": "134.66",
+            "low": "132.10",
+            "close": "132.25"
+          }, {
+            "date": "2011-08-27",
+            "open": "130.99",
+            "high": "132.41",
+            "low": "126.63",
+            "close": "126.82"
+          }, {
+            "date": "2011-08-28",
+            "open": "129.88",
+            "high": "134.18",
+            "low": "129.54",
+            "close": "134.08"
+          }, {
+            "date": "2011-08-29",
+            "open": "132.67",
+            "high": "138.25",
+            "low": "132.30",
+            "close": "136.25"
+          }, {
+            "date": "2011-08-30",
+            "open": "139.49",
+            "high": "139.65",
+            "low": "137.41",
+            "close": "138.48"
+          }, {
+            "date": "2011-09-03",
+            "open": "139.94",
+            "high": "145.73",
+            "low": "139.84",
+            "close": "144.16"
+          }, {
+            "date": "2011-09-04",
+            "open": "144.97",
+            "high": "145.84",
+            "low": "136.10",
+            "close": "136.76"
+          }, {
+            "date": "2011-09-05",
+            "open": "135.56",
+            "high": "137.57",
+            "low": "132.71",
+            "close": "135.01"
+          }, {
+            "date": "2011-09-06",
+            "open": "132.01",
+            "high": "132.30",
+            "low": "130.00",
+            "close": "131.77"
+          }, {
+            "date": "2011-09-09",
+            "open": "136.99",
+            "high": "138.04",
+            "low": "133.95",
+            "close": "136.71"
+          }, {
+            "date": "2011-09-10",
+            "open": "137.90",
+            "high": "138.30",
+            "low": "133.75",
+            "close": "135.49"
+          }, {
+            "date": "2011-09-11",
+            "open": "135.99",
+            "high": "139.40",
+            "low": "135.75",
+            "close": "136.85"
+          }, {
+            "date": "2011-09-12",
+            "open": "138.83",
+            "high": "139.00",
+            "low": "136.65",
+            "close": "137.20"
+          }, {
+            "date": "2011-09-13",
+            "open": "136.57",
+            "high": "138.98",
+            "low": "136.20",
+            "close": "138.81"
+          }, {
+            "date": "2011-09-16",
+            "open": "138.99",
+            "high": "140.59",
+            "low": "137.60",
+            "close": "138.41"
+          }, {
+            "date": "2011-09-17",
+            "open": "139.06",
+            "high": "142.85",
+            "low": "137.83",
+            "close": "140.92"
+          }, {
+            "date": "2011-09-18",
+            "open": "143.02",
+            "high": "143.16",
+            "low": "139.40",
+            "close": "140.77"
+          }, {
+            "date": "2011-09-19",
+            "open": "140.15",
+            "high": "141.79",
+            "low": "139.32",
+            "close": "140.31"
+          }, {
+            "date": "2011-09-20",
+            "open": "141.14",
+            "high": "144.65",
+            "low": "140.31",
+            "close": "144.15"
+          }, {
+            "date": "2011-09-23",
+            "open": "146.73",
+            "high": "149.85",
+            "low": "146.65",
+            "close": "148.28"
+          }, {
+            "date": "2011-09-24",
+            "open": "146.84",
+            "high": "153.22",
+            "low": "146.82",
+            "close": "153.18"
+          }, {
+            "date": "2011-09-25",
+            "open": "154.47",
+            "high": "155.00",
+            "low": "151.25",
+            "close": "152.77"
+          }, {
+            "date": "2011-09-26",
+            "open": "153.77",
+            "high": "154.52",
+            "low": "152.32",
+            "close": "154.50"
+          }, {
+            "date": "2011-09-27",
+            "open": "153.44",
+            "high": "154.60",
+            "low": "152.75",
+            "close": "153.47"
+          }, {
+            "date": "2011-09-30",
+            "open": "154.63",
+            "high": "157.41",
+            "low": "152.93",
+            "close": "156.34"
+          }, {
+            "date": "2011-10-01",
+            "open": "156.55",
+            "high": "158.59",
+            "low": "155.89",
+            "close": "158.45"
+          }, {
+            "date": "2011-10-02",
+            "open": "157.78",
+            "high": "159.18",
+            "low": "157.01",
+            "close": "157.92"
+          }, {
+            "date": "2011-10-03",
+            "open": "158.00",
+            "high": "158.08",
+            "low": "153.50",
+            "close": "156.24"
+          }, {
+            "date": "2011-10-04",
+            "open": "158.37",
+            "high": "161.58",
+            "low": "157.70",
+            "close": "161.45"
+          }, {
+            "date": "2011-10-07",
+            "open": "163.49",
+            "high": "167.91",
+            "low": "162.97",
+            "close": "167.91"
+          }, {
+            "date": "2011-10-08",
+            "open": "170.20",
+            "high": "171.11",
+            "low": "166.68",
+            "close": "167.86"
+          }, {
+            "date": "2011-10-09",
+            "open": "167.55",
+            "high": "167.88",
+            "low": "165.60",
+            "close": "166.79"
+          }, {
+            "date": "2011-10-10",
+            "open": "169.49",
+            "high": "171.88",
+            "low": "153.21",
+            "close": "162.23"
+          }, {
+            "date": "2011-10-11",
+            "open": "163.01",
+            "high": "167.28",
+            "low": "161.80",
+            "close": "167.25"
+          }, {
+            "date": "2011-10-14",
+            "open": "167.98",
+            "high": "169.57",
+            "low": "163.50",
+            "close": "166.98"
+          }, {
+            "date": "2011-10-15",
+            "open": "165.54",
+            "high": "170.18",
+            "low": "165.15",
+            "close": "169.58"
+          }, {
+            "date": "2011-10-16",
+            "open": "172.69",
+            "high": "173.04",
+            "low": "169.18",
+            "close": "172.75"
+          }];
+
+        });
+
+
+    var options = {
+        series: [{
+            name: 'PRODUCT D',
+            data: [30, 26, 22, 13, 28, 25, 20, 25, 13, 22, 8]
+        },{
+            name: 'PRODUCT D',
+            data: [30, 26, 22, 13, 28, 25, 20, 25, 13, 22, 8]
+        }],
+        chart: {
+            type: 'line',
+            height: 310,
+            stacked: true,
+            toolbar: {
+                show: false
+            },
+            zoom: {
+                enabled: true
+            }
+        },
+        legend: {
+            show: false
+        },
+        responsive: [{
+            breakpoint: 480,
+            options: {}
+        }],
+        plotOptions: {
+            bar: {
+                horizontal: false,
+            },
+        },
+        stroke: {
+            curve: 'smooth',
+        },
+        xaxis: {
+            type: 'datetime',
+            categories: ['01/01/2011 GMT', '01/02/2011 GMT', '01/03/2011 GMT', '01/04/2011 GMT',
+                '01/05/2011 GMT', '01/06/2011 GMT', '01/07/2011 GMT', '01/08/2011 GMT', '01/09/2011 GMT', '01/10/2011 GMT', '01/11/2011 GMT'
+            ],
+        },
+    };
+
+    var chart = new ApexCharts(document.querySelector("#comparison"), options);
+    chart.render();
+
+
+    
+    </script>
+
 </body>
 
-</html>
 
- {% endblock content %}
+<!-- Mirrored from akavo-html.itech-theme.com/banking-system.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 09 Apr 2020 22:10:12 GMT -->
+</html>

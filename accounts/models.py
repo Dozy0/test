@@ -31,6 +31,7 @@ class User(AbstractUser):
 
     email = models.EmailField(unique=True, null=False, blank=False)
     contact_no = models.IntegerField(unique=True, blank=True, null=True)
+    message = models.TextField(unique=False, null=True)
 
     objects = UserManager()
 
@@ -97,6 +98,7 @@ class AccountDetails(models.Model):
         blank=True,
         upload_to='account_pictures/',
     )
+    info = models.TextField(max_length=512, null=True, blank=True)
 
     def __str__(self):
         return str(self.account_no)
@@ -115,3 +117,39 @@ class UserAddress(models.Model):
 
     def __str__(self):
         return self.user.email
+
+class ping(models.Model):
+    user = models.OneToOneField(
+        User,
+        related_name='ping',
+        on_delete=models.CASCADE,
+    )
+    ping_title = models.CharField(max_length=512)
+    ping_message = models.CharField(max_length=512)
+    def __str__(self):
+        return self.user.ping
+
+    @property
+    def full_ping(self):
+        return '{} {}'.format(self.ping_title,
+                              self.ping_message,
+                              )
+
+    @property
+    def full_ping(self):
+        if hasattr(self, 'account'):
+            return self.account.full_ping
+        return None
+
+    @property
+    def full_address(self):
+        if hasattr(self, 'address'):
+            return '{}, {}-{}, {}'.format(
+                self.address.street_address,
+                self.address.city,
+                self.address.postal_code,
+                self.address.country,
+            )
+        return None
+    # def __str__(self):
+    #     return self.user.

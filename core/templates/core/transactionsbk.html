@@ -1,0 +1,409 @@
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Transfer</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js"></script>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
+        integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <!-- Our Custom CSS -->
+    <link rel="stylesheet" href="{% static 't/style.css'%}">
+    <!-- Scrollbar Custom CSS -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+
+
+</head>
+
+<body>
+
+    <header>
+        <div id="content1">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+                <div class="container-fluid">
+                    <img src="{% static '/t/img/logo.png'%}" alt="">
+                    <h3>Logo</h3>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="nav navbar-nav ml-auto">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false">
+                                    <div class="media align-items-center">
+                                        <span class="">
+                                            <img src="{% static '/t/img/clientIcon.png'%}" style="width:50px; height:50px;" class="d-inline-flex"> <h6 class="text-light d-inline-flex">{{ user.full_name }}</h6>
+
+                                        </span>
+                                        <div class="media-body ml-2 d-none d-lg-block">
+                                            <span class="mb-0 text-sm  font-weight-bold"></span>
+                                        </div>
+                                    </div>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right">
+                                    <div class=" dropdown-header">
+                                        <h6 class="text-overflow m-0">Welcome!</h6>
+                                    </div>
+                                    <a href="#" class="dropdown-item">
+                                        <i class="ni ni-single-02"></i>
+                                        <span>My profile</span>
+                                    </a>
+                                    <a href="#" class="dropdown-item">
+                                        <i class="ni ni-single-02"></i>
+                                        <span>Change Password</span>
+                                    </a>
+
+                            </li>
+                            <li class="nav-item active" style="padding-top: 12px">
+                                <a class="btn btn-danger btn-sm" type = "button" href="{% url 'accounts:logout' %}">Logout</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+    </header>
+
+    <div class="wrapper">
+        <!-- Sidebar  -->
+        <nav id="sidebar">
+            <ul class="list-unstyled components text-sm pt-5" style="overflow-y: scroll; font-size: 15px">
+                <!-- <li class="active">
+                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home</a>
+                    <ul class="collapse list-unstyled" id="homeSubmenu">
+                        <li>
+                            <a href="#">Home 1</a>
+                        </li>
+                        <li>
+                            <a href="#">Home 2</a>
+                        </li>
+                        <li>
+                            <a href="#">Home 3</a>
+                        </li>
+                    </ul>
+                </li> -->
+                <!-- <li>
+                    <a href="#">Home</a>
+                </li> -->
+                <li>
+                    <a href="http://127.0.0.1:8000/"> Account Enquiry</a>
+                </li>
+                <li>
+                    <a href="{% url 'transfer' %}"> Transfer Funds</a>
+                </li>
+                <li>
+                    <a href="{% url 'change_password'%}"> Pay Bills</a>
+                </li>
+
+                <li>
+                    <a href="{% url 'change_password'%}"> Mobile Banking</a>
+                </li>
+
+                <li>
+                    <a href="http://127.0.0.1:8000/index.html/">Prepaid Reload</a>
+                </li>
+                <li>
+                    <a href="http://127.0.0.1:8000/index.html/">Western Union</a>
+                </li>
+
+                <li>
+                    <a href="http://127.0.0.1:8000/index.html/">Remittance</a>
+                </li>
+
+                <li>
+                    <a href="http://127.0.0.1:8000/index.html/">Standing Instructions</a>
+                </li>
+
+                <li>
+                    <a href="http://127.0.0.1:8000/index.html/">Unit Trust</a>
+                </li>
+                <li>
+                    <a href="http://127.0.0.1:8000/index.html/">Share Trading</a>
+                </li>
+                <li>
+                    <a href="http://127.0.0.1:8000/index.html/">eIPO</a>
+                </li>
+                <li>
+                    <a href="http://127.0.0.1:8000/index.html/">Cheque Management</a>
+                </li>
+                <li>
+                    <a href="http://127.0.0.1:8000/index.html/">EPF</a>
+                </li>
+                <li>
+                    <a href="http://127.0.0.1:8000/index.html/">eApplication</a>
+                </li>
+                <li>
+                    <!--<a href="#">Risk Profile</a>-->
+                </li>
+                <li>
+                    <a href="#">Clicks Transaction</a>
+                <!--</li>-->
+                <!--&lt;!&ndash;<li>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<a href="#">Manage Center</a>&ndash;&gt;-->
+                <!--&lt;!&ndash;</li>&ndash;&gt;-->
+                <!--<li>-->
+                    <!--<a href="#">Message Center</a>-->
+                <!--</li>-->
+                <!--<li>-->
+                    <!--<a href="#">Update Profile</a>-->
+                <!--</li>-->
+                <!--<li>-->
+                    <!--<a href="#">ATM Services</a>-->
+                <!--</li>-->
+                <!--<li>-->
+                    <!--<a href="#">Octo Tools</a>-->
+                <!--</li>-->
+
+                <!-- <li>
+                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false"
+                        class="dropdown-toggle">Pages</a>
+                    <ul class="collapse list-unstyled" id="pageSubmenu">
+                        <li>
+                            <a href="#">Page 1</a>
+                        </li>
+                        <li>
+                            <a href="#">Page 2</a>
+                        </li>
+                        <li>
+                            <a href="#">Page 3</a>
+                        </li>
+                    </ul>
+                </li> -->
+            </ul>
+
+            <!-- <ul class="list-unstyled CTAs">
+                <li>
+                    <a href="https://bootstrapious.com/tutorial/files/sidebar.zip" class="download">Download source</a>
+                </li>
+                <li>
+                    <a href="https://bootstrapious.com/p/bootstrap-sidebar" class="article">Back to article</a>
+                </li>
+            </ul> -->
+        </nav>
+
+        <!-- Page Content  -->
+
+        <div id="content2" style="padding-top: 80px">
+            <div class="secure text-right">
+                <h6 class="text-white p-1 banner">You are in a secured site</h6>
+            </div>
+             <div align="center">{% include "core/messages.html" %}</div>
+            <div class="d-flex container">
+                <h4 class="text-danger title">Account Summary</h4>
+            </div>
+
+
+            <!--<section class="container">-->
+                <div class="pt-5 row">
+                    <div class="col-md-1">
+                        <!--<img src ="{{user.account.picture.url}}" alt="" style="width: 150px; height: 150px">-->
+
+                    </div>
+
+
+                    <div class="ml-4 col-md-4 personal-info" style="font-size: 14px; font-family: sans-serif;">
+                        <p class="text-dark font-weight-bold text-sm pt-0"> ACCOUNT NAME:  {{ user.full_name }}</p>
+                        <p class="text-dark font-weight-bold text-sm pt-0"> DATE OF BIRTH: {{ user.account.birth_date }} </p>
+                        <p class="text-dark font-weight-bold text-sm pt-0"> GENDER:  {{ user.account.get_gender_display }}</p>
+                        <p class="text-dark font-weight-bold text-sm pt-0"> CONTACT NO: {{ user.contact_no }}</p>
+
+
+                    </div>
+
+                    <div class="col-md-4 account-info">
+                        <p class="text-dark font-weight-bold text-sm pt-0"> EMAIL ADDRESS: {{ user.email }} </p>
+                        <p class="text-dark font-weight-bold text-sm pt-0"> ACCOUNT CREATED: {{ user.date_joined|date:'d-m-Y' }} </p>
+                        <p class="text-dark font-weight-bold text-sm pt-0"> ACCOUNT NO: {{ user.account_no }} </p>
+                        <p class="text-dark font-weight-bold text-sm pt-0"> ADDRESS: {{ user.full_address }} </p>
+                        <!--<p class="text-dark font-weight-bold text-am pt-0"> ACCOUNT BALANCE($)</p>-->
+                        <!--<p class="card"><b>$ {{ user.balance }}</b></p>-->
+                        <!--<button class="btn btn-outline-success text-sm" href ="{% url 'transfer' %}">Transfer</button>-->
+                        <!--<a class="btn btn-danger" href="{% url 'transactions:withdrawal' %}">Withdraw</a>-->
+                    </div>
+                </div>
+            <!--</section>-->
+
+            <section class="container">
+                <div>
+                    <!-- <button class="btn btn-outline-dark ml-4 fa-pull-right">Account Summary</button> -->
+                    <!-- <div>
+                        <p class="account-summary-info"> You can view your current, savings-i, Offshore and foreign
+                            currency
+                            information here. Just click
+                            on the account number to view details. To view all accounts that you have with EpicEuro
+                            Bank.
+                            Kindly click on "Account Summary"
+                        </p>
+                    </div> -->
+
+
+
+
+
+
+
+                    <div class="offshore mb-3">
+                        <h4 class="text-white p-2">Available Balance:   ${{ user.balance }}</h4>
+                        <h4 class="text-white p-1">Ledger Balance:      ${{ user.balance }}</h4>
+                    </div>
+                    <div class="offshore mb-1">
+
+                    </div>
+
+                    <div class="pb-3">
+                        <!--<caption><b>Deposit Details</b></caption>-->
+                        <table class="table table-hover table-bordered">
+                            <thead>
+                            <tr>
+                                <!--<th style="width: 3%">S/N</th>-->
+                                <th style="width: 30%">Transaction Date</th>
+                                <th>Transaction Type</th>
+                                <th style="width: 25%">Amount ($)</th>
+                            </tr>
+                            </thead>
+
+                            <tr>
+                                {% for obj in deposit %}
+                                <!--<th scope="row" colspan="0 "></th>-->
+                                <td>{{ obj.timestamp }}</td>
+                                <td>Deposit</td>
+                                <td>{{ obj.amount }}</td>
+
+                            </tr>
+                             {% endfor %}
+                            <tr>
+                                {% for obj in withdrawal %}
+                                 <!--<th scope="row" colspan="0 ">{{forloop.counter}}</th>-->
+
+                                <td>{{ obj.timestamp }}</td>
+                                <td>Transfer</td>
+                                <td>{{ obj.amount }}</td>
+                            </tr>
+                            {% endfor %}
+                            <tr>
+                                {% for obj in interest %}
+                                <!--<th scope="row">{{forloop.counter}}</th>-->
+                                <td>{{ obj.timestamp }}</td>
+                                <td>Monthly Intrest</td>
+                                <td>{{ obj.amount }}</td>
+
+                            </tr>
+
+                            {% endfor %}
+
+                            <!--<tr>-->
+                                <!--<th class="text-right" scope="row" colspan="3">Total</th>-->
+
+                                <!--<td>{{ deposit_sum }}</td>-->
+                            <!--</tr>-->
+
+                        </table>
+
+
+                        <!--<caption><b>Withdrawal Details</b></caption>-->
+                        <!--<table class="table table-hover table-bordered">-->
+                            <!--<tr>-->
+                                <!--<th style="width: 3%">S/N</th>-->
+                                <!--<th style="width: 30%">Date</th>-->
+                                <!--<th>Details</th>-->
+                                <!--<th style="width: 25%">Amount</th>-->
+                            <!--</tr>-->
+
+
+                            <!--<tr>-->
+                                <!--{% for obj in withdrawal %}-->
+                                 <!--<th scope="row" colspan="0 ">{{forloop.counter}}</th>-->
+
+                                <!--<td>{{ obj.timestamp }}</td>-->
+                                <!--<td>Withdrawal</td>-->
+                                <!--<td>{{ obj.amount }}</td>-->
+                            <!--</tr>-->
+                            <!--{% endfor %}-->
+
+                           <!--<tr>-->
+                                <!--<th class="text-right" scope="row" colspan="3">Total</th>-->
+                                <!--<td>{{ withdrawal_sum }}</td>-->
+                           <!--</tr>-->
+                        </table>
+
+                        <!--<caption><b>Interest Details</b></caption>-->
+                        <!--<table class="table table-hover table-bordered">-->
+                            <!--<tr>-->
+                                <!--<th style="width: 3%">S/N</th>-->
+                                <!--<th style="width: 30%">Date</th>-->
+                                <!--<th>Details</th>-->
+                                <!--<th style="width: 25%">Amount</th>-->
+                            <!--</tr>-->
+
+
+                            <!--<tr>-->
+                                <!--{% for obj in interest %}-->
+                                <!--<th scope="row">{{forloop.counter}}</th>-->
+                                <!--<td>{{ obj.timestamp }}</td>-->
+                                <!--<td>Monthly Intrest</td>-->
+                                <!--<td>{{ obj.amount }}</td>-->
+
+                            <!--</tr>-->
+                            <!--{% endfor %}-->
+
+                             <!--<tr>-->
+                                 <!--<th class="text-right" scope="row" colspan="3">Total</th>-->
+
+                                 <!--<td>{{ interest_sum }}</td>-->
+                             <!--</tr>-->
+                        </table>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+        </script>
+        <!-- Popper.JS -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
+            integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous">
+        </script>
+        <!-- Bootstrap JS -->
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
+            integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous">
+        </script>
+        <!-- jQuery Custom Scroller CDN -->
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js">
+        </script>
+        <!-- Font Awesome JS -->
+        <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js"
+            integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous">
+        </script>
+        <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js"
+            integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous">
+        </script>
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $("#sidebar").mCustomScrollbar({
+                    theme: "minimal"
+                });
+
+                $('#sidebarCollapse').on('click', function () {
+                    $('#sidebar, #content1').toggleClass('active');
+                    $('.collapse.in').toggleClass('in');
+                    $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+                });
+            });
+        </script>
+</body>
+
+</html>
+
+ {% endblock content %}

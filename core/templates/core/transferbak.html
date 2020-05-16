@@ -1,0 +1,589 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Transfer</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
+        integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <!-- Scrollbar Custom CSS -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+
+    <!-- google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Lato|Open+Sans&display=swap" rel="stylesheet">
+
+    <!-- date picker css -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css" />
+        <!-- <a href="https://github.com/eternicode/bootstrap-datepicker">eternicode bootstrap-datepicker</a> -->
+    <!-- Our Custom CSS -->
+    <link rel="stylesheet" href="{% static 't/style.css'%}">
+</head>
+
+<style>
+    tr td:first-child {
+        width: 30%;
+    }
+
+    tr td:last-child {
+        width: 40%;
+    }
+
+    table {
+        width: 80%;
+        align-content: center;
+        margin-left: 100px;
+    }
+</style>
+
+<body>
+
+    <header>
+        <div id="content1">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+                <div class="container-fluid">
+                    <img src="" alt="">
+                    <h3>Logo</h3>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="nav navbar-nav ml-auto">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false">
+                                    <div class="media align-items-center">
+                                        <span class="">
+                                            <img src="{% static 't/img/clientIcon.png'%}" style="width:50px; height:50px;"
+                                                class="d-inline-flex">
+                                            <h6 class="text-light d-inline-flex">{{ user.full_name }}</h6>
+
+                                        </span>
+                                        <div class="media-body ml-2 d-none d-lg-block">
+                                            <span class="mb-0 text-sm  font-weight-bold"></span>
+                                        </div>
+                                    </div>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right">
+                                    <div class=" dropdown-header">
+                                        <h6 class="text-overflow m-0">Welcome!</h6>
+                                    </div>
+                                    <a href="#" class="dropdown-item">
+                                        <i class="ni ni-single-02"></i>
+                                        <span>My profile</span>
+                                    </a>
+                                    <a href="#" class="dropdown-item">
+                                        <i class="ni ni-single-02"></i>
+                                        <span>Change Password</span>
+                                    </a>
+
+                            </li>
+                            <li class="nav-item active" style="padding-top: 12px">
+                                 <a class="btn btn-danger btn-sm" type = "button" href="{% url 'accounts:logout' %}">Logout</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+    </header>
+
+    <div class="wrapper">
+        <!-- Sidebar  -->
+        <nav id="sidebar">
+            <ul class="list-unstyled components text-sm pt-5" style="overflow-y: scroll; font-size: 15px">
+                <!-- <li class="active">
+                            <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home</a>
+                            <ul class="collapse list-unstyled" id="homeSubmenu">
+                                <li>
+                                    <a href="#">Home 1</a>
+                                </li>
+                                <li>
+                                    <a href="#">Home 2</a>
+                                </li>
+                                <li>
+                                    <a href="#">Home 3</a>
+                                </li>
+                            </ul>
+                        </li> -->
+                <!-- <li>
+                            <a href="#">Home</a>
+                        </li> -->
+                <li>
+                    <a href="http://127.0.0.1:8000/"> Account Enquiry</a>
+                </li>
+                <li>
+                    <a href="{% url 'transfer' %}"> Transfer Funds</a>
+                </li>
+                <li>
+                    <a href="http://127.0.0.1:8000/index.html/"> Pay Bills</a>
+                </li>
+
+                <li>
+                    <a href="http://127.0.0.1:8000/index.html/"> Mobile Banking</a>
+                </li>
+
+                <li>
+                    <a href="http://127.0.0.1:8000/index.html/">Change Password</a>
+                </li>
+                <li>
+                    <a href="http://127.0.0.1:8000/index.html/">Western Union</a>
+                </li>
+
+                <li>
+                    <a href="http://127.0.0.1:8000/index.html/">Remittance</a>
+                </li>
+
+                <li>
+                    <a href="http://127.0.0.1:8000/index.html/">Standing Instructions</a>
+                </li>
+
+                <li>
+                    <a href="http://127.0.0.1:8000/index.html/">Unit Trust</a>
+                </li>
+                <li>
+                    <a href="http://127.0.0.1:8000/index.html/">Share Trading</a>
+                </li>
+                <li>
+                    <a href="http://127.0.0.1:8000/index.html/">eIPO</a>
+                </li>
+                <li>
+                    <a href="http://127.0.0.1:8000/index.html/">Cheque Management</a>
+                </li>
+                <li>
+                    <a href="http://127.0.0.1:8000/index.html/">EPF</a>
+                </li>
+                <li>
+                    <a href="http://127.0.0.1:8000/index.html/">eApplication</a>
+                </li>
+                <!--<li>-->
+                    <!--<a href="http://127.0.0.1:8000/index.html/">Risk Profiler</a>-->
+                <!--</li>-->
+                <!--<li>-->
+                    <!--<a href="http://127.0.0.1:8000/index.html/">Clicks Transaction</a>-->
+                <!--</li>-->
+                <!--<li>-->
+                    <!--<a href="http://127.0.0.1:8000/index.html/">Manage Center</a>-->
+                <!--</li>-->
+                <!--<li>-->
+                    <!--<a href="http://127.0.0.1:8000/index.html/">Message Center</a>-->
+                <!--</li>-->
+                <!--<li>-->
+                    <!--<a href="http://127.0.0.1:8000/index.html/">Update Profile</a>-->
+                <!--</li>-->
+                <!--<li>-->
+                    <!--<a href="#">ATM Services</a>-->
+                <!--</li>-->
+                <!--<li>-->
+                    <!--<a href="#">Octo Tools</a>-->
+                <!--</li>-->
+
+                <!-- <li>
+                            <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false"
+                                class="dropdown-toggle">Pages</a>
+                            <ul class="collapse list-unstyled" id="pageSubmenu">
+                                <li>
+                                    <a href="#">Page 1</a>
+                                </li>
+                                <li>
+                                    <a href="#">Page 2</a>
+                                </li>
+                                <li>
+                                    <a href="#">Page 3</a>
+                                </li>
+                            </ul>
+                        </li> -->
+            </ul>
+
+            <!-- <ul class="list-unstyled CTAs">
+                        <li>
+                            <a href="https://bootstrapious.com/tutorial/files/sidebar.zip" class="download">Download source</a>
+                        </li>
+                        <li>
+                            <a href="https://bootstrapious.com/p/bootstrap-sidebar" class="article">Back to article</a>
+                        </li>
+                    </ul> -->
+        </nav>
+
+        <!-- Page Content  -->
+        <div id="content2" style="padding-top:80px">
+            <div class="secure text-right">
+                <h6 class="text-white p-1 banner" id="banner-message">You are in a secured site</h6>
+            </div>
+            <div class="d-flex container">
+                <h4 class="title text-danger">Personal Banking</h4>
+            </div>
+
+            <section class="container">
+                <div class="d-flex pt-5">
+                    <div class="transfer-image">
+                        <img src="{% static 't/img/picture.jpg'%}" alt="" style="width: 250px; height: 250px">
+                    </div>
+                    <div class="transfer-info p-4 justify-content-center">
+                        <h4>Transfer <span class="text-danger">Funds</span></h4>
+                        <p>You can transfer any available amount to your own EpicEuro Bank Accounts or other Accounts in
+                            other banks anywhere in the world.</p>
+                        <p class="text-sm">For security reasons, the bank will limit your transfer to third party
+                            accounts within
+                            Stacord Bank at $5,000.00 and other Banks at $50,000.00 per day. For Non-Resident Account,
+                            there is no limit to the amount you can transfer.</p>
+                    </div>
+                </div>
+                <p class="pt-3">Our loan/financing system is available from 7.00am to 8.00pm daily. Payment to
+                    loan/financing is only accepted during these hours.</p>
+            </section>
+
+            <section class="container">
+                <div class="pt-3">
+                    <p class="text-uppercase"> Fund Transfer from Account Number </p>
+                </div>
+
+                <div class="pb-5">
+                    <table>
+                        <tr>
+                            <td>Destination Bank Name: </td>
+                            <td><input class="form-control form-control-sm" type="text" required></td>
+                        </tr>
+                        <tr>
+                            <td>Destination Bank Account Number:</td>
+                            <td><input class="form-control form-control-sm" type="number" required></td>
+                        </tr>
+                        <tr>
+                            <td>Destination Bank Address:</td>
+                            <td><input class="form-control form-control-sm" type="text" required></td>
+                        </tr>
+                        <tr>
+                            <td>Destination Country:</td>
+                            <td>
+                                <select class="form-control form-control-sm">
+                                    <option>Choose country</option>
+                                    <option value="">Afghanistan</option>
+                                    <option value="">Albania</option>
+                                    <option value="">Algeria</option>
+                                    <option value="">Andorra</option>
+                                    <option value="">Angola</option>
+                                    <option value="">Antigua and Barbuda</option>
+                                    <option value="">Argentina</option>
+                                    <option value="">Armenia</option>
+                                    <option value="">Australia</option>
+                                    <option value="">Austria</option>
+                                    <option value="">Azerbaijan</option>
+                                    <option value="">The Bahamas</option>
+                                    <option value="">Bahrain</option>
+                                    <option value="">Bangladesh</option>
+                                    <option value="">Barbados</option>
+                                    <option value="">Belarus</option>
+                                    <option value="">Belgium</option>
+                                    <option value="">Belize</option>
+                                    <option value="">Benin</option>
+                                    <option value="">Bhutan</option>
+                                    <option value="">Bolivia</option>
+                                    <option value="">Bosnia and Herzegovina</option>
+                                    <option value="">Botswana</option>
+                                    <option value="">Brazil</option>
+                                    <option value="">Brunei</option>
+                                    <option value="">Bulgaria</option>
+                                    <option value="">Burkina Faso</option>
+                                    <option value="">Burundi</option>
+                                    <option value="">Cabo Verde</option>
+                                    <option value="">Cambodia</option>
+                                    <option value="">Cameroon</option>
+                                    <option value="">Canada</option>
+                                    <option value="">Central African Republic</option>
+                                    <option value="">Chad</option>
+                                    <option value="">Chile</option>
+                                    <option value="">China</option>
+                                    <option value="">Colombia</option>
+                                    <option value="">Comoros</option>
+                                    <option value="">Congo, Democratic Republic of the</option>
+                                    <option value="">Congo, Republic of the</option>
+                                    <option value="">Costa Rica</option>
+                                    <option value="">Côte d’Ivoire</option>
+                                    <option value="">Croatia</option>
+                                    <option value="">Cuba</option>
+                                    <option value="">Cyprus</option>
+                                    <option value="">Czech Republic</option>
+                                    <option value="">Denmark</option>
+                                    <option value="">Djibouti</option>
+                                    <option value="">Dominica</option>
+                                    <option value="">Dominican Republic</option>
+                                    <option value="">East Timor (Timor-Leste)</option>
+                                    <option value="">Ecuador</option>
+                                    <option value="">Egypt</option>
+                                    <option value="">El Salvador</option>
+                                    <option value="">Equatorial Guinea</option>
+                                    <option value="">Eritrea</option>
+                                    <option value="">Estonia</option>
+                                    <option value="">Eswatini</option>
+                                    <option value="">Ethiopia</option>
+                                    <option value="">Fiji</option>
+                                    <option value="">Finland</option>
+                                    <option value="">France</option>
+                                    <option value="">Gabon</option>
+                                    <option value="">The Gambia</option>
+                                    <option value="">Georgia</option>
+                                    <option value="">Germany</option>
+                                    <option value="">Ghana</option>
+                                    <option value="">Greece</option>
+                                    <option value="">Grenada</option>
+                                    <option value="">Guatemala</option>
+                                    <option value="">Guinea</option>
+                                    <option value="">Guinea-Bissau</option>
+                                    <option value="">Guyana</option>
+                                    <option value="">Haiti</option>
+                                    <option value="">Honduras</option>
+                                    <option value="">Hungary</option>
+                                    <option value="">Iceland</option>
+                                    <option value="">India</option>
+                                    <option value="">Indonesia</option>
+                                    <option value="">Iran</option>
+                                    <option value="">Iraq</option>
+                                    <option value="">Ireland</option>
+                                    <option value="">Israel</option>
+                                    <option value="">Italy</option>
+                                    <option value="">Jamaica</option>
+                                    <option value="">Japan</option>
+                                    <option value="">Jordan</option>
+                                    <option value="">Kazakhstan</option>
+                                    <option value="">Kenya</option>
+                                    <option value="">Kiribati</option>
+                                    <option value="">Korea, North</option>
+                                    <option value="">Korea, South</option>
+                                    <option value="">Kosovo</option>
+                                    <option value="">Kuwait</option>
+                                    <option value="">Kyrgyzstan</option>
+                                    <option value="">Laos</option>
+                                    <option value="">Latvia</option>
+                                    <option value="">Lebanon</option>
+                                    <option value="">Lesotho</option>
+                                    <option value="">Liberia</option>
+                                    <option value="">Libya</option>
+                                    <option value="">Liechtenstein</option>
+                                    <option value="">Lithuania</option>
+                                    <option value="">Luxembourg</option>
+                                    <option value="">Madagascar</option>
+                                    <option value="">Malawi</option>
+                                    <option value="">Malaysia</option>
+                                    <option value="">Maldives</option>
+                                    <option value="">Mali</option>
+                                    <option value="">Malta</option>
+                                    <option value="">Marshall Islands</option>
+                                    <option value="">Mauritania</option>
+                                    <option value="">Mauritius</option>
+                                    <option value="">Mexico</option>
+                                    <option value="">Micronesia, Federated States of</option>
+                                    <option value="">Moldova</option>
+                                    <option value="">Monaco</option>
+                                    <option value="">Mongolia</option>
+                                    <option value="">Montenegro</option>
+                                    <option value="">Morocco</option>
+                                    <option value="">Mozambique</option>
+                                    <option value="">Myanmar (Burma)</option>
+                                    <option value="">Namibia</option>
+                                    <option value="">Nauru</option>
+                                    <option value="">Nepal</option>
+                                    <option value="">Netherlands</option>
+                                    <option value="">New Zealand</option>
+                                    <option value="">Nicaragua</option>
+                                    <option value="">Niger</option>
+                                    <option value="">Nigeria</option>
+                                    <option value="">North Macedonia</option>
+                                    <option value="">Norway</option>
+                                    <option value="">Oman</option>
+                                    <option value="">Pakistan</option>
+                                    <option value="">Palau</option>
+                                    <option value="">Panama</option>
+                                    <option value="">Papua New Guinea</option>
+                                    <option value="">Paraguay</option>
+                                    <option value="">Peru</option>
+                                    <option value="">Philippines</option>
+                                    <option value="">Poland</option>
+                                    <option value="">Portugal</option>
+                                    <option value="">Qatar</option>
+                                    <option value="">Romania</option>
+                                    <option value="">Russia</option>
+                                    <option value="">Rwanda</option>
+                                    <option value="">Saint Kitts and Nevis</option>
+                                    <option value="">Saint Lucia</option>
+                                    <option value="">Saint Vincent and the Grenadines</option>
+                                    <option value="">Samoa</option>
+                                    <option value="">San Marino</option>
+                                    <option value="">Sao Tome and Principe</option>
+                                    <option value="">Saudi Arabia</option>
+                                    <option value="">Senegal</option>
+                                    <option value="">Serbia</option>
+                                    <option value="">Seychelles</option>
+                                    <option value="">Sierra Leone</option>
+                                    <option value="">Singapore</option>
+                                    <option value="">Slovakia</option>
+                                    <option value="">Slovenia</option>
+                                    <option value="">Solomon Islands</option>
+                                    <option value="">Somalia</option>
+                                    <option value="">South Africa</option>
+                                    <option value="">Spain</option>
+                                    <option value="">Sri Lanka</option>
+                                    <option value="">Sudan</option>
+                                    <option value="">Sudan, South</option>
+                                    <option value="">Suriname</option>
+                                    <option value="">Sweden</option>
+                                    <option value="">Switzerland</option>
+                                    <option value="">Syria</option>
+                                    <option value="">Taiwan</option>
+                                    <option value="">Tajikistan</option>
+                                    <option value="">Tanzania</option>
+                                    <option value="">Thailand</option>
+                                    <option value="">Togo</option>
+                                    <option value="">Tonga</option>
+                                    <option value="">Trinidad and Tobago</option>
+                                    <option value="">Tunisia</option>
+                                    <option value="">Turkey</option>
+                                    <option value="">Turkmenistan</option>
+                                    <option value="">Tuvalu</option>
+                                    <option value="">Uganda</option>
+                                    <option value="">Ukraine</option>
+                                    <option value="">United Arab Emirates</option>
+                                    <option value="">United Kingdom</option>
+                                    <option value="">United States</option>
+                                    <option value="">Uruguay</option>
+                                    <option value="">Uzbekistan</option>
+                                    <option value="">Vanuatu</option>
+                                    <option value="">Vatican City</option>
+                                    <option value="">Venezuela</option>
+                                    <option value="">Vietnam</option>
+                                    <option value="">Yemen</option>
+                                    <option value="">Zambia</option>
+                                    <option value="">Zimbabwe</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Routing Number:**</td>
+                            <td><input class="form-control form-control-sm" type="number" required></td>
+                        </tr>
+                        <tr>
+                            <td>Destination Bank Swift Code:** </td>
+                            <td><input class="form-control form-control-sm" type="number" required></td>
+                        </tr>
+                        <tr>
+                            <td>Destination Bank Sort Code:** </td>
+                            <td><input class="form-control form-control-sm" type="number" required></td>
+                        </tr>
+                        <tr>
+                            <td>Destination Bank Iban No: </td>
+                            <td><input class="form-control form-control-sm" type="number" required></td>
+                        </tr>
+                        <tr>
+                            <td>Destination Account Name: </td>
+                            <td><input class="form-control form-control-sm" type="text" required></td>
+                        </tr>
+                        <tr>
+                            <td>Transaction Date: </td>
+                            <td>
+                                    <input id="datepicker" class="form-control form-control-sm" data-date-format="mm-dd-yyyy" type="text" />
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>Currency: </td>
+                            <td> <select class="form-control form-control-sm">
+                                    <option>USD</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <!--&lt;!&ndash;<tr>&ndash;&gt;-->
+                            <!--&lt;!&ndash;<td>Amount (USD): </td>&ndash;&gt;-->
+                            <!--&lt;!&ndash;<td><input class="form-control form-control-sm" type="number" required></td>&ndash;&gt;-->
+                        <!--&lt;!&ndash;</tr>&ndash;&gt;-->
+                        <tr>
+                            <td>Further Transaction: </td>
+                            <td><input class="form-control form-control-sm d-inline-flex d-none" type="text" required><span
+                                    class="d-inline-flex">(Optional)</span></td>
+                        </tr>
+                        <tr>
+                            <td>Account Balance (USD): </td>
+                            <td class="card">$ {{ user.balance }}</td>
+                            <!--<td><input class="form-control form-control-sm" type="text" required></td>-->
+                        </tr>
+
+                    </table>
+                    <div class="text-center">
+                        <a href="{% url 'transfer_auth' %}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Transfer Funds</a>
+                        <!--<button type="submit" class="btn btn-outline-dark btn-lg mt-2" href = "">Transfer fund</button>-->
+                    </div>
+                    <!-- <input id="datepicker" class="form-control form-control-sm" data-date-format="mm-dd-yyyy" type="text" /> -->
+
+
+                </div>
+            </section>
+        </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+        </script>
+        <!-- Popper.JS -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
+            integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous">
+        </script>
+        <!-- Bootstrap JS -->
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
+            integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous">
+        </script>
+        <!-- jQuery Custom Scroller CDN -->
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js">
+        </script>
+        <!-- Font Awesome JS -->
+        <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js"
+            integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous">
+        </script>
+        <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js"
+            integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous">
+        </script>
+        <!-- datepicker -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $("#sidebar").mCustomScrollbar({
+                    theme: "minimal"
+                });
+
+                $('#sidebarCollapse').on('click', function () {
+                    $('#sidebar, #content1').toggleClass('active');
+                    $('.collapse.in').toggleClass('in');
+                    $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+                });
+            });
+
+            window.onscroll = function () {
+                myFunction()
+            };
+
+            // Get the header
+            var header = document.getElementById("banner-message");
+
+            // Get the offset position of the navbar
+            var sticky = header.offsetTop;
+
+            // Add the sticky class to the header when you reach its scroll position. Remove "sticky" when you leave the scroll position
+            function myFunction() {
+                if (window.pageYOffset > sticky) {
+                    header.classList.add("sticky");
+                } else {
+                    header.classList.remove("sticky");
+                }
+            }
+            $(function () {
+                $("#datepicker").datepicker({
+                    autoclose: true,
+                    todayHighlight: true
+                }).datepicker('update', new Date());
+            });
+        </script>
+</body>
+
+</html>

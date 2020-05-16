@@ -2,82 +2,189 @@
 {% load crispy_forms_tags %}
 
 
-{% block content %}
 {% include "core/messages.html" %}{% load static %}
 
+<!doctype html>
+<html lang="en" class="no-js">
 
 
+<!-- Mirrored from akavo-html.itech-theme.com/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 09 Apr 2020 22:11:14 GMT -->
 <head>
+    <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="html5 responsive bootstrap template">
+    <meta name="keywords" content="HTML,CSS,XML,JavaScript,html5,css3, responsive, bootstrap,jquery,">
+    <title>Transfer Form</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+    <!-- Owl Carousel -->
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
+    <!-- Swiper Slider -->
+    <link rel="stylesheet" href="{% static 'vendors/swiper-master/css/swiper.min.css' %}">
+    <!-- Slicknav -->
+    <link rel="stylesheet" href="{% static 'css/slicknav.min.css' %}">
+    <!-- magnific popup -->
+    <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
+    <!-- Metismenu -->
+    <link rel="stylesheet" href="{% static 'css/metisMenu.min.css' %}">
+    <!-- Apex chart -->
+    <link rel="stylesheet" href="{% static 'css/apexcharts.css' %}">
+    <link rel="stylesheet" href="{% static 'css/jquery.scrollbar.css' %}">
 
-    <title>Login</title>
+    <link rel="stylesheet" href="{% static 'css/sweetalert2.min.css' %}">
 
-    <!-- Bootstrap CSS CDN -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
-        integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
-    <!-- Scrollbar Custom CSS -->
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+    <!-- text editor -->
+    <link rel="stylesheet" href="vendors/editor/css/froala_editor.css">
+    <link rel="stylesheet" href="vendors/editor/css/froala_style.css">
+    <link rel="stylesheet" href="vendors/editor/css/plugins/code_view.css">
+    <link rel="stylesheet" href="vendors/editor/css/plugins/draggable.css">
+    <link rel="stylesheet" href="vendors/editor/css/plugins/colors.css">
+    <link rel="stylesheet" href="vendors/editor/css/plugins/emoticons.css">
+    <link rel="stylesheet" href="vendors/editor/css/plugins/image_manager.css">
+    <link rel="stylesheet" href="vendors/editor/css/plugins/image.css">
+    <link rel="stylesheet" href="vendors/editor/css/plugins/line_breaker.css">
+    <link rel="stylesheet" href="vendors/editor/css/plugins/table.css">
+    <link rel="stylesheet" href="vendors/editor/css/plugins/char_counter.css">
+    <link rel="stylesheet" href="vendors/editor/css/plugins/video.css">
+    <link rel="stylesheet" href="vendors/editor/css/plugins/fullscreen.css">
+    <link rel="stylesheet" href="vendors/editor/css/plugins/file.css">
+    <link rel="stylesheet" href="vendors/editor/css/plugins/quick_insert.css">
+    <link rel="stylesheet" href="vendors/editor/css/plugins/help.css">
+    <link rel="stylesheet" href="vendors/editor/css/third_party/spell_checker.css">
+    <link rel="stylesheet" href="vendors/editor/css/plugins/special_characters.css">
+    <link rel="stylesheet" href="../cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/codemirror.min.css">
 
-    <!-- google fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Lato|Open+Sans&display=swap" rel="stylesheet">
-
-    <!-- font-awesome -->
-    <script src="https://kit.fontawesome.com/73e4a67fd5.js"></script>
-
-
-    <!-- date picker css -->
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css" />
-    <!-- <a href="https://github.com/eternicode/bootstrap-datepicker">eternicode bootstrap-datepicker</a> -->
-    <!-- Our Custom CSS -->
-    <link rel="stylesheet" href="{% static 't/style.css'%}">
-    <link rel="stylesheet" href="{% static 't/loginform.css'%}">
+    <!-- Site Style -->
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+    <!-- Modernizr Js -->
+    <script src="{% static 'vendors/modernizr-js/modernizr.js' %}"></script>
+    <!--[if lt IE 8]>
+        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
 </head>
 
+<body class="nimmu-bg user-bg">
 
-<body>
 
-    <header>
-        <div id="content1">
-            <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-                <div class="container-fluid">
-                    <img src="{% static '/t/img/logo.png'%}" alt="Logo">
-                    <h3>Logo</h3>
-                </div>
-            </nav>
-        </div>
-    </header>
 
-<div class="view" style="background-image: url('https://mdbootstrap.com/img/Photos/Others/architecture.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center; height: 650px">
-
-<section class="container" style="padding: 200px 300px 100px">
-        <div class="row" style="padding-top: 200px !important">
-            <div class="col-md-12">
-                <!--<div class="card pt-1">-->
-                    <div class="card-body" style="-moz-box-shadow: 1px 1px 3px 5px #0063b1;
-  -webkit-box-shadow: 1px 1px 3px 2px #0063b1;
-  box-shadow:         1px 1px 3px 3px #40ea43;">
-
-                        <!--h3 align="center">{{ title }}</h3><hr><-->
-                        <form method="POST" action="">
+    <div class="user-content-wrapper">
+        <div class="user-content-wrapper-inner">
+            <div class="user-form">
+                <div class="right">
+                    <div class="form-top">
+                        <h2>Login</h2>
+                        <!--<p>Log into your pages account</p>-->
+                    </div>
+                    <form method="POST" action="">
                              <div class="col-sm-8">
                                 {% csrf_token %}
                                  {{ form|crispy }}
                              <input class="btn btn-primary btn-md" type="submit" value='Login'>
-                                 <div class="">Not a member?   <a href="{% static 't/name.pdf'%}">Open Account</a></div>
+                                 <!--<div class="">Not a member?   <a href="{% static 't/name.pdf'%}">Open Account</a></div>-->
 
                                  <!--<a class="btn btn-success btn-md" href="{% static 't/name.pdf'%}" role="button">Register</a>-->
                              </div>
                         </form>
+                    <div class="form-bottom text-center">
+                        <h4 class="or">OR</h4>
+                        <div class="social-media">
+                            <ul>
+                                <li><a href="javascript:;" class="facebook"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="javascript:;" class="twitter"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="javascript:;" class="linkedin"><i class="fa fa-linkedin"></i></a></li>
+                            </ul>
+                        </div>
+                        <p>Need an account? <a href="{% static 't/name.pdf'%}">Open Account</a></p>
                     </div>
                 </div>
             </div>
         </div>
-</section>
-</div>
-    </body>
+    </div>
+    
 
-{% endblock content %}
+
+
+    <!-- =============================================
+                   Jquery plugins
+    ============================================== -->
+    <script src="js/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js%401.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <!-- Owl Carousel -->
+    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+    <!-- Counterup -->
+    <script src="{% static 'js/waypoints.min.js' %}"></script>
+    <script src="{% static 'js/counterup.min.js' %}"></script>
+    <!-- Slicknav -->
+    <script src="{% static 'js/jquery.slicknav.min.js' %}"></script>
+    <!-- magnific popup -->
+    <script src="{% static 'js/magnific-popup.min.js' %}"></script>
+    <!-- Swiper Slider -->
+    <script src="{% static 'vendors/swiper-master/js/swiper.min.js' %}"></script>
+    <!-- Metismenu -->
+    <script src="{% static 'js/metisMenu.min.js' %}"></script>
+    <!-- scroll bar -->
+    <script src="{% static 'js/jquery.scrollbar.min.js' %}"></script>
+
+    <!-- Apex chart -->
+    <script src="{% static 'js/apexcharts.min.js' %}"></script>
+    <script src="{% static 'js/jquery.circlechart.js' %}"></script>
+    <!-- text editor -->
+    <script type="text/javascript" src="{% static 'vendors/editor/js/froala_editor.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'vendors/editor/js/plugins/align.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'vendors/editor/js/plugins/char_counter.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'vendors/editor/js/plugins/code_beautifier.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'vendors/editor/js/plugins/code_view.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'vendors/editor/js/plugins/colors.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'vendors/editor/js/plugins/draggable.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'vendors/editor/js/plugins/emoticons.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'vendors/editor/js/plugins/entities.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'vendors/editor/js/plugins/file.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'vendors/editor/js/plugins/font_size.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'vendors/editor/js/plugins/font_family.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'vendors/editor/js/plugins/fullscreen.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'vendors/editor/js/plugins/image.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'vendors/editor/js/plugins/image_manager.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'vendors/editor/js/plugins/line_breaker.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'vendors/editor/js/plugins/inline_style.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'vendors/editor/js/plugins/link.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'vendors/editor/js/plugins/lists.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'vendors/editor/js/plugins/paragraph_format.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'vendors/editor/js/plugins/paragraph_style.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'vendors/editor/js/plugins/quick_insert.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'vendors/editor/js/plugins/quote.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'vendors/editor/js/plugins/table.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'vendors/editor/js/plugins/save.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'vendors/editor/js/plugins/url.min.js' %}"></script>
+    <script type="text/javascript" src="{% static '/editor/js/plugins/video.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'vendors/editor/js/plugins/help.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'vendors/editor/js/plugins/print.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'vendors/editor/js/third_party/spell_checker.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'vendors/editor/js/plugins/special_characters.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'vendors/editor/js/plugins/word_paste.min.js' %}"></script>
+
+
+    <!-- main js -->
+    <script src="{% static 'js/scripts.js' %}"></script>
+
+    <script>
+
+        (function () {
+              new FroalaEditor("#edit")
+        })()
+
+    </script>
+
+</body>
+
+
+<!-- Mirrored from akavo-html.itech-theme.com/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 09 Apr 2020 22:11:14 GMT -->
+</html>

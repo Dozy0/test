@@ -60,6 +60,8 @@ def transfer_auth(request):
 
 def loginsuccessful(request):
     return render(request, "core/loginsuccessful.html", {})
+def profile(request):
+    return render(request, "core/profile.html", {})
 
 
 

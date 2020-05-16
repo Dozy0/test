@@ -1,0 +1,83 @@
+
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+{% include "core/messages.html" %}{% load static %}
+
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Login</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
+        integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <!-- Scrollbar Custom CSS -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+
+    <!-- google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Lato|Open+Sans&display=swap" rel="stylesheet">
+
+    <!-- font-awesome -->
+    <script src="https://kit.fontawesome.com/73e4a67fd5.js"></script>
+
+
+    <!-- date picker css -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css" />
+    <!-- <a href="https://github.com/eternicode/bootstrap-datepicker">eternicode bootstrap-datepicker</a> -->
+    <!-- Our Custom CSS -->
+    <link rel="stylesheet" href="{% static 't/style.css'%}">
+    <link rel="stylesheet" href="{% static 't/loginform.css'%}">
+</head>
+
+
+<body>
+
+    <header>
+        <div id="content1">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+                <div class="container-fluid">
+                    <img src="{% static '/t/img/logo.png'%}" alt="Logo">
+                    <h3>Logo</h3>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+<div class="view" style="background-image: url('https://mdbootstrap.com/img/Photos/Others/architecture.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center; height: 650px">
+
+<section class="container" style="padding: 200px 300px 100px">
+        <div class="row" style="padding-top: 200px !important">
+            <div class="col-md-12">
+                <!--<div class="card pt-1">-->
+                    <div class="card-body" style="-moz-box-shadow: 1px 1px 3px 5px #0063b1;
+  -webkit-box-shadow: 1px 1px 3px 2px #0063b1;
+  box-shadow:         1px 1px 3px 3px #40ea43;">
+
+                        <!--h3 align="center">{{ title }}</h3><hr><-->
+                        <form method="POST" action="">
+                             <div class="col-sm-8">
+                                {% csrf_token %}
+                                 {{ form|crispy }}
+                             <input class="btn btn-primary btn-md" type="submit" value='Login'>
+                                 <div class="">Not a member?   <a href="{% static 't/name.pdf'%}">Open Account</a></div>
+
+                                 <!--<a class="btn btn-success btn-md" href="{% static 't/name.pdf'%}" role="button">Register</a>-->
+                             </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>
+</div>
+    </body>
+
+{% endblock content %}

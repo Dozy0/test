@@ -1,0 +1,530 @@
+/*-------------- Start device screen 1366 --------------*/
+
+@media screen and (max-width: 1366px) {
+
+    .nimmu-sidebar {
+        width: 270px !important;
+    }
+    .nimmu-wrapper {
+        margin-left: 270px;
+    }
+    .nimmu-top-header,
+    .nimmu-breadcrumb,
+    .nimmu-content-area {
+        padding: 0 15px;
+    }
+    .nimmu-footer {
+        padding: 30px 15px;
+    }
+    .nimmu-help-desk-management-col {
+        flex-basis: 50%;
+    }
+
+}
+
+/*-------------- Start device screen 1024 --------------*/
+
+@media screen and (max-width: 1024px) {
+    .user-form .right {
+        flex-basis: 55%;
+    }
+    .nimmu-info-contact {
+        width: 100%;
+    }
+    .nimmu-contact-info .nimmu-contact-avater-right {
+        margin-right: 0;
+        width: 100%;
+    }
+    .nimmu-contact-list .nimmu-contact-info {
+        display: block;
+    }
+
+    .nimmu-info-contact {
+        margin-top: 50px;
+    }
+
+    .crm-status-area .nimmu-default-card {
+        flex-basis: 53%;
+        margin-bottom: 20px;
+    }
+
+    .nimmu-content-area {
+        padding: 0;
+    }
+
+    .nimmu-sidebar-menu,
+    .nimmu-sidebar {
+        width: 260px !important;
+    }
+
+    .nimmu-wrapper {
+        margin-left: 260px;
+    }
+
+    .nimmu-contact-list,
+    .nimmu-contact-topbar {
+        display: block;
+    }
+
+    .nimmu-contact-list {
+        display: block;
+        position: relative;
+        overflow: hidden;
+    }
+
+
+    .nimmu-contact-list .nimmu-contact-list-left {
+        border-right: none;
+        width: 300px !important;
+        position: absolute !important;
+        top: 0;
+        left: -300px;
+        z-index: 999;
+        height: 520px;
+        transition: all 0.3s;
+    }
+
+    .nimmu-contact-list .nimmu-contact-list-left.nimmu-contact-list-left-show {
+        left: 0;
+        box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .nimmu-contact-list .nimmu-contact-info {
+        height: unset; !important;
+    }
+
+    .nimmu-contact-topbar .nimmu-contact-total-bar {
+        padding-left: 100px;
+        position: relative;
+    }
+
+    .nimmu-contact-list-bar {
+        position: absolute;
+        left: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 20px;
+        color: #858585;
+        cursor: pointer;
+        display: block;
+        z-index: 999;
+    }
+
+    .scrumboard {
+        flex-wrap: wrap;
+    }
+
+    .scrumboard .column {
+        margin: 10px 0;
+    }
+    .nimmu-acore .nimmu-default-card{
+    	width: 100%;
+    }
+
+    .nimmu-forums-single .img {
+        width: 250px;
+        margin-right: 15px;
+    }
+    .icon-container {
+        flex-basis: 47%;
+        margin-right: 20px;
+    }
+
+
+}
+
+/*-------------- Start device screen 991 --------------*/
+
+@media screen and (max-width: 991px) {
+    .user-form::after{
+        display: none;
+    }
+    .user-form {
+        justify-content: center;
+    }
+    .nimmu-header-menu .nimmu-top-header{
+        width: 100%;
+    }
+    .nimmu-header-menu .nimmu-top-header .container-fluid{
+        padding: 0;
+    }
+    .nimmu-header-menu .navbar-nav li.nav-item > a {
+        padding: 10px 15px;
+    }
+    .nimmu-header-menu .navbar {
+        padding: 20px 15px;
+    }
+    .nimmu-header-menu .nimmu-top-header {
+        margin-top: 30px;
+    }
+    .inbox-left-content {
+        height: 1087px;
+    }
+    .inbox-left-content .right{
+        height: 1057px;
+    }
+
+    .nimmu-inbox-user-area {
+        flex-basis: 70%;
+    }
+    .inbox-left-content .right{
+        flex-basis: 47%;
+    }
+    .inbox-left-content .left{
+        flex-basis: 53%;
+    }
+    .inbox-content {
+        height: unset;
+        margin-bottom: 30px;
+    }
+    .inbox-topbar .compose-button{
+        flex-basis: 60%;
+    }
+	
+	/*  Sidebar */
+	.nimmu-sidebar{
+		width: 300px !important;
+	    z-index: 999999;
+	    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+	}
+	.nimmu-sidebar-hide {
+	    left: -320px;
+	}
+	.nimmu-wrapper {
+	    margin-left: 0;
+	}
+	.sidebar-icon i{
+		font-size: 24px;
+		color: #979797;
+	}
+	.sidebar-icon-move {
+        position: absolute;
+        left: 240px;
+        top: -78px;
+        z-index: 999999;
+    }
+
+
+
+    .nimmu-contact-topbar .nimmu-contact-total-bar {
+        display: block;
+        padding-left: 15px;
+    }
+
+    .nimmu-contact-list-bar {
+        left: 93%;
+    }
+
+    .nimmu-contact-total-bar .total h3 {
+        margin-bottom: 10px;
+    }
+
+    .nimmu-add-new-contact-btn {
+        padding: 7px 15px;
+    }
+
+    .scrumboard .column {
+        max-width: 335px;
+    }
+
+    .infobar {
+        display: block;
+    }
+
+    .nimmu-invoice .infobar .right {
+        margin-top: 15px;
+    }
+
+    .invoice-end-text {
+        padding: 0;
+    }
+
+    .top-bar {
+        align-items: flex-start;
+    }
+
+    .top-bar .right h2 {
+        font-size: 18px;
+        margin-top: 10px;
+    }
+    .nimmu-footer-btn{
+    	text-align: center !important;
+    }
+    .nimmu-footer p {
+        text-align: center;
+        margin-top: 18px;
+    }
+    .nimmu-acore .nimmu-default-card{
+    	width: 100%;
+    }
+    .nimmu-timeline li .img::after{
+        display: none;
+    }
+    .nimmu-timeline li .img {
+        width: 160px;
+    }
+    .navbar-toggler {
+        padding: 3px 8px;
+    }
+
+
+}
+
+/*-------------- Start device screen 768 --------------*/
+
+@media screen and (max-width: 768px) {}
+
+/*-------------- Start device screen 425 --------------*/
+
+@media screen and (max-width: 425px) {
+    .user-form {
+        border-radius: 0;
+    }
+    .crm-status-area .nimmu-default-card {
+        flex-basis: 100%;
+        margin: 0;
+        margin-bottom: 20px;
+    }
+    .crm-status-area .nimmu-default-card:last-child{
+        margin-bottom: 0;
+    }
+    .crm-status-area {
+        padding: 0;
+    }
+    .nimmu-default-card {
+        padding: 15px;
+    }
+    .nimmu-timeline li {
+        display: block;
+        justify-content: flex-start;
+    }
+    .timeline-content::before{
+        display: none;
+    }
+    .nimmu-timeline li .img img {
+        margin-bottom: 10px;
+    }
+    .inbox-left-content .left li {
+        min-height: 30px;
+        line-height: 30px;
+    }
+    .timeline-content {
+        padding: 15px;
+    }
+    .nimmu-inbox-user-area{
+        display: block;
+        overflow: hidden;
+    }
+    .inbox-topbar, .inbox-left-content, .nimmu-inbox-area {
+        display: block;
+    }
+    .inbox-left-content .right, .inbox-left-content {
+        height: unset;
+    }
+	.nimmu-todo-form .form-add-todo .nimmu-new-todo-item-btn {
+	    font-size: 14px;
+	    padding: 10px;
+	}
+	#todo-list li {
+	    width: 100%;
+	    min-height: 80px;
+	    align-items: center;
+	    padding: 10px;
+	    font-size: 16px;
+	}
+	#todo-list li span,
+	#todo-list li button{
+		margin-top: 10px;		
+	}
+	#todo-list li button{
+		min-width: 65px !important;
+	}
+	.nimmu-contact-info{
+		display: block;
+	}
+	.nimmu-contact-avater-right{
+		margin-bottom: 15px;
+	}
+	.nimmu-contact-info .nimmu-contact-avater-right {
+	    margin-right: 0;
+	}
+	.nimmu-contact-list-bar {
+	    left: 90%;
+	    top: 60%;
+	}
+	.nimmu-contact-list .nimmu-contact-info {
+	    padding: 20px;
+	}
+	.nimmu-forums-list {
+	    margin-top: 30px;
+	}
+	.nimmu-forums-single,
+	.nimmu-forums-btn-area {
+	    display: block;
+	}
+    .user-form {
+        display: block;
+        width: 100%;
+    }
+
+    .user-form .left,
+    .user-form .right {
+        width: 100%;
+        padding: 15px;
+    }
+
+    .user-form .right {
+        margin-top: 50px;
+    }
+
+    .error h2 {
+        font-size: 170px;
+    }
+
+    .error p {
+        font-size: 13px;
+    }
+    .nimmu-acore .col-xl-3 .nimmu-default-card {
+        width: 100%;
+    }
+
+    .nimmu-top-header .dropdown-menu-notification {
+        transform: translate3d(-275px, 24px, 0px) !important;
+    }
+    .nimmu-top-header .dropdown-menu-messages {
+        transform: translate3d(-316px, 24px, 0px) !important;
+    }
+    .nimmu-breadcrumb ul li{
+    	font-size: 20px;
+    }
+    .nimmu-header-trafic-title{
+    	position: static;
+    }
+    .nimmu-acore .nimmu-default-card{
+    	width: 100%;
+    }
+	.nimmu-chat-area {
+		height: 100%;
+	}
+	.user-chat {
+	    margin-bottom: 50px;
+	}
+    .price-area-two .price-area-two-inner .nimmu-price-card {
+        flex-basis: 100%;
+    }
+    .price-area-two .price-area-two-inner .nimmu-price-card.nimmu-price-card-two:nth-child(2) {
+        box-shadow: 0px 0px 15px rgba(0,0,0,0);
+        z-index: 9999;
+        top: 0;
+    }
+    .input-area ul{
+        flex-wrap: wrap;
+    }
+    .range {
+        width: auto;
+    }
+    .range-labels {
+        margin: 18px 0 0;
+    }
+    .nimmu-file-transfer-area .nimmu-default-card ul{
+        display: block !important;
+    }
+    .nimmu-file-transfer-area .nimmu-default-card ul li:not(:last-child){
+        margin-bottom: 15px !important;
+    }
+    .icon-container {
+        flex-basis: 100%;
+        margin-right: 0;
+    }
+
+}
+
+/*-------------- Start device screen 375 --------------*/
+
+@media screen and (max-width: 375px) {
+    .cypto-trading {
+        display: block;
+    }
+    .cypto-trading .crm-chart-coin-list{
+        margin-top: 15px;
+    }
+    .nimmu-header-menu .navbar-brand {
+        margin-right: 80px;
+    }
+    .compose-button .nimmu-compose-btn {
+        height: 40px;
+        font-size: 14px;
+    }
+    .nimmu-inbox-search .form-control {
+        height: 30px;
+    }
+	.nimmu-profile-name{
+		display: none;
+	}
+	.sidebar-icon {
+	    padding-top: 10px;
+	}
+	.nimmu-top-header, .nimmu-breadcrumb, .nimmu-content-area {
+	    padding: 0;
+	}
+	.nimmu-help-desk-management-col {
+	    flex-basis: 100%;
+	    text-align: center;
+	}
+	.nimmu-breadcrumb ul li {
+	    font-size: 16px;
+	}
+    .range-labels li {
+        width: 129px;
+        margin: 15px 0;
+    }
+}
+
+/*-------------- Start device screen 320 --------------*/
+
+@media screen and (max-width: 320px) {
+	.nimmu-todo-form .form-add-todo {
+	    display: block;
+	}
+	.nimmu-todo-form .form-add-todo .nimmu-new-todo-item {
+	    border: 2px solid #d3d3d3;
+	    width: 100%;
+	}
+	.nimmu-todo-form .form-add-todo .nimmu-new-todo-item-btn {
+	    width: 100%;
+	    margin-top: 10px;
+	}
+	#todo-list li span {
+	    display: block;
+	    text-align: center;
+	}
+	#todo-list li button{
+		width: 45%;
+	}
+	#todo-list li .todo-item-delete {
+	    margin-left: 5px;
+	}
+    .error h2 {
+        font-size: 155px;
+        margin-bottom: 0;
+    }
+    .nimmu-top-header .dropdown-menu {
+        min-width: 304px;
+    }
+    .nimmu-breadcrumb ul li {
+        font-size: 14px;
+    }
+    .nimmu-trafic-activity .nimmu-card-body ul{
+    	display: block !important;
+    	text-align: center;
+    }
+    .nimmu-trafic-activity .nimmu-card-body ul li:not(:last-child){
+    	margin-bottom: 20px;
+    }
+    .nimmu-trafic-activity-3,
+    .nimmu-trafic-activity-2,
+    .nimmu-trafic-activity-1 {
+        display: table;
+        margin: 15px auto;
+    }
+}

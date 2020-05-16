@@ -11,6 +11,7 @@ from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.forms import PasswordChangeForm
 from django.core.mail import send_mail
 from django.conf import settings
+from notification.models import Notification
 
 
 from .forms import (
@@ -84,6 +85,7 @@ def login_view(request):
             # authenticate with Account No & Password
             user = authenticate(account_no=account_no, password=password)
             login(request, user, backend='accounts.backends.AccountNoBackend')
+            n = Notification.objects.filter(user=request.user,viewed=False)
             messages.success(request, 'Welcome, {}!' .format(user.full_name))
             return redirect("account_summary")
 
